@@ -123,6 +123,28 @@ input[type=text] {
     font-family: "Alternate Gothic No1 D"; 
     
   }
+  input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 250%;
+    font-family: "Alternate Gothic No1 D"; 
+  }
+  input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 250%;
+    font-family: "Alternate Gothic No1 D"; 
+  }
   input[type=submit] {
     width: 100%;
     background-color: #ec2233;

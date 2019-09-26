@@ -20,7 +20,7 @@
     <section class="container">
         <h1 class="titulo">INFORMAÇÕES PESSOAIS</h1>
         <label class="descricao">NOME:</label>
-        <input type="text" name="nome">
+        <input type="text" name="nome" value="<?php echo $GLOBALS['user']->getNome(); ?>">
         <label class="descricao">SOBRENOME:</label>
         <input type="text" name="Sobrenome">
         <label class="descricao">GÊNERO:</label>

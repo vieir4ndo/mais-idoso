@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>+Idoso</title>
     <link rel="shortcut icon" href="../img/ico.ico">
@@ -11,7 +9,7 @@
 </head>
 
 <body>
-    <form method="post" action="">
+    <form name="formLogin" method="post" action="../controller/scriptLogin.php">
         <section class="container">
             <img id="logo-principal" src="../img/logo-menor.png">
             <hr />
@@ -20,7 +18,7 @@
             <input type="text" name="email">
             <label class="descricao">SENHA</label>
             <input type="text" name="senha">
-            <input type="submit" value="ENTRAR">
+            <input type="submit" name="login" value="ENTRAR">
     </form>
     <input type="button" onclick="window.location.href='Cadastro/cadastro.html';" value="CRIAR CONTA">
     </section>

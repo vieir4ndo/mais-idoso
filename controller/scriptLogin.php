@@ -1,25 +1,35 @@
 <?php
+
 require_once "../model/conexao.php";
 
 require_once "../model/classes/usuario.php";
 
-if (isset($_POST["cad1"])) {
+echo "chegou até";
+
+if (isset($_POST["login"])) {
+
+    echo "aqui";
 
 $email = $_POST['email'];
-$senha1 = $_POST['senha'];
-$senha2 = $_POST['senha1'];
-
-//Insere no Banco de Dados, usando Prepared Statements.
-
-$user->add($email, $senha1, $senha1);
-
-$user->pegarID($email);
+$senha = $_POST['senha'];
 
 
-header('Location: ../views/cadastro/cadastro1.html');
+$sql = "Select * from usuario where email_usuario ='". $email ."'";
+$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
-}else{
-    echo "Não entrou no script";
+$dado = $consulta->fetch_array();
+
+if ($dado['senha_usuario']==$senha) {
+
+    $GLOBALS['user'] = new Usuario($dado['id_usuario'], $dado['nome_usuario'], 
+    $dado['sobrenome_usuario'],$dado['genero_usuario'], $dado['dataNascimento_usuario'], 
+    $dado['altura_usuario'],$dado['peso_usuario'], $dado['tipoSanguineo_usuario']);
+    echo "amem";
+    echo "<script type='text/javascript'>";
+    echo "console.log='".$dado['nome_usuario']."'";
+    echo "</script>";
+
+    header('Location: ../index.html');
+} 
 }
-
 ?>

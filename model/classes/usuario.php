@@ -15,32 +15,73 @@ private $peso_usuario="";
 private $tipoSanguineo_usuario="";
 
 //METODOS
-function __construct(){
-    $this->email_usuario = "";
-    $this->senha_usuario = "";
-    $this->nome_usuario = "";
-    $this->sobrenome_usuario = "";
-    $this->genero_usuario = "";
-    $this->dataNascimento_usuario = "";
-    $this->altura_usuario = "";
-    $this->peso_usuario = "";
-    $this->tipoSanguineo_usuario = "";
-    }
 
-function pegarID($email){
-    $sql = "Select * from usuario where email_usuario ='".$email."'";
-    if ($GLOBALS['conn']->query($sql) == TRUE) {
-        echo "<br >PEGOUUU";
-        echo '<script>';
-        echo 'conole.log("Matheus");';
-  echo 'console.log('. ($GLOBALS['conn']->query($sql) ) .');';
-  echo '</script>';
-        } else {
-        echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
-        }
+function __construct($id,$nome,$sobrenome,$genero,$dataNascimento,$altura,$peso,$tipoSanguineo){
+    $this->id_usuario = $id;
+    $this->nome_usuario = $nome;
+    $this->sobrenome_usuario = $sobrenome;
+    $this->genero_usuario = $genero;
+    $this->dataNascimento_usuario = $dataNascimento;
+    $this->altura_usuario = $altura;
+    $this->peso_usuario = $peso;
+    $this->tipoSanguineo_usuario = $tipoSanguineo;
 }
-    
-function add($email, $senha, $senhaConfirma ){
+//MÉTODOS GETS E SETS
+
+function getId_usuario(){
+    return $this->id_usuario;
+}
+function getEmail_usuario(){
+    return $this->email_usuario;
+}
+function getNome_usuario(){
+    return $this->nome_usuario;
+}
+function getSobrenome_usuario(){
+    return $this->sobrenome_usuario;
+}
+function getGenero_usuario(){
+    return $this->genero_usuario;
+}
+function getDataNascimento_usuario(){
+    return $this->dataNascimento_usuario;
+}
+function getAltura_usuario(){
+    return $this->altura_usuario;
+}
+function getPeso_usuario(){
+    return $this->peso_usuario;
+}
+function getTipoSanguineo_usuario(){
+    return $this->tipoSanguineo_usuario;
+}
+function setEmail_usuario(){
+    return $this->email_usuario;
+}
+function setNome_usuario($nome){
+    $this->nome_usuario = $nome;
+}
+function setSobrenome_usuario($sobrenome){
+    $this->sobrenome_usuario = $sobrenome;
+}
+function setGenero_usuario($genero){
+    $this->genero_usuario = $genero;
+}
+function setDataNascimento_usuario($dataNascimento){
+    $this->dataNascimento_usuario = $dataNascimento;
+}
+function setAltura_usuario($altura){
+    $this->altura_usuario = $altura;
+}
+function setPeso_usuario($peso){
+    $this->peso_usuario = $peso;
+}
+function setTipoSanguineo_usuario($tipoSanguineo){
+    $this->tipoSanguineo_usuario = $tipoSanguineo;
+}
+
+//MÉTODOS BANCO
+function add($email, $senha, $senhaConfirma){
 
     if ($senha === $senhaConfirma) {
     //codigo fonte
@@ -56,35 +97,13 @@ function add($email, $senha, $senhaConfirma ){
     }
 }
 
-function del($cod){
-    //codigo fonte
-
-    $sql = "delete from pessoa where cod='". $cod."'";
-    if ($GLOBALS['conn']->query($sql) == TRUE) {
-    echo "<br > record deleted successfully";
-    } else {
-    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+function del(){
     
-    }
-    }
-
-function edit($cod){
-    //codigo fonte
-$sql = "UPDATE teste1.pessoa SET nome='{$this->nome}'
-, email='{$this->email}'
-, celular='{$this->celular}'
-, dt_nascimento= '{$this->dt_nascimento}' WHERE cod='{$cod}'";
-
-    if ($GLOBALS['conn']->query($sql) == TRUE) {
-    echo "<br > record updated successfully";
-    echo $sql;
-    } else {
-    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
-    
-    }
-    }
 }
-
-$GLOBALS['user'] = new Usuario();
+function edit(){
+    
+}
+//FECHA CLASSE
+}
 
 ?>

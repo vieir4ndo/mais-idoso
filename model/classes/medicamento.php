@@ -55,8 +55,8 @@ function setDosagem_medicamento($dosagem){
 //MÉTODOS BANCO
 function add(){
     //codigo fonte
-    $sql = "INSERT INTO medicamento (nome_medicamento, indicacao_medicamento, horario_medicamento, dosagem_medicamento) VALUES ('".$this->nome."',
-    '" . $this->indicacao ."', '".$this->horario."','".$this->dosagem."')";
+    $sql = "INSERT INTO medicamento (nome_medicamento, indicacao_medicamento, horario_medicamento, dosagem_medicamento) VALUES ('".$this->nome_medicamento."',
+    '" . $this->indicacao_medicamento ."', '".$this->horario_medicamento."','".$this->dosagem_medicamento."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
     } else {
@@ -79,14 +79,13 @@ function del($id){
     
 }
 function edit($id){
-	$sql = "UPDATE medicamento SET nome_medicamento='{$this->nome}'
-, indicacao_medicamento='{$this->indicacao}'
-, horario_medicamento='{$this->horario}'
-, dosagem_medicamento= '{$this->dosagem}' WHERE id='{$id}'";
+	$sql = "UPDATE medicamento SET nome_medicamento='{$this->nome_medicamento}'
+, indicacao_medicamento='{$this->indicacao_medicamento}'
+, horario_medicamento='{$this->horario_medicamento}'
+, dosagem_medicamento= '{$this->dosagem_medicamento}' WHERE id_medicamento={$id}";
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
-    echo $sql;
     } else {
     echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
     

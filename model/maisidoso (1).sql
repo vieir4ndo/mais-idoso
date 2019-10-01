@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Out-2019 às 21:00
+-- Generation Time: 01-Out-2019 às 21:14
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `maisidoso`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `atividadefisica`
+--
+
+CREATE TABLE `atividadefisica` (
+  `id_atividadeFisica` int(11) NOT NULL,
+  `atividade_atividadeFisica` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `duracao_atividadeFisica` time NOT NULL,
+  `data_atividadeFisica` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
 
@@ -54,9 +67,98 @@ INSERT INTO `cartilha` (`id_cartilha`, `titulo_cartilha`, `fatores_cartilha`, `s
 (13, 'Osteoporose', '\r\n– Predisposição genética\r\n\r\n– Envelhecimento\r\n\r\n– Dieta pobre em cálcio\r\n\r\n– Sedentarismo\r\n\r\n– Abuso de álcool\r\n\r\n– Tabagismo\r\n\r\n– Menopausa\r\n\r\n– Uso abusivo de remédios à base de corticoides\r\n\r\n– Diabetes\r\n\r\n– Disfunções na tireoide\r\n', 'A osteoporose é silenciosa e não apresenta sintomas. Em geral, o problema só é detectado em estado avançado, com a deformação de ossos que provoca dor crônica ou quando aparece uma fratura.', '\r\nA ingestão de cálcio é imprescindível para a renovação óssea: o ideal é 1 000 miligramas por dia – o equivalente a quatro porções lácteas. Embora outros alimentos também tenham alto teor de cálcio, como como brócolis e folhas verde-escuras, o nutriente é mais abundante em leite e derivados.\r\n\r\nA vitamina D é importante nesse processo. Sem ela, a absorção do mineral fica prejudicada. A recomendação é de 400 e 600 miligramas diários dessa vitaminas. Como poucos alimentos são ricos no nutriente, o banho de sol é a solução – com 15 minutos diários, sem protetor, a vitamina D chega ao intestino e ajuda a incorporar o cálcio.\r\n\r\nExercícios físicos de impacto, que estimulam a formação de massa óssea, também são imprescindíveis. E fora que estimulam o ganho de massa e força muscular, um fator importante na prevenção das quedas.\r\n'),
 (14, 'Infarto', '\r\nO infarto ocorre quando uma ou mais artérias que levam oxigênio ao coração (chamadas artérias coronárias) são obstruídas abruptamente por um coágulo de sangue formado em cima de uma placa de gordura (ateroma) existente na parede interna da artéria.\r\nA presença de placas de gordura no sangue é chamada de aterosclerose (placa de colesterol). O paciente que possui placas de aterosclerose com algum grau de obstrução na luz de uma artéria tem a chamada DAC – doença arterial coronariana. Conforme a placa de gordura (ateroma) cresce, ela leva à obstrução cada vez maior da coronária e pode levar ao sintoma de dor no peito aos esforços (angina). Em geral, uma pessoa tem sintoma de dor no peito aos esforços quando a obstrução é maior que 70%.\r\n', '\r\nVômitos\r\nSuor frio\r\nFraqueza Intensa\r\nPalpitações\r\nFalta de ar\r\nSensação de ansiedade\r\nFadiga\r\nSonolência\r\nDesmaio, tontura ou vertigem\r\n\r\n\r\n', '\r\nO meio mais eficaz é o controle dos fatores de risco, a partir da prática regular de exercícios físicos, da redução do nível de colesterol no sangue, do abandono do cigarro, e do monitoramento da pressão arterial e do diabetes mellitus. As dietas alimentares, o uso de remédios (apenas quando indicados pelo médico) e a prática esportiva são determinantes para evitar o entupimento das artérias.\r\n');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `consulta`
+--
+
+CREATE TABLE `consulta` (
+  `id_consulta` int(11) NOT NULL,
+  `tipo_consulta` int(11) NOT NULL,
+  `local_consulta` varchar(1000) COLLATE latin1_general_ci NOT NULL,
+  `horario_consulta` time NOT NULL,
+  `doutor_consulta` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `doenca`
+--
+
+CREATE TABLE `doenca` (
+  `id_doenca` int(11) NOT NULL,
+  `tipo_doenca` int(11) NOT NULL,
+  `sintomas_doenca` text COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `lembrete`
+--
+
+CREATE TABLE `lembrete` (
+  `id_lembrete` int(11) NOT NULL,
+  `titulo_lembrete` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `horario_lembrete` time NOT NULL,
+  `data_lembrete` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `medicamento`
+--
+
+CREATE TABLE `medicamento` (
+  `id_medicamento` int(11) NOT NULL,
+  `nome_medicamento` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `indicacao_medicamento` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `horario_medicamento` time NOT NULL,
+  `dosagem_medicamento` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `restricaoalimentar`
+--
+
+CREATE TABLE `restricaoalimentar` (
+  `id_restricaoAlimentar` int(11) NOT NULL,
+  `alimento_restricaoAlimentar` int(11) NOT NULL,
+  `grupo_restricaoAlimentar` int(11) NOT NULL,
+  `razao_restricaoAlimentar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id_usuario` int(11) NOT NULL,
+  `nome_usuario` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `sobrenome_usuario` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `genero_usuario` int(11) NOT NULL,
+  `dataNascimento_usuario` date NOT NULL,
+  `altura_usuario` double NOT NULL,
+  `peso_usuario` double NOT NULL,
+  `tipoSanguineo_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `atividadefisica`
+--
+ALTER TABLE `atividadefisica`
+  ADD PRIMARY KEY (`id_atividadeFisica`);
 
 --
 -- Indexes for table `cartilha`
@@ -65,14 +167,74 @@ ALTER TABLE `cartilha`
   ADD PRIMARY KEY (`id_cartilha`);
 
 --
+-- Indexes for table `consulta`
+--
+ALTER TABLE `consulta`
+  ADD PRIMARY KEY (`id_consulta`);
+
+--
+-- Indexes for table `doenca`
+--
+ALTER TABLE `doenca`
+  ADD PRIMARY KEY (`id_doenca`);
+
+--
+-- Indexes for table `lembrete`
+--
+ALTER TABLE `lembrete`
+  ADD PRIMARY KEY (`id_lembrete`);
+
+--
+-- Indexes for table `medicamento`
+--
+ALTER TABLE `medicamento`
+  ADD PRIMARY KEY (`id_medicamento`);
+
+--
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `atividadefisica`
+--
+ALTER TABLE `atividadefisica`
+  MODIFY `id_atividadeFisica` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cartilha`
 --
 ALTER TABLE `cartilha`
   MODIFY `id_cartilha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `consulta`
+--
+ALTER TABLE `consulta`
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `doenca`
+--
+ALTER TABLE `doenca`
+  MODIFY `id_doenca` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `lembrete`
+--
+ALTER TABLE `lembrete`
+  MODIFY `id_lembrete` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `medicamento`
+--
+ALTER TABLE `medicamento`
+  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

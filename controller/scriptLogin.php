@@ -25,11 +25,9 @@ if ($dado['senha_usuario']==$senha) {
     $dado['sobrenome_usuario'],$dado['genero_usuario'], $dado['dataNascimento_usuario'], 
     $dado['altura_usuario'],$dado['peso_usuario'], $dado['tipoSanguineo_usuario']);
     echo "amem";
-    echo "<script type='text/javascript'>";
-    echo "console.log='".$dado['nome_usuario']."'";
-    echo "</script>";
-
     header('Location: ../index.html');
-} 
+}else {
+    header('Location: ../views/login.html');
+}
 }
 ?>

@@ -83,17 +83,25 @@ function setTipoSanguineo_usuario($tipoSanguineo){
 //MÉTODOS BANCO
 function add($email, $senha, $senhaConfirma){
 
+    $sql = "Select * from usuario where email_usuario ='". $email ."'";
+    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+
+    if ($consulta == null) {
     if ($senha === $senhaConfirma) {
     //codigo fonte
     $sql = "INSERT INTO usuario (email_usuario, senha_usuario) VALUES ('".$email."',
     '" . $senha ."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
+    header('Location: ../views/cadastro/cadastro1.html');
     } else {
     echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
     }
     }else {
         echo "Senhas não batem";
+    }
+    } else {
+        echo 'email cadastrado';
     }
 }
 
@@ -105,5 +113,7 @@ function edit(){
 }
 //FECHA CLASSE
 }
+
+$GLOBALS['user'] = new Usuario();
 
 ?>

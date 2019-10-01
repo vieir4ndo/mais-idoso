@@ -14,26 +14,28 @@
         <a href="perfil.html" id="img2"><img src="../img/avatar.png"></a>
         <a href="conf.html" id="img4"><img src="../img/conf.png"></a>
     </header>
+    <form name="formMedicamento" method="POST" action="../controller/scriptMedicamento.php">
     <section class="container">
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
         <lable class="descricao">NOME:</lable>
-        <input type="text">
+        <input type="text" name="nome" required>
         <lable class="descricao">INDICAÇÃO:</lable>
-        <input type="text">
+        <input type="text" name="indicacao">
         <lable class="descricao">HORÁRIO:</lable>
-        <input type="time">
+        <input type="time" name="hora" required>
         <img id="incluir" src="../img/Adicionar.png">
         <lable class="descricao">DOSAGEM:</lable>
-        <input type="text">
+        <input type="text" name="dosagem" required>
         <hr />
         <section class="menu-manter">
-            <a><img src="../img/editar.png"></a>
-            <a><img src="../img/deletar.png"></a>
-            <a href="index.html"><img src="../img/salvar.png"></a>
-        </section>
+            <!--<button type="submit" name="editar"><img src="../img/editar.png"></button>
+            <button type="submit" name="deletar"><img src="../img/deletar.png"></button>-->
+            <button type="submit" name="salvar"><img src="../img/salvar.png"></button>
 
+        </section>
     </section>
+     </form>
 </body>
 
 </html>

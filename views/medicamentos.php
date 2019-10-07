@@ -16,9 +16,23 @@
     <section class="container">
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
-        <a class="container-data">
-            MEDICAMENTO
-        </a>
+<?php
+
+require_once "../model/conexao.php";
+
+require_once "../model/classes/medicamento.php";
+
+$sql = "Select * from medicamento ";
+$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+
+$dado = $consulta->fetch_array();
+
+    while($row = $dado->fetch_assoc()) {
+         echo $result['nome_medicamento'];
+         //echo "<a class='container-data'".$result['nome_medicamento']."</a>";;
+    }
+
+?>
         <hr>
         <section>
             <input type="button" onclick="window.location.href='manterMedicamentos.html';" value="INCLUIR">

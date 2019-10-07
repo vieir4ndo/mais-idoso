@@ -86,7 +86,7 @@ function add($email, $senha, $senhaConfirma){
     $sql = "Select * from usuario where email_usuario ='". $email ."'";
     $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
-    if ($consulta == null) {
+    if ($consulta == '') {
     if ($senha === $senhaConfirma) {
     //codigo fonte
     $sql = "INSERT INTO usuario (email_usuario, senha_usuario) VALUES ('".$email."',

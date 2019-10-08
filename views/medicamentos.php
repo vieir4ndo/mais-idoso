@@ -22,16 +22,22 @@ require_once "../model/conexao.php";
 
 require_once "../model/classes/medicamento.php";
 
-$sql = "Select * from medicamento ";
+$sql = "Select * from medicamento";
 $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
 $dado = $consulta->fetch_array();
 
-    while($row = $dado->fetch_assoc()) {
-         echo $result['nome_medicamento'];
-         //echo "<a class='container-data'".$result['nome_medicamento']."</a>";;
-    }
+$teste;
 
+for($i=0;$i<4;$i++){
+    $teste[$i] = $dado['nome_medicamento'][$i];
+}
+
+foreach  ($teste as &$nome_medicamento) {
+        echo $nome_medicamento;
+         //echo "<a class='container-data'".$result['nome_medicamento']."</a>";;
+        }
+    
 ?>
         <hr>
         <section>

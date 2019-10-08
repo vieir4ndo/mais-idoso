@@ -29,13 +29,13 @@ $dado = $consulta->fetch_array();
 
 $GLOBALS['medicamento']->edit($dado['id_medicamento']);
 
-header('Location: ../views/medicamentos.html');
+header('Location: ../views/medicamentos.php');
 
 } elseif (isset($_POST["salvar"])) {
 
 $GLOBALS['medicamento']->add();
 
-header('Location: ../views/medicamentos.html');
+header('Location: ../views/medicamentos.php');
 
 }else{
 	$sql = "Select * from medicamento where nome_medicamento ='". $nome ."'";
@@ -44,7 +44,7 @@ $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
 $dado = $consulta->fetch_array();
 	$GLOBALS['medicamento']->del($dado['id_medicamento']);
-	header('Location: ../views/medicamentos.html');
+	header('Location: ../views/medicamentos.php');
 }
 
 

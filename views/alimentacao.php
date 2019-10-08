@@ -17,28 +17,15 @@
             <section class="container"> 
                 <img id="logo-principal" src="../img/alimentacao.png">
                 <hr />
-
-    <?php
-
-        require_once "../model/conexao.php";
-
-        require_once "../model/classes/alimentacao.php";
-
-        $sql = "Select * from alimentacao";
-        $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS[conn]->error);
-        $dado = $consulta->fetch_array();
-
-            while ($row = $dado->fetch_assoc()) {
-                echo $result['alimento_restricaoAlimentar'];
-            }
-    ?>
-               
+                <a class="container-data">
+                    RESTRIÇÃO ALIMENTAR
+                </a>
                 <hr>
                 <section>
                     <input type="button" onclick="window.location.href='manterAlimentacao.html';" value="INCLUIR">
                 </section>
             </section>
-       
+        </section>
 </body>
 
 </html>

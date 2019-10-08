@@ -14,23 +14,27 @@
         <a href="perfil.html" id="img2"><img src="../img/avatar.png"></a>
         <a href="conf.html" id="img4"><img src="../img/conf.png"></a>
     </header>
+    <form name="formAlimentacao" method="POST" action="../controller/scriptAlimentacao.php">
     <section class="container">
         <img id="logo-principal" src="../img/alimentacao.png">
         <hr />
         <lable class="descricao">ALIMENTO:</lable>
-        <input type="text">
+        <input type="text" name="alimento">
         <lable class="descricao">GRUPO:</lable>
-        <input type="text">
+        <input type="text" name="grupo">
         <lable class="descricao">RAZÃO:</lable>
-        <input type="text">
+        <input type="text" name="razao">
         <hr />
         <section class="menu-manter">
-            <a><img src="../img/editar.png"></a>
-            <a><img src="../img/deletar.png"></a>
-            <a href="index.html"><img src="../img/salvar.png"></a>
+           <button type="submit" name="editar"><img src="../img/editar.png"></button>
+            <button type="submit" name="deletar"><img src="../img/deletar.png"></button>
+            <button type="submit" name="salvar"><img src="../img/salvar.png"></button>
+
         </section>
 
     </section>
+    </form>
+    
 </body>
 
 </html>

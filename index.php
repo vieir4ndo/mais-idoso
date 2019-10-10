@@ -10,18 +10,18 @@
 
 <body>
     <header class="menu-principal">
-        <a href="views/cartilha.html" id="img"><img src="img/cartilha.png"></a>
-        <a href="views/perfil.html" id="img2"><img src="img/avatar.png"></a>
-        <a href="views/conf.html" id="img4"><img src="img/conf.png"></a>
+        <a href="views/cartilha.php" id="img"><img src="img/cartilha.png"></a>
+        <a href="views/perfil.php" id="img2"><img src="img/avatar.png"></a>
+        <a href="views/conf.php" id="img4"><img src="img/conf.png"></a>
     </header>
     <section class="container">
         <img id="logo-principal" src="img/logo.png">
         <hr />
         <nav id="nav-principal">
             <a href="views/medicamentos.php"><img src="img/logo2.png"></a>
-            <a href="views/alimentacao.html"><img src="img/logo3.png"></a>
-            <a href="views/atvfisicas.html"><img src="img/logo4.png"></a>
-            <a href="views/consultas.html"><img src="img/logo5.png"></a>
+            <a href="views/alimentacao.php"><img src="img/logo3.png"></a>
+            <a href="views/atvfisicas.php"><img src="img/logo4.png"></a>
+            <a href="views/consultas.php"><img src="img/logo5.png"></a>
         </nav>
     </section>
     <section class="container">

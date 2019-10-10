@@ -9,9 +9,9 @@
 
 <body>
     <header class="menu-principal">
-        <a href="../index.html" id="img"><img src="../img/home.png"></a>
-        <a href="perfil.html" id="img2"><img src="../img/avatar.png"></a>
-        <a href="conf.html" id="img4"><img src="../img/conf.png"></a>
+        <a href="../index.php" id="img"><img src="../img/home.png"></a>
+        <a href="perfil.php" id="img2"><img src="../img/avatar.png"></a>
+        <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
     <section class="container">
         <h1 class="container-campo">INFORMAÇÕES</h1>
@@ -20,7 +20,7 @@
         
         <a class="container-campo">POLÍTICA DE PRIVACIDADE</a>
         
-        <a href="contato.html" class="container-campo">CONTATO</a>
+        <a href="contato.php" class="container-campo">CONTATO</a>
         <HR>
     </section>
 </body>

@@ -20,7 +20,7 @@
             <input type="password" name="senha" required>
             <input type="submit" name="login" value="ENTRAR">
     </form>
-    <input type="button" onclick="window.location.href='Cadastro/cadastro.html';" value="CRIAR CONTA">
+    <input type="button" onclick="window.location.href='Cadastro/cadastro.php';" value="CRIAR CONTA">
     </section>
     </section>
 </body>

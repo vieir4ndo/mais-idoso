@@ -14,27 +14,27 @@
 
 <body>
     <header class="menu-principal">
-        <a href="../index.html" id="img"><img src="../img/home.png"></a>
-        <a href="perfil.html" id="img2"><img src="../img/avatar.png"></a>
+        <a href="../index.php" id="img"><img src="../img/home.png"></a>
+        <a href="perfil.php" id="img2"><img src="../img/avatar.png"></a>
         <a href="#" id="img4"><img src="../img/conf.png"></a>
     </header>
     <section class="container">
         <img id="logo-principal" src="../img/configuracoes.png">
         <hr />
         <section class="container-conf">
-            <a href="notificacoes.html"><img src="../img/logo-conf/icon-bell.png">
+            <a href="notificacoes.php"><img src="../img/logo-conf/icon-bell.png">
                 <h3 class="texto-conf">NOTIFICAÇÕES</h3>
             </a>
-            <a href="seguranca.html"><img src="../img/logo-conf/icon-locker.png">
+            <a href="seguranca.php"><img src="../img/logo-conf/icon-locker.png">
                 <h3 class="texto-conf">SEGURANÇA</h3>
             </a>
-            <a href="suporte.html"><img src="../img/logo-conf/icon-intmark.png">
+            <a href="suporte.php"><img src="../img/logo-conf/icon-intmark.png">
                 <h3 class="texto-conf">SUPORTE</h3>
             </a>
-            <a href="info.html"><img src="../img/logo-conf/icon-info.png">
+            <a href="info.php"><img src="../img/logo-conf/icon-info.png">
                 <h3 class="texto-conf">INFORMAÇÕES</h3>
             </a>
-            <a href="excluir.html"><img src="../img/logo-conf/icon-trash.png">
+            <a href="excluir.php"><img src="../img/logo-conf/icon-trash.png">
                 <h3 class="texto-conf">EXCLUIR CONTA</h3>
             </a>
         </section>

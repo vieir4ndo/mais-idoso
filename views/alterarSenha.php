@@ -10,9 +10,9 @@
 
 <body>
     <header class="menu-principal">
-        <a href="../index.html" id="img"><img src="../img/home.png"></a>
-        <a href="perfil.html" id="img2"><img src="../img/avatar.png"></a>
-        <a href="conf.html" id="img4"><img src="../img/conf.png"></a>
+        <a href="../index.php" id="img"><img src="../img/home.png"></a>
+        <a href="perfil.php" id="img2"><img src="../img/avatar.png"></a>
+        <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
     <section class="container">
         <h1 class="titulo">ALTERAR SENHA</h1>
@@ -24,7 +24,7 @@
         <lable class="descricao">CONFIRME A NOVA SENHA:</lable>
         <input type="text">
         <section>
-            <input type="button" onclick="window.location.href='index.html';" value="SALVAR">
+            <input type="button" onclick="window.location.href='index.php';" value="SALVAR">
         </section>
         <HR>
     </section>

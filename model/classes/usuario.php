@@ -93,7 +93,7 @@ function add($email, $senha, $senhaConfirma){
     '" . $senha ."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
-    header('Location: ../views/cadastro/cadastro1.html');
+    header('Location: ../views/cadastro/cadastro1.php');
     } else {
     echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
     }
@@ -111,6 +111,7 @@ function del(){
 function edit(){
     
 }
+
 //FECHA CLASSE
 }
 

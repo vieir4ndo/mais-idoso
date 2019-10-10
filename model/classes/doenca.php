@@ -2,8 +2,10 @@
 
 include_once "../model/conexao.php";
 
-class Medicamento{
+class Doenca{
+    
     private $id_doenca="";
+    private $nome_doenca="";
     private $tipo_doenca="";
     private $sintomas_doenca="";
  
@@ -11,6 +13,7 @@ class Medicamento{
 
 function __construct(){
     $this->id_doenca ="";
+    $this->nome_doenca="";
     $this->tipo_doenca ="";
     $this->sintomas_doenca ="";
 }
@@ -19,6 +22,9 @@ function __construct(){
 function getId_doenca(){
     return $this->id_doenca;
 }
+function getNome_doenca(){
+    return $this->nome_doenca;
+}
 function getTipo_doenca(){
     return $this->tipo_doenca;
 }
@@ -26,6 +32,9 @@ function getSintomas_doenca(){
     return $this->sintomas_doenca;
 }
 
+function setNome_doenca($nome){
+    $this->nome_doenca= $nome;
+}
 function setTipo_doenca($tipo){
      $this->tipo_doenca= $tipo;
 }
@@ -36,8 +45,9 @@ function setSintomas_doenca($Sintomas){
 //MÉTODOS BANCO
 function add(){
     //codigo fonte
-    $sql = "INSERT INTO doenca (Tipo_doenca, Sintomas_doenca) VALUES ('".$this->Tipo_doenca."',
-    '" . $this->Sintomas_doenca ."')";
+    $sql = "INSERT INTO doenca (nome_doenca, tipo_doenca, sintomas_doenca) VALUES ('".$this->tipo_doenca."',
+    '".$this->nome_doenca."',
+    '" . $this->sintomas_doenca ."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
     } else {
@@ -55,9 +65,9 @@ function del($id){
     }
 }
 function edit($id){
-	$sql = "UPDATE doenca SET id_doenca='{$this->id_doenca}'
+	$sql = "UPDATE doenca SET nome_doenca='{$this->nome_doenca}'
 , tipo_doenca='{$this->tipo_doenca}'
-, sintomas_doenca='{$this->sintomas_doenca}'  WHERE sintomas_doenca={$id}";
+, sintomas_doenca='{$this->sintomas_doenca}'  WHERE id_doenca={$id}";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {
@@ -66,7 +76,7 @@ function edit($id){
 }
 }
 //FECHA CLASSE
-$GLOBALS['medicamento'] = new Medicamento();
+$GLOBALS['doenca'] = new Doenca();
 
 
 ?>

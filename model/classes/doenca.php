@@ -1,6 +1,5 @@
 <?php
 
-include_once "../model/conexao.php";
 
 class Doenca{
     

@@ -16,15 +16,15 @@ private $tipoSanguineo_usuario="";
 
 //METODOS
 
-function __construct($id,$nome,$sobrenome,$genero,$dataNascimento,$altura,$peso,$tipoSanguineo){
-    $this->id_usuario = $id;
-    $this->nome_usuario = $nome;
-    $this->sobrenome_usuario = $sobrenome;
-    $this->genero_usuario = $genero;
-    $this->dataNascimento_usuario = $dataNascimento;
-    $this->altura_usuario = $altura;
-    $this->peso_usuario = $peso;
-    $this->tipoSanguineo_usuario = $tipoSanguineo;
+function __construct(){
+    $this->id_usuario = "";
+    $this->nome_usuario = "";
+    $this->sobrenome_usuario = "";
+    $this->genero_usuario = "";
+    $this->dataNascimento_usuario = "";
+    $this->altura_usuario = "";
+    $this->peso_usuario = "";
+    $this->tipoSanguineo_usuario = "";
 }
 //MÉTODOS GETS E SETS
 

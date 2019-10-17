@@ -253,10 +253,10 @@ p {
     background-color: transparent;
     border-radius: 20px;
     padding: 4%;
-    width: 91%;
+    width: 100%;
     font-size: 350%;
     display: block;
-    font-size: 450%;
+    text-align:left;
 }
 .container-data:hover {
     border: solid yellow;

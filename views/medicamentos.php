@@ -16,6 +16,7 @@
     <section class="container">
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
+         <form name="formConMedicamentos" method="POST" action="../controller/consultas/scriptConMedicamentos.php">
         <?php
         require_once "../model/conexao.php";
         require_once "../model/classes/medicamento.php";
@@ -27,17 +28,14 @@
 
         $consulta = $consulta->fetch_array();
 
-        echo "<form name='formConMedicamentos' method='POST' action='../controller/consultas/scriptConMedicamentos.php'>";
-
         foreach ($consulta as &$value) {
-                 echo "<button type='submit' name='nome_medicamento' value='".$value."' class='container-data' >".$value."</button>";
+                 echo "<button type='submit' name='nome_medicamento' value='{$value}''  class='container-data'>{$value}</button>";
                 }
-
-         echo "</form>";
         ?>
+        </form>
         <hr>
         <section>
-            <input type="button" onclick="window.location.href='manterMedicamentos.php';" value="INCLUIR">
+            <input type="submit" name="incluir" value="INCLUIR">
         </section>
     </section>
 </body>

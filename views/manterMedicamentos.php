@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>+Idoso</title>
@@ -18,15 +17,18 @@
     <section class="container">
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
+        <?php
+
+        ?>
         <lable class="descricao">NOME:</lable>
-        <input type="text" name="nome" required>
+        <input type="text" name="nome" value="<?php $GLOBALS['medicamento']->getNome_medicamento(); ?>" required>
         <lable class="descricao">INDICAÇÃO:</lable>
-        <input type="text" name="indicacao">
+        <input type="text" name="indicacao" value="<?php $GLOBALS['medicamento']->getIndicacao_medicamento(); ?>">
         <lable class="descricao">HORÁRIO:</lable>
-        <input type="time" name="hora" required>
+        <input type="time" name="hora" value="<?php $GLOBALS['medicamento']->getHorario_medicamento(); ?>" required>
         <img id="incluir" src="../img/Adicionar.png">
         <lable class="descricao">DOSAGEM:</lable>
-        <input type="text" name="dosagem" required>
+        <input type="text" name="dosagem" value="<?php $GLOBALS['medicamento']->getDosagem_medicamento(); ?>"required>
         <hr />
         <section class="menu-manter">
             <button type="submit" name="editar"><img src="../img/editar.png"></button>

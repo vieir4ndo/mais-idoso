@@ -33,10 +33,7 @@ $nome_medicamento = $_POST['nome_medicamento'];
  }
 
  if (isset($busca)) {
- 	
- 	echo 'Medicamento não existe';
- }else {
- 	$sql = "Select * from medicamento where nome_medicamento ={$busca}";// and medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
+ 	 	$sql = "Select * from medicamento where nome_medicamento ={$busca}";// and medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
 
  	echo $sql;
 
@@ -48,8 +45,10 @@ $nome_medicamento = $_POST['nome_medicamento'];
 	$GLOBALS['medicamento']->setindicacao_medicamento($consulta['indicacao_medicamento']);
 	$GLOBALS['medicamento']->setHorario_medicamento($consulta['horario_medicamento']);
 	$GLOBALS['medicamento']->setDosagem_medicamento($consulta['dosagem_medicamento']);
+ 	
+ }else {
 
- 
+ echo 'Medicamento não existe';
  }
 }
 

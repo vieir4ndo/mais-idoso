@@ -1,5 +1,6 @@
 <?php
 
+require_once "../model/conexao.php";
 
 class Usuario{
 private $id_usuario="";

@@ -1,6 +1,5 @@
 <?php
-
-require_once "../model/conexao.php";
+require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
 
 class Alimentacao{
 private $id_restricaoAlimentar="";

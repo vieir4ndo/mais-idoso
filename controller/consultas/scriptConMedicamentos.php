@@ -1,4 +1,8 @@
 <?php
+require_once "../../model/conexao.php";
+require_once "../../model/classes/medicamento.php";
+require_once "../../model/classes/usuario.php";
+
 
 if (isset($_POST["incluir"])){
 
@@ -10,45 +14,30 @@ if (isset($_POST["incluir"])){
 	header('Location: ../../views/manterMedicamentos.php');
 
 } else {
- require_once "../../model/conexao.php";
- require_once "../../model/classes/medicamento.php";
- require_once "../../model/classes/usuario.php";
-
  echo "chegou até";
 
 $nome_medicamento = $_POST['nome_medicamento'];
 
- $sql = "Select nome_medicamento from medicamento";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
+ $sql = "Select * from medicamento where nome_medicamento='{$nome_medicamento}'";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
+
+ echo $sql;
 
  $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
- $consulta = $consulta->fetch_array();
-
- $busca;
-
- foreach ($consulta as &$value) {
- 	if ($value == $nome_medicamento ){
- 		$busca = $value;
- 	}
- }
-
- if (isset($busca)) {
- 	 	$sql = "Select * from medicamento where nome_medicamento ={$busca}";// and medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
-
- 	echo $sql;
-
- 	$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
-
- 	$consulta = $consulta->fetch_array();
+ if ($consulta!='') {
+ 	
+	$consulta = $consulta->fetch_assoc();
 
  	$GLOBALS['medicamento']->setNome_medicamento($consulta['nome_medicamento']);
 	$GLOBALS['medicamento']->setindicacao_medicamento($consulta['indicacao_medicamento']);
 	$GLOBALS['medicamento']->setHorario_medicamento($consulta['horario_medicamento']);
 	$GLOBALS['medicamento']->setDosagem_medicamento($consulta['dosagem_medicamento']);
- 	
+	 
+	header('Location: ../../views/manterMedicamentos.php');
+
  }else {
 
- echo 'Medicamento não existe';
+ echo 'Medicamento não cadastrado';
  }
 }
 

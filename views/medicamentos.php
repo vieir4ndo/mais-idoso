@@ -16,27 +16,29 @@
     <section class="container">
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
-         <form name="formConMedicamentos" method="POST" action="../controller/consultas/scriptConMedicamentos.php">
+        <form name="formConMedicamentos" method="POST" action="../controller/consultas/scriptConMedicamentos.php">
         <?php
         require_once "../model/conexao.php";
         require_once "../model/classes/medicamento.php";
         require_once "../model/classes/usuario.php";
 
-        $sql = "Select nome_medicamento from medicamento";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
+        $sql = "SELECT nome_medicamento FROM medicamento";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
 
-        $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+        $consulta = $GLOBALS['conn']->query($sql);
 
-        $consulta = $consulta->fetch_array();
+        $i =0 ;
 
-        foreach ($consulta as &$value) {
-                 echo "<button type='submit' name='nome_medicamento' value='{$value}''  class='container-data'>{$value}</button>";
-                }
+        while ($row = $consulta->fetch_assoc()){   
+        echo "<button type='submit' name='nome_medicamento' value='{$row['nome_medicamento']}'  class='container-data'>{$row['nome_medicamento']}</button>";
+         $i++;
+        }
+
         ?>
-        </form>
         <hr>
         <section>
             <input type="submit" name="incluir" value="INCLUIR">
         </section>
+        </form>
     </section>
 </body>
 

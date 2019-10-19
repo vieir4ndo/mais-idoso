@@ -19,16 +19,25 @@
         <hr />
         <?php
 
+        require_once "../model/classes/medicamento.php";
+
+        $nome = $GLOBALS['medicamento']->getNome_medicamento();
+        $indicacao = $GLOBALS['medicamento']->getIndicacao_medicamento();
+        $horario = $GLOBALS['medicamento']->getHorario_medicamento();
+        $dosagem = $GLOBALS['medicamento']->getDosagem_medicamento();
+
+        echo '<label class="descricao">NOME:</label>';
+        echo '<input type="text" name="nome" value="'. $nome .'" required>';
+        echo '<label class="descricao">INDICAÇÃO:</label>';
+        echo '<input type="text" name="indicacao" value="'.$indicacao .'">';
+        echo '<label class="descricao">HORÁRIO:</label>';
+        echo '<input type="time" name="hora" value="'. $horario .'" required>';
+        echo '<img id="incluir" src="../img/Adicionar.png">';
+        echo '<label class="descricao">DOSAGEM:</label>';
+        echo '<input type="text" name="dosagem" value="'. $dosagem .'" required>';
+    
         ?>
-        <lable class="descricao">NOME:</lable>
-        <input type="text" name="nome" value="<?php $GLOBALS['medicamento']->getNome_medicamento(); ?>" required>
-        <lable class="descricao">INDICAÇÃO:</lable>
-        <input type="text" name="indicacao" value="<?php $GLOBALS['medicamento']->getIndicacao_medicamento(); ?>">
-        <lable class="descricao">HORÁRIO:</lable>
-        <input type="time" name="hora" value="<?php $GLOBALS['medicamento']->getHorario_medicamento(); ?>" required>
-        <img id="incluir" src="../img/Adicionar.png">
-        <lable class="descricao">DOSAGEM:</lable>
-        <input type="text" name="dosagem" value="<?php $GLOBALS['medicamento']->getDosagem_medicamento(); ?>"required>
+        <input value="isso">
         <hr />
         <section class="menu-manter">
             <button type="submit" name="editar"><img src="../img/editar.png"></button>

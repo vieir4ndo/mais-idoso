@@ -37,7 +37,7 @@ $nome_medicamento = $_POST['nome_medicamento'];
 
  }else {
 
- echo 'Medicamento não cadastrado';
+ echo 'Medicamento não encontrado';
  }
 }
 

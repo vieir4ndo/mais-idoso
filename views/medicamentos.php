@@ -32,7 +32,9 @@
         echo "<button type='submit' name='nome_medicamento' value='{$row['nome_medicamento']}'  class='container-data'>{$row['nome_medicamento']}</button>";
          $i++;
         }
-
+        //}else {
+        //    echo "<button class='container-data'>Nenhum medicamento cadastrado</button>";
+        //}
         ?>
         <hr>
         <section>

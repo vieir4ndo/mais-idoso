@@ -25,19 +25,17 @@
         $indicacao = $GLOBALS['medicamento']->getIndicacao_medicamento();
         $horario = $GLOBALS['medicamento']->getHorario_medicamento();
         $dosagem = $GLOBALS['medicamento']->getDosagem_medicamento();
-
-        echo '<label class="descricao">NOME:</label>';
-        echo '<input type="text" name="nome" value="'. $nome .'" required>';
-        echo '<label class="descricao">INDICAÇÃO:</label>';
-        echo '<input type="text" name="indicacao" value="'.$indicacao .'">';
-        echo '<label class="descricao">HORÁRIO:</label>';
-        echo '<input type="time" name="hora" value="'. $horario .'" required>';
-        echo '<img id="incluir" src="../img/Adicionar.png">';
-        echo '<label class="descricao">DOSAGEM:</label>';
-        echo '<input type="text" name="dosagem" value="'. $dosagem .'" required>';
-    
         ?>
-        <input value="isso">
+
+        <label class="descricao">NOME:</label>
+        <input type="text" name="nome" value="<?php echo $nome ?>" required>
+        <label class="descricao">INDICAÇÃO:</label>
+        <input type="text" name="indicacao" value="<?php echo $indicacao ?>">
+        <label class="descricao">HORÁRIO:</label>
+        <input type="time" name="hora" value="<?php echo $horario ?>" required>
+        <button id="incluir"><img src="../img/Adicionar.png"></button>
+        <label class="descricao">DOSAGEM:</label>
+        <input type="text" name="dosagem" value="<?php echo $dosagem ?>" required>
         <hr />
         <section class="menu-manter">
             <button type="submit" name="editar"><img src="../img/editar.png"></button>

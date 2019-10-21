@@ -21,12 +21,13 @@
         require_once "../model/conexao.php";
         require_once "../model/classes/medicamento.php";
         require_once "../model/classes/usuario.php";
+        require_once "../model/inicializacao.php";
 
         $sql = "SELECT nome_medicamento FROM medicamento";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
 
         $consulta = $GLOBALS['conn']->query($sql);
 
-        $i =0 ;
+        $i = 0;
 
         while ($row = $consulta->fetch_assoc()){   
         echo "<button type='submit' name='nome_medicamento' value='{$row['nome_medicamento']}'  class='container-data'>{$row['nome_medicamento']}</button>";
@@ -38,7 +39,7 @@
         ?>
         <hr>
         <section>
-            <input type="submit" name="incluir" value="INCLUIR">
+            <input type="submit" name="incluir" value="incluir">
         </section>
         </form>
     </section>

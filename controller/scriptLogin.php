@@ -2,7 +2,7 @@
 
 require_once "../model/conexao.php";
 
-require_once "../model/classes/usuario.php";
+require_once "../model/incializacao.php";
 
 if (isset($_POST["login"])) {
 

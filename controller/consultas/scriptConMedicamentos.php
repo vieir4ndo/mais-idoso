@@ -2,7 +2,7 @@
 require_once "../../model/conexao.php";
 require_once "../../model/classes/medicamento.php";
 require_once "../../model/classes/usuario.php";
-
+require_once "../../model/inicializacao.php";
 
 if (isset($_POST["incluir"])){
 
@@ -28,7 +28,8 @@ $nome_medicamento = $_POST['nome_medicamento'];
  	
 	$consulta = $consulta->fetch_assoc();
 
- 	$GLOBALS['medicamento']->setNome_medicamento($consulta['nome_medicamento']);
+	 $GLOBALS['medicamento']->setNome_medicamento($consulta['nome_medicamento']);
+	 echo $GLOBALS['medicamento']->getNome_medicamento();
 	$GLOBALS['medicamento']->setindicacao_medicamento($consulta['indicacao_medicamento']);
 	$GLOBALS['medicamento']->setHorario_medicamento($consulta['horario_medicamento']);
 	$GLOBALS['medicamento']->setDosagem_medicamento($consulta['dosagem_medicamento']);

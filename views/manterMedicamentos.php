@@ -18,13 +18,13 @@
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
         <?php
-
-        require_once "../model/classes/medicamento.php";
+        require_once "../model/inicializacao.php";
 
         $nome = $GLOBALS['medicamento']->getNome_medicamento();
         $indicacao = $GLOBALS['medicamento']->getIndicacao_medicamento();
         $horario = $GLOBALS['medicamento']->getHorario_medicamento();
         $dosagem = $GLOBALS['medicamento']->getDosagem_medicamento();
+        echo "<label>{$dosagem}</label>";
         ?>
 
         <label class="descricao">NOME:</label>
@@ -41,7 +41,6 @@
             <button type="submit" name="editar"><img src="../img/editar.png"></button>
             <button type="submit" name="deletar"><img src="../img/deletar.png"></button>
             <button type="submit" name="salvar"><img src="../img/salvar.png"></button>
-
         </section>
     </section>
      </form>

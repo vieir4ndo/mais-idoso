@@ -90,7 +90,5 @@ function edit($id){
 }
 //FECHA CLASSE
 
-$GLOBALS['alimentacao'] = new Alimentacao();
-
 
 ?>

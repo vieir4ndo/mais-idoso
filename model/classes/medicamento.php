@@ -8,6 +8,7 @@ private $nome_medicamento="";
 private $indicacao_medicamento="";
 private $horario_medicamento="";
 private $dosagem_medicamento="";
+public $instace = Medicamento();
 
 
 //CONSTRUTOR
@@ -55,6 +56,7 @@ function setDosagem_medicamento($dosagem){
 //MÉTODOS BANCO
 function add(){
     //codigo fonte
+
     $sql = "INSERT INTO medicamento (nome_medicamento, indicacao_medicamento, horario_medicamento, dosagem_medicamento) VALUES ('".$this->nome_medicamento."',
     '" . $this->indicacao_medicamento ."', '".$this->horario_medicamento."','".$this->dosagem_medicamento."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
@@ -92,10 +94,17 @@ function edit($id){
     }
     
 }
+
+public static function getInstance() {
+    if (!isset(self::$instance)) {
+        self::$instance = new Medicamento();
+    }
+    return self::$instance;
+}
 }
 //FECHA CLASSE
 
-$GLOBALS['medicamento'] = new Medicamento();
+
 
 
 ?>

@@ -8,7 +8,6 @@ echo "chegou até";
 
 $nome = $_POST['nome'];
 $indicacao = $_POST['indicacao'];
-
 $dosagem = $_POST['dosagem'];
 $horario = $_POST['hora'];
 
@@ -37,10 +36,8 @@ header('Location: ../views/medicamentos.php');
 
 }else{
 	$sql = "Select * from medicamento where nome_medicamento ='". $nome ."'";
-$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
-
-
-$dado = $consulta->fetch_array();
+	$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+	$dado = $consulta->fetch_array();
 	$GLOBALS['medicamento']->del($dado['id_medicamento']);
 	header('Location: ../views/medicamentos.php');
 }

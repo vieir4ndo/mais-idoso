@@ -63,7 +63,7 @@
         echo '<label class="descricao">DOSAGEM:</label>';
         echo '<input type="text" name="dosagem" value="'.$GLOBALS['medicamento']->getDosagem_medicamento().'" required>';
 
-        if ($GLOBALS['medicamento']!=''){
+        if ($GLOBALS['medicamento']->getNome_medicamento()!=''){
             echo '<hr />';
             echo '<section class="menu-manter">';
             echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';

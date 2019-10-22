@@ -16,7 +16,7 @@
     <section class="container">
         <h1 class="titulo">CARTILHAS</h1>
         <hr />
-        <form name="formConCartilhas" method="POST" action="../controller/consultas/scriptConCartilhas.php">
+        <form name="formConCartilhas" method="POST" action="cartilhaEspecifica.php">
         <?php
         require_once "../model/conexao.php";
 
@@ -27,7 +27,7 @@
         $i = 0;
 
         while ($row = $consulta->fetch_assoc()){   
-        echo "<button type='submit' class='container-data'>".$row['titulo_cartilha']."</button>";
+        echo "<button type='submit' class='container-data' name ='nome_cartilha' value='".$row['titulo_cartilha']."'>".$row['titulo_cartilha']."</button>";
          $i++;
         }
         //}else {

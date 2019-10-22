@@ -16,12 +16,11 @@
     <section class="container">
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
-        <form name="formConMedicamentos" method="POST" action="../controller/consultas/scriptConMedicamentos.php">
+        <form name="formConMedicamentos" method="POST" action="manterMedicamentos.php">
         <?php
         require_once "../model/conexao.php";
         require_once "../model/classes/medicamento.php";
         require_once "../model/classes/usuario.php";
-        require_once "../model/inicializacao.php";
 
         $sql = "SELECT nome_medicamento FROM medicamento";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
 
@@ -39,7 +38,7 @@
         ?>
         <hr>
         <section>
-            <input type="submit" name="incluir" value="incluir">
+            <input type="submit" name="incluir" value="INCLUIR">
         </section>
         </form>
     </section>

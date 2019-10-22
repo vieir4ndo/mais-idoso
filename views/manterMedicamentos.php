@@ -18,24 +18,52 @@
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
         <?php
-        require_once "../model/inicializacao.php";
+            require_once "../model/conexao.php";
+            require_once "../model/classes/medicamento.php";
+            require_once "../model/classes/usuario.php";
 
-        $nome = $GLOBALS['medicamento']->getNome_medicamento();
-        $indicacao = $GLOBALS['medicamento']->getIndicacao_medicamento();
-        $horario = $GLOBALS['medicamento']->getHorario_medicamento();
-        $dosagem = $GLOBALS['medicamento']->getDosagem_medicamento();
-        echo "<label>{$dosagem}</label>";
+            if (isset($_POST["incluir"])){
+
+                $GLOBALS['medicamento']->setNome_medicamento('');
+                $GLOBALS['medicamento']->setindicacao_medicamento('');
+                $GLOBALS['medicamento']->setHorario_medicamento('');
+                $GLOBALS['medicamento']->setDosagem_medicamento('');
+
+            } else {
+
+            $nome_medicamento = $_POST['nome_medicamento'];
+
+            $sql = "Select * from medicamento where nome_medicamento='{$nome_medicamento}'";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
+
+            $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+
+            if (isset($consulta)) {
+                
+                $consulta = $consulta->fetch_assoc();
+
+                $GLOBALS['medicamento']->setNome_medicamento($consulta['nome_medicamento']);
+                $GLOBALS['medicamento']->setindicacao_medicamento($consulta['indicacao_medicamento']);
+                $GLOBALS['medicamento']->setHorario_medicamento($consulta['horario_medicamento']);
+                $GLOBALS['medicamento']->setDosagem_medicamento($consulta['dosagem_medicamento']);
+
+            }else {
+
+            //echo 'Medicamento não encontrado';
+
+            }
+            }
+
+        echo '<label class="descricao">NOME:</label>';
+        echo '<input type="text" name="nome" value="'.$GLOBALS['medicamento']->getNome_medicamento().'" required>';
+        echo '<label class="descricao">INDICAÇÃO:</label>';
+        echo '<input type="text" name="indicacao" value="'.$GLOBALS['medicamento']->getIndicacao_medicamento().'">';
+        echo '<label class="descricao">HORÁRIO:</label>';
+        echo '<input type="time" name="hora" value="'.$GLOBALS['medicamento']->getHorario_medicamento().'" required>';
+        echo '<button id="incluir"><img src="../img/Adicionar.png"></button>';
+        echo '<label class="descricao">DOSAGEM:</label>';
+        echo '<input type="text" name="dosagem" value="'.$GLOBALS['medicamento']->getDosagem_medicamento().'" required>';
+
         ?>
-
-        <label class="descricao">NOME:</label>
-        <input type="text" name="nome" value="<?php echo $nome ?>" required>
-        <label class="descricao">INDICAÇÃO:</label>
-        <input type="text" name="indicacao" value="<?php echo $indicacao ?>">
-        <label class="descricao">HORÁRIO:</label>
-        <input type="time" name="hora" value="<?php echo $horario ?>" required>
-        <button id="incluir"><img src="../img/Adicionar.png"></button>
-        <label class="descricao">DOSAGEM:</label>
-        <input type="text" name="dosagem" value="<?php echo $dosagem ?>" required>
         <hr />
         <section class="menu-manter">
             <button type="submit" name="editar"><img src="../img/editar.png"></button>

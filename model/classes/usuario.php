@@ -115,4 +115,5 @@ function edit(){
 //FECHA CLASSE
 }
 
+$GLOBALS['user'] = new Usuario;
 ?>

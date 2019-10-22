@@ -77,4 +77,7 @@ function edit($id){
 //FECHA CLASSE
 
 
+
+
+$GLOBALS['doenca'] = new Doenca();
 ?>

@@ -1,8 +1,7 @@
 <?php
 
 require_once "../model/conexao.php";
-
-require_once "../model/incializacao.php";
+require_once "../model/classes/usuario.php";
 
 if (isset($_POST["login"])) {
 
@@ -18,7 +17,7 @@ if (isset($_POST["login"])) {
 
         if ($dado['senha_usuario']==$senha) {
 
-            $GLOBALS['user']->setID_usuario($dado['id_usuario'])
+            $GLOBALS['user']->setID_usuario($dado['id_usuario']);
             $GLOBALS['user']->setNome_usuario($dado['nome_usuario']);
             $GLOBALS['user']->setSobrenome_usuario( $dado['sobrenome_usuario']);
             $GLOBALS['user']->setGenero_usuario($dado['genero_usuario']);

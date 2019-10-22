@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>+Idoso</title>
@@ -15,17 +14,26 @@
         <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
     <section class="container">
-        <h1 class="titulo">DOENÇA</h1>
-        <hr />
-        <h2 class="titulo2">FATORES/CAUSAS</h2>
-        <p> TEXTO
-        </p>
-        <h2 class="titulo2">SINTOMAS</h2>
-        <p>
-           TEXTO
-        </p>
-        <h2 class="titulo2">PREVENÇÃO</h2>
-        <P>TEXTO</P>
+    <?php
+    require_once "../model/conexao.php";
+
+        $nome_cartilha = $_POST['nome_cartilha'];
+
+        $sql = "Select * from cartilha where titulo_cartilha='{$nome_cartilha}'";
+
+        $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+    
+        $consulta = $consulta->fetch_assoc();
+
+        echo '<h1 class="titulo">'.$consulta['titulo_cartilha'].'</h1>';
+        echo '<hr />';
+        echo '<h2 class="titulo2">FATORES/CAUSAS</h2>';
+        echo '<p>'.$consulta['fatores_cartilha'].'</p>';
+        echo '<h2 class="titulo2">SINTOMAS</h2>';
+        echo '<p>'.$consulta['sintomas_cartilha'].'</p>';
+        echo '<h2 class="titulo2">PREVENÇÃO</h2>';
+        echo '<p>'.$consulta['prevencao_cartilha'].'</p>';
+    ?>
     </section>
 </body>
 

@@ -8,7 +8,6 @@ private $nome_medicamento="";
 private $indicacao_medicamento="";
 private $horario_medicamento="";
 private $dosagem_medicamento="";
-public $instace = Medicamento();
 
 
 //CONSTRUTOR
@@ -95,16 +94,11 @@ function edit($id){
     
 }
 
-public static function getInstance() {
-    if (!isset(self::$instance)) {
-        self::$instance = new Medicamento();
-    }
-    return self::$instance;
-}
 }
 //FECHA CLASSE
 
 
+$GLOBALS['medicamento'] = new Medicamento;
 
 
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
 
 class Alimentacao{
@@ -6,8 +7,6 @@ private $id_restricaoAlimentar="";
 private $alimento_restricaoAlimentar="";
 private $grupo_restricaoAlimentar="";
 private $razao_restricaoAlimentar="";
-
-
 
 //CONSTRUTOR
 
@@ -90,5 +89,6 @@ function edit($id){
 }
 //FECHA CLASSE
 
+$GLOBALS['alimentacao'] = new Alimentacao();
 
 ?>

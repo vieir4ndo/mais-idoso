@@ -21,37 +21,64 @@
         <hr />
 
         <?php
-            require_once "../model/inicializacao.php";
+        require_once "../model/conexao.php";
+        require_once "../model/classes/doenca.php";
 
-            $nome = $GLOBALS['doenca']->getNome_doenca();
-            $tipo = $GLOBALS['doenca']->getTipo_doenca();
-            $sintomas = $GLOBALS['doenca']->getSintomas_doenca();
-            echo "<label>{$sintomas}</label>";
-            ?>
+        if (isset($_POST["incluir"])){
 
-        <label class="descricao">DOENÇA:</label>
-        <input type="text">
-        <label class="descricao">TIPO:</label>
-        <select name="tipo_doenca">
-                <option value="bacteriose">BACTERIOSE</option>
-                <option value="cardiovascular">CARDIOVASCULAR</option>
-                <option value="cutanea">CUTÂNEA</option>
-                <option value="endocrina">ENDÓCRINA</option>
-                <option value="neurologica">NEUROLÓGICA</option>
-                <option value="respiratoria">RESPIRATÓRIA</option>
-                <option value="virose">VIRÓSES</option>
-            </select>
-        <label class="descricao">SINTOMAS:</label>
-        <input type="text">
-        <hr />
-        <section class="menu-manter">
-            <button type="submit" name="editar"><img src="../img/editar.png"></button>
-            <button type="submit" name="deletar"><img src="../img/deletar.png"></button>
-            <button type="submit" name="salvar"><img src="../img/salvar.png"></button>
-        </section>
+            $GLOBALS['doenca']->
+                setNome_doenca('');
+            $GLOBALS['doenca']->
+                setTipo_doenca('');
+            $GLOBALS['doenca']->
+                setSintomas_doenca('');
+        }else{
+            $nome_doenca = $_POST['
+                nome_doenca'];
 
+            $sql = "Select * from doenca where nome_doenca = '{$nome_doenca}'";
+            $consulta = $GLOBALS['conn']->query($sql) 
+            or die ($GLOBALS['conn']->error);
+
+            if (isset($consulta)){
+                $consulta = $consulta->fetch_assoc();
+
+            $GLOBALS['doenca']->
+                setNome_doenca('');
+            $GLOBALS['doenca']->
+                setTipo_doenca('');
+            $GLOBALS['doenca']->
+                setSintomas_doenca('');
+
+            }else{
+            }
+            }
+
+            echo '<label class= "descricao"> NOME:<label>';
+            echo '<input type= "text" name="nome" value="'.$GLOBALS['doenca']-> getNome_doenca().'"required>';
+            echo '<label class= "descricao"> TIPO:<label>';
+            echo '<input type= "text" name="tipo" value="'.$GLOBALS['doenca']-> getTipo_doenca().'"required>';
+            echo '<input type= "text" name="sintomas" value="'.$GLOBALS['doenca']-> getSintomas_doenca().'"required>';
+
+            if ($GLOBALS['doenca']->getNome_doenca()!=''){
+            echo '<hr />';
+            echo '<section class="menu-manter">';
+            echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
+            echo '<button type="submit" name="editar"><img src="../img/editar.png"></button>';
+            echo '</section>';
+        } else {
+            echo '<hr />';
+            echo '<section class="menu-manter">';
+            echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
+            echo '<button type="submit" name="salvar"><img src="../img/salvar.png"></button>';
+            echo '</section>';
+        }
+        ?>
+       
     </section>
-    </form>
+     </form>
 </body>
 
 </html>
+
+            

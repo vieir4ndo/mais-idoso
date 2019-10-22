@@ -20,16 +20,16 @@ function __construct(){
 //MÉTODOS GETS E SETS
 
 function getId_restricaoAlimentar(){
-    return $this->id_medicamento;
+    return $this->id_restricaoAlimentar;
 }
 function getAlimento_restricaoAlimentar(){
-    return $this->nome_medicamento;
+    return $this->nome_restricaoAlimentar;
 }
 function getGrupo_restricaoAlimentar(){
-    return $this->indicacao_medicamento;
+    return $this->grupo_restricaoAlimentar;
 }
 function getRazao_restricaoAlimentar(){
-    return $this->horario_medicamento;
+    return $this->razao_restricaoAlimentar;
 }
 
 

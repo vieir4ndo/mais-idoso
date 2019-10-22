@@ -63,13 +63,21 @@
         echo '<label class="descricao">DOSAGEM:</label>';
         echo '<input type="text" name="dosagem" value="'.$GLOBALS['medicamento']->getDosagem_medicamento().'" required>';
 
+        if ($GLOBALS['medicamento']!=''){
+            echo '<hr />';
+            echo '<section class="menu-manter">';
+            echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
+            echo '<button type="submit" name="editar"><img src="../img/editar.png"></button>';
+            echo '</section>';
+        } else {
+            echo '<hr />';
+            echo '<section class="menu-manter">';
+            echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
+            echo '<button type="submit" name="salvar"><img src="../img/salvar.png"></button>';
+            echo '</section>';
+        }
         ?>
-        <hr />
-        <section class="menu-manter">
-            <button type="submit" name="editar"><img src="../img/editar.png"></button>
-            <button type="submit" name="deletar"><img src="../img/deletar.png"></button>
-            <button type="submit" name="salvar"><img src="../img/salvar.png"></button>
-        </section>
+       
     </section>
      </form>
 </body>

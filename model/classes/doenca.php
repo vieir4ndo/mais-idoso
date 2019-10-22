@@ -7,6 +7,7 @@ class Doenca{
     private $nome_doenca="";
     private $tipo_doenca="";
     private $sintomas_doenca="";
+    public $instance = Doenca();
  
     //CONSTRUTOR
 
@@ -38,7 +39,7 @@ function setTipo_doenca($tipo){
      $this->tipo_doenca= $tipo;
 }
 function setSintomas_doenca($Sintomas){
-    $this->sintomas_doenca = $Sintomas;
+    $this->sintomas_doenca = $sintomas;
 }
 
 //MÉTODOS BANCO
@@ -73,9 +74,15 @@ function edit($id){
     echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
     }
 }
+public static function getInstance(){
+    if (!isset(self::$instance)){
+        self::instance = new Doenca();
+    }
+    return self::$instance;
 }
-//FECHA CLASSE
+}
 
+//FECHA CLASSE
 
 
 

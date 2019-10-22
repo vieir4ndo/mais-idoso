@@ -14,22 +14,34 @@
         <a href="perfil.php" id="img2"><img src="../img/avatar.png"></a>
         <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
+    <form name="formDoenca" method="POST" action="../controller/scriptDoenca.php">
+
     <section class="container">
         <img id="logo-principal" src="../img/doenças.png">
         <hr />
-        <lable class="descricao">DOENÇA:</lable>
+
+        <?php
+            require_once "../model/inicializacao.php";
+
+            $nome = $GLOBALS['doenca']->getNome_doenca();
+            $tipo = $GLOBALS['doenca']->getTipo_doenca();
+            $sintomas = $GLOBALS['doenca']->getSintomas_doenca();
+            echo "<label>{$sintomas}</label>";
+            ?>
+
+        <label class="descricao">DOENÇA:</label>
         <input type="text">
-        <lable class="descricao">TIPO:</lable>
-        <select name="tipoSanguineo">
-                <option value="fiat">BACTERIOSE</option>
-                <option value="saab">CARDIOVASCULAR</option>
-                <option value="fiat">CUTÂNEA</option>
-                <option value="fiat">ENDÓCRINA</option>
-                <option value="volvo">NEUROLÓGICA</option>
-                <option value="audi">RESPIRATÓRIA</option>
-                <option value="fiat">VIRÓSES</option>
+        <label class="descricao">TIPO:</label>
+        <select name="tipo_doenca">
+                <option value="bacteriose">BACTERIOSE</option>
+                <option value="cardiovascular">CARDIOVASCULAR</option>
+                <option value="cutanea">CUTÂNEA</option>
+                <option value="endocrina">ENDÓCRINA</option>
+                <option value="neurologica">NEUROLÓGICA</option>
+                <option value="respiratoria">RESPIRATÓRIA</option>
+                <option value="virose">VIRÓSES</option>
             </select>
-        <lable class="descricao">SINTOMAS:</lable>
+        <label class="descricao">SINTOMAS:</label>
         <input type="text">
         <hr />
         <section class="menu-manter">
@@ -39,6 +51,7 @@
         </section>
 
     </section>
+    </form>
 </body>
 
 </html>

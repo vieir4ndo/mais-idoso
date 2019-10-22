@@ -16,27 +16,26 @@
     <section class="container">
         <img id="logo-principal" src="../img/doença.png">
         <hr />
-        <form name="formConDoenca" method="POST" action="../controller/consultas/scriptConDoenca.php">
+        <form name="formConDoenca" method="POST" action="manterDoenca.php">
         <?php
-
         require_once "../model/conexao.php";
         require_once "../model/classes/doenca.php";
-        require_once "../model/classes/usuario.php";
-        require_once "../model/inicializacao.php";
+       // require_once "../model/classes/usuario.php";
+        $sql = "SELECT nome_doenca from doenca";
 
-        $sql = "SELECT nome_doenca FROM doenca";// where doenca_id_doenca=". $GLOBALS['user']->getId_usuario();
+        $consulta = $GLOBALS['conn'] ->query($sql);
 
-        $consulta = $GLOBALS['conn']->query($sql);
+        $i=0;
 
-        $i = 0;
+        while($row = $consulta-> fetch_assoc()){
+            echo "<button type='submit'
+            name='nome_doenca' value='{$row['nome_doenca']}'
+            class='container_data'>{$row['nome_doenca']}</button>";
 
-        while ($row = $consulta->fetch_assoc()){   
-        echo "<button type='submit' name='nome_doenca' value='{$row['nome_doenca']}'  class='container-data'>{$row['nome_doenca']}</button>";
-         $i++;
+            $i++;
+
         }
-        //}else {
-        //    echo "<button class='container-data'>Nenhuma doença cadastrada</button>";
-        //}
+
         ?>
         <hr>
         <section>

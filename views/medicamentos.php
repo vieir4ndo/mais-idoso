@@ -20,7 +20,6 @@
         <?php
         require_once "../model/conexao.php";
         require_once "../model/classes/medicamento.php";
-        require_once "../model/classes/usuario.php";
 
         $sql = "SELECT nome_medicamento FROM medicamento";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
 

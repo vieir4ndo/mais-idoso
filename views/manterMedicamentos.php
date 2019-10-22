@@ -20,7 +20,6 @@
         <?php
             require_once "../model/conexao.php";
             require_once "../model/classes/medicamento.php";
-            require_once "../model/classes/usuario.php";
 
             if (isset($_POST["incluir"])){
 

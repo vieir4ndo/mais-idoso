@@ -84,13 +84,17 @@ function setTipoSanguineo_usuario($tipoSanguineo){
 function add($email, $senha, $senhaConfirma){
 
     $sql = "Select * from usuario where email_usuario ='". $email ."'";
-    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
+    $consulta = $consulta->fetch_assoc();
 
-    if ($consulta == '') {
+    if ($consulta['id_usuario'] == '') {
     if ($senha === $senhaConfirma) {
     //codigo fonte
-    $sql = "INSERT INTO usuario (email_usuario, senha_usuario) VALUES ('".$email."',
-    '" . $senha ."')";
+    //$sql = "SET FOREIGN_KEY_CHECKS=0";
+    //$GLOBALS['conn']->query($sql);
+    $i=1;
+    $sql = 'INSERT INTO usuario (email_usuario, senha_usuario, medicamento_id_medicamento,restricaoalimentar_id_restricaoalimentar, lembrete_id_lembrete, doenca_id_doenca, consulta_id_consulta, atividadefisica_id_atividadefisica )VALUES ("'.$email.'","'.$senha.'","'.$i.'","'.$i.'","'.$i.'","'.$i.'","'.$i.'")';
+    echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
     header('Location: ../views/cadastro/cadastro1.php');
@@ -105,15 +109,45 @@ function add($email, $senha, $senhaConfirma){
     }
 }
 
-function del(){
-    
-}
-function edit(){
-    
-}
 
+
+function del($id){
+    //codigo fonte
+    $sql = "delete from usuario where id_usuario='". $id."'";
+    if ($GLOBALS['conn']->query($sql) == TRUE) {
+    echo "<br > record deleted successfully";
+    } else {
+    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+}
+}
+function editInfoPessoais($id){
+    $sql = "UPDATE usuario SET nome_usuario='{$this->nome_usuario}'
+    , sobrenome_usuario='{$this->sobrenome_usuario}'
+    , genero_usuario='{$this->genero_usuario}'
+    , dataNascimento_usuario= '{$this->dataNascimento_usuario}' WHERE id_usuario={$id}";
+
+    if ($GLOBALS['conn']->query($sql) == TRUE) {
+    echo "<br > record updated successfully";
+    } else {
+    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+    
+    }
+}
+function editInfoMedicas($id){
+    $sql = "UPDATE usuario SET altura_usuario='{$this->altura_usuario}'
+    , peso_usuario='{$this->peso_usuario}'
+    , tipoSanguineo_usuario='{$this->tipoSanguineo_usuario}' WHERE id_usuario={$id}";
+
+    if ($GLOBALS['conn']->query($sql) == TRUE) {
+    echo "<br > record updated successfully";
+    } else {
+    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+    
+    }
+}
 //FECHA CLASSE
 }
 
 $GLOBALS['user'] = new Usuario;
+
 ?>

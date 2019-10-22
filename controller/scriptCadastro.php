@@ -13,8 +13,11 @@ $senha2 = $_POST['senha1'];
 
 $GLOBALS['user']->add($email, $senha1, $senha1);
 
+//header('Location: ../views/cadastro/cadastro1.php');
+
 }else{
     echo "Não entrou no script";
 }
+
 
 ?>

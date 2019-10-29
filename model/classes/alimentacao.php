@@ -62,6 +62,7 @@ function add(){
 function del($id){
     //codigo fonte
 
+
     $sql = "delete from restricaoAlimentar where id_restricaoAlimentar='". $id."'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";

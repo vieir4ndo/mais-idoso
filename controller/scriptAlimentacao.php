@@ -43,7 +43,7 @@ $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
 $dado = $consulta->fetch_array();
 	$GLOBALS['alimentacao']->del($dado['id_restricaoAlimentar']);
-	//header('Location: ../views/alimentacao.html');
+	header('Location: ../views/alimentacao.html');
 }
 
 

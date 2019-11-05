@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<form name="formCad1" method="post" action="../../controller/scriptCadastro.php">
     <section class="container">
         <img id="logo-principal" src="../../img/logo-menor.png">
         <hr />
@@ -15,14 +16,15 @@
         <label class="descricao">NOME:</label>
         <input type="text" name="nome">
         <label class="descricao">SOBRENOME:</label>
-        <input type="text" name="Sobrenome">
+        <input type="text" name="sobrenome">
         <label class="descricao">GÊNERO:</label>
         <input type="text" name="genero">
         <label class="descricao">DATA DE NASCIMENTO:</label>
-        <input type="date" name="dataNasc">
+        <input type="date" name="dataNascimento">
         <hr>
-        <input type="submit" onclick="window.location.href='cadastro2.html';"  value="PRÓXIMO">
+        <input name="cad1" type="submit" value="PRÓXIMO">
     </section>
+</form>
 </body>
 
 </html>

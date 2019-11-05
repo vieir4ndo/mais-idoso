@@ -20,7 +20,6 @@ $GLOBALS['user']->addUsuario($email, $senha1, $senha1);
         $nome = $_POST['nome'];
         $sobrenome = $_POST['sobrenome'];
         $genero = $_POST['genero'];
-
         $dataNascimento = $_POST['dataNascimento'];
         $GLOBALS['user']->addUsuario2($nome, $sobrenome, $genero, $dataNascimento);
     }

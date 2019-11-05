@@ -3,7 +3,7 @@
 require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
 
 class Usuario{
-private $id_usuario="";
+private $idusuario="";
 private $email_usuario="";
 private $senha_usuario="";
 private $nome_usuario="";
@@ -17,7 +17,7 @@ private $tipoSanguineo_usuario="";
 //METODOS
 
 function __construct(){
-    $this->id_usuario = "";
+    $this->idusuario = "";
     $this->nome_usuario = "";
     $this->sobrenome_usuario = "";
     $this->genero_usuario = "";
@@ -28,8 +28,8 @@ function __construct(){
 }
 //MÉTODOS GETS E SETS
 
-function getId_usuario(){
-    return $this->id_usuario;
+function getidusuario(){
+    return $this->idusuario;
 }
 function getEmail_usuario(){
     return $this->email_usuario;
@@ -93,7 +93,7 @@ function addUsuario($email, $senha, $senhaConfirma){
     $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
     $consulta = $consulta->fetch_assoc();
 
-    if ($consulta['id_usuario'] == '') {
+    if ($consulta['idusuario'] == '') {
     if ($senha === $senhaConfirma) {
     //codigo fonte
     //$sql = "SET FOREIGN_KEY_CHECKS=0";
@@ -124,10 +124,13 @@ function addUsuario2($nome, $sobrenome, $genero, $dataNascimento){
     $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
     $consulta = $consulta->fetch_assoc();
 
-    if ($consulta['id_usuario'] != '') {
+    if ($consulta['idusuario'] != '') {
         
-    $sql = "UPDATE usuario SET nome_usuario='".$nome."', sobrenome_usuario='".$sobrenome."', genero_usuario='".$genero."', dataNascimento_usuario='".$dataNascimento."') where idusuario='".$consulta['id_usuario']."'";
+    $sql = "UPDATE usuario SET nome_usuario='".$nome."', sobrenome_usuario='".$sobrenome."'
+    , genero_usuario='".$genero."', dataNascimento_usuario='".$dataNascimento."') where idusuario='".$consulta['idusuario']."'";
 
+    echo $sql;
+    
     if ($GLOBALS['conn']->query($sql) == TRUE) {
         echo "<br >New record created successfully";
 
@@ -136,16 +139,18 @@ function addUsuario2($nome, $sobrenome, $genero, $dataNascimento){
         $GLOBALS['user']->setGenero_usuario($genero);
         $GLOBALS['user']->setDataNascimento_usuario($dataNasicmento);
     
-        header('Location: ../views/cadastro/cadastro1.php');
+        header('Location: ../views/cadastro/cadastro3.php');
         }
 
+    } else {
+        echo 'Não deu bom';
     }
 }
 
 
 function del($id){
     //codigo fonte
-    $sql = "delete from usuario where id_usuario='". $id."'";
+    $sql = "delete from usuario where idusuario='". $id."'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -156,7 +161,7 @@ function editInfoPessoais($id){
     $sql = "UPDATE usuario SET nome_usuario='{$this->nome_usuario}'
     , sobrenome_usuario='{$this->sobrenome_usuario}'
     , genero_usuario='{$this->genero_usuario}'
-    , dataNascimento_usuario= '{$this->dataNascimento_usuario}' WHERE id_usuario={$id}";
+    , dataNascimento_usuario= '{$this->dataNascimento_usuario}' WHERE idusuario={$id}";
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
@@ -168,7 +173,7 @@ function editInfoPessoais($id){
 function editInfoMedicas($id){
     $sql = "UPDATE usuario SET altura_usuario='{$this->altura_usuario}'
     , peso_usuario='{$this->peso_usuario}'
-    , tipoSanguineo_usuario='{$this->tipoSanguineo_usuario}' WHERE id_usuario={$id}";
+    , tipoSanguineo_usuario='{$this->tipoSanguineo_usuario}' WHERE idusuario={$id}";
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";

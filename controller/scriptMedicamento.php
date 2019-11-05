@@ -24,7 +24,7 @@ $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
 $dado = $consulta->fetch_array();
 
-$GLOBALS['medicamento']->edit($dado['id_medicamento']);
+$GLOBALS['medicamento']->edit($dado['idmedicamento']);
 
 header('Location: ../views/medicamentos.php');
 
@@ -34,14 +34,13 @@ $GLOBALS['medicamento']->add();
 
 header('Location: ../views/medicamentos.php');
 
-}else{
+}elseif (isset($_POST["deletar"])){
+
 	$sql = "Select * from medicamento where nome_medicamento ='". $nome ."'";
 	$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 	$dado = $consulta->fetch_array();
-	$GLOBALS['medicamento']->del($dado['id_medicamento']);
+	$GLOBALS['medicamento']->del($dado['idmedicamento']);
 	header('Location: ../views/medicamentos.php');
 }
-
-
 
 ?>

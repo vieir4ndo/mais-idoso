@@ -18,7 +18,11 @@
         <label class="descricao">SOBRENOME:</label>
         <input type="text" name="sobrenome">
         <label class="descricao">GÊNERO:</label>
-        <input type="text" name="genero">
+        <select name="genero">
+        <option value="1">Masculino</option>
+        <option value="2">Feminino</option>
+        <option value="3">Outro</option>
+        </select>
         <label class="descricao">DATA DE NASCIMENTO:</label>
         <input type="date" name="dataNascimento">
         <hr>

@@ -4,6 +4,8 @@ require_once "../model/conexao.php";
 require_once "../model/classes/usuario.php";
 
 if (isset($_POST["cad"])) {
+    
+require_once "inicializa.php";
 
 $email = $_POST['email'];
 $senha1 = $_POST['senha'];
@@ -21,6 +23,7 @@ $GLOBALS['user']->addUsuario($email, $senha1, $senha1);
         $sobrenome = $_POST['sobrenome'];
         $genero = $_POST['genero'];
         $dataNascimento = $_POST['dataNascimento'];
+
         $GLOBALS['user']->addUsuario2($nome, $sobrenome, $genero, $dataNascimento);
     }
 }

@@ -120,31 +120,32 @@ function addUsuario($email, $senha, $senhaConfirma){
 }
 
 function addUsuario2($nome, $sobrenome, $genero, $dataNascimento){
-    $sql = "Select * from usuario where email_usuario ='". $this->email_usuario ."'";
+    $sql = "Select * from usuario where email_usuario ='".$this->email_usuario."'";
+
+    echo $sql;
+
     $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
     $consulta = $consulta->fetch_assoc();
 
-    if ($consulta['idusuario'] != '') {
+    echo $consulta['idusuario'];
         
-    $sql = "UPDATE usuario SET nome_usuario='".$nome."', sobrenome_usuario='".$sobrenome."'
-    , genero_usuario='".$genero."', dataNascimento_usuario='".$dataNascimento."') where idusuario='".$consulta['idusuario']."'";
+    $sql2 = "UPDATE usuario SET nome_usuario='{$nome}', sobrenome_usuario='{$sobrenome}'
+    , genero_usuario={$genero}, dataNascimento_usuario='{$dataNascimento}' where idusuario={$consulta['idusuario']}";
 
-    echo $sql;
-    
-    if ($GLOBALS['conn']->query($sql) == TRUE) {
+    echo $sql2;
+
+    if ($GLOBALS['conn']->query($sql2) == TRUE) {
+
         echo "<br >New record created successfully";
 
-        $GLOBALS['user']->setNome_usuario($email);
-        $GLOBALS['user']->setSobrenome_usuario($senha);
+        $GLOBALS['user']->setNome_usuario($nome);
+        $GLOBALS['user']->setSobrenome_usuario($sobrenome);
         $GLOBALS['user']->setGenero_usuario($genero);
         $GLOBALS['user']->setDataNascimento_usuario($dataNasicmento);
     
         header('Location: ../views/cadastro/cadastro3.php');
         }
 
-    } else {
-        echo 'Não deu bom';
-    }
 }
 
 
@@ -185,6 +186,7 @@ function editInfoMedicas($id){
 //FECHA CLASSE
 }
 
-$GLOBALS['user'] = new Usuario;
+
+
 
 ?>

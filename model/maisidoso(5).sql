@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Out-2019 às 22:04
+-- Generation Time: 05-Nov-2019 às 20:34
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -27,10 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `atividadefisica` (
-  `id_atividadeFisica` int(11) NOT NULL,
-  `atividade_atividadeFisica` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `duracao_atividadeFisica` time NOT NULL,
-  `data_atividadeFisica` date NOT NULL
+  `idatividadeFisica` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
+  `atividade_atividadefisica` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `duracao_atividadefisica` time NOT NULL,
+  `data_atividadefisica` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -40,7 +41,7 @@ CREATE TABLE `atividadefisica` (
 --
 
 CREATE TABLE `cartilha` (
-  `id_cartilha` int(11) NOT NULL,
+  `idcartilha` int(11) NOT NULL,
   `titulo_cartilha` text COLLATE latin1_general_ci NOT NULL,
   `fatores_cartilha` text COLLATE latin1_general_ci NOT NULL,
   `sintomas_cartilha` text COLLATE latin1_general_ci NOT NULL,
@@ -74,11 +75,12 @@ INSERT INTO `cartilha` (`idcartilha`, `titulo_cartilha`, `fatores_cartilha`, `si
 --
 
 CREATE TABLE `consulta` (
-  `id_consulta` int(11) NOT NULL,
+  `idconsulta` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
   `tipo_consulta` int(11) NOT NULL,
-  `local_consulta` varchar(1000) COLLATE latin1_general_ci NOT NULL,
+  `local_consulta` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `horario_consulta` time NOT NULL,
-  `doutor_consulta` varchar(100) COLLATE latin1_general_ci NOT NULL
+  `medico_consulta` varchar(100) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -88,7 +90,9 @@ CREATE TABLE `consulta` (
 --
 
 CREATE TABLE `doenca` (
-  `id_doenca` int(11) NOT NULL,
+  `iddoenca` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
+  `nome_doenca` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `tipo_doenca` int(11) NOT NULL,
   `sintomas_doenca` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
@@ -100,7 +104,8 @@ CREATE TABLE `doenca` (
 --
 
 CREATE TABLE `lembrete` (
-  `id_lembrete` int(11) NOT NULL,
+  `idlembrete` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
   `titulo_lembrete` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `horario_lembrete` time NOT NULL,
   `data_lembrete` date NOT NULL
@@ -113,11 +118,12 @@ CREATE TABLE `lembrete` (
 --
 
 CREATE TABLE `medicamento` (
-  `id_medicamento` int(11) NOT NULL,
+  `idmedicamento` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
   `nome_medicamento` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `indicacao_medicamento` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `indicacao_medicamento` text COLLATE latin1_general_ci NOT NULL,
   `horario_medicamento` time NOT NULL,
-  `dosagem_medicamento` varchar(100) COLLATE latin1_general_ci NOT NULL
+  `dosagem_medicamento` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -127,20 +133,12 @@ CREATE TABLE `medicamento` (
 --
 
 CREATE TABLE `restricaoalimentar` (
-  `id_restricaoAlimentar` int(11) NOT NULL,
+  `idrestricaoAlimentar` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
   `alimento_restricaoAlimentar` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `grupo_restricaoAlimentar` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `razao_restricaoAlimentar` varchar(100) COLLATE latin1_general_ci NOT NULL
+  `grupo_restricaoAlimentar` int(11) NOT NULL,
+  `razao_restricaoAlimentar` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
---
--- Extraindo dados da tabela `restricaoalimentar`
---
-
-INSERT INTO `restricaoalimentar` (`id_restricaoAlimentar`, `alimento_restricaoAlimentar`, `grupo_restricaoAlimentar`, `razao_restricaoAlimentar`) VALUES
-(0, 'sfzxd', 'zcgfjnzfc', 'alergia'),
-(0, 'sfzxd', 'zcgfjnzfc', 'alergia'),
-(0, 'sfzxd', 'zcgfjnzfc', 'alergia');
 
 -- --------------------------------------------------------
 
@@ -149,7 +147,9 @@ INSERT INTO `restricaoalimentar` (`id_restricaoAlimentar`, `alimento_restricaoAl
 --
 
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL,
+  `email_usuario` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `senha_usuario` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `nome_usuario` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `sobrenome_usuario` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `genero_usuario` int(11) NOT NULL,
@@ -160,6 +160,24 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`idusuario`, `email_usuario`, `senha_usuario`, `nome_usuario`, `sobrenome_usuario`, `genero_usuario`, `dataNascimento_usuario`, `altura_usuario`, `peso_usuario`, `tipoSanguineo_usuario`) VALUES
+(0, 'matheus@gmail.com', '12345', '123', '123', 1, '0001-11-11', 0, 0, 0),
+(1, 'kau@ka.com', '1234', '', '', 0, '0000-00-00', 0, 0, 0),
+(2, 'kau1@ka.com', '111', '', '', 0, '0000-00-00', 0, 0, 0),
+(3, 'maa_cco@hotmail.com', 'matheus', '', '', 0, '0000-00-00', 0, 0, 0),
+(4, 'vassoler@gmail.com', '123', '', '', 0, '0000-00-00', 0, 0, 0),
+(5, '11@11', '11', '', '', 0, '0000-00-00', 0, 0, 0),
+(6, '123@123', '123', '', '', 0, '0000-00-00', 0, 0, 0),
+(7, 'teste@teste', 'teste', '', '', 0, '0000-00-00', 0, 0, 0),
+(8, 'teste@teste12', '123', '', '', 0, '0000-00-00', 0, 0, 0),
+(9, 'matheus123@gmail.com', '123', '', '', 0, '0000-00-00', 0, 0, 0),
+(10, 'matheus32@gmail.com', '32', '', '', 0, '0000-00-00', 0, 0, 0),
+(11, 'matheuskk@gmail.com', 'kk', '', '', 0, '0000-00-00', 0, 0, 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -167,83 +185,111 @@ CREATE TABLE `usuario` (
 -- Indexes for table `atividadefisica`
 --
 ALTER TABLE `atividadefisica`
-  ADD PRIMARY KEY (`id_atividadeFisica`);
+  ADD PRIMARY KEY (`idatividadeFisica`),
+  ADD KEY `atividadeFisica_FKIndex1` (`usuario_idusuario`),
+  ADD KEY `IFK_Rel_04` (`usuario_idusuario`);
 
 --
 -- Indexes for table `cartilha`
 --
 ALTER TABLE `cartilha`
-  ADD PRIMARY KEY (`id_cartilha`);
+  ADD PRIMARY KEY (`idcartilha`);
 
 --
 -- Indexes for table `consulta`
 --
 ALTER TABLE `consulta`
-  ADD PRIMARY KEY (`id_consulta`);
+  ADD PRIMARY KEY (`idconsulta`),
+  ADD KEY `consulta_FKIndex1` (`usuario_idusuario`),
+  ADD KEY `IFK_Rel_01` (`usuario_idusuario`);
 
 --
 -- Indexes for table `doenca`
 --
 ALTER TABLE `doenca`
-  ADD PRIMARY KEY (`id_doenca`);
+  ADD PRIMARY KEY (`iddoenca`),
+  ADD KEY `doenca_FKIndex1` (`usuario_idusuario`),
+  ADD KEY `IFK_Rel_05` (`usuario_idusuario`);
 
 --
 -- Indexes for table `lembrete`
 --
 ALTER TABLE `lembrete`
-  ADD PRIMARY KEY (`id_lembrete`);
+  ADD PRIMARY KEY (`idlembrete`),
+  ADD KEY `lembrete_FKIndex1` (`usuario_idusuario`),
+  ADD KEY `IFK_Rel_03` (`usuario_idusuario`);
 
 --
 -- Indexes for table `medicamento`
 --
 ALTER TABLE `medicamento`
-  ADD PRIMARY KEY (`id_medicamento`);
+  ADD PRIMARY KEY (`idmedicamento`),
+  ADD KEY `medicamento_FKIndex1` (`usuario_idusuario`),
+  ADD KEY `IFK_Rel_04` (`usuario_idusuario`);
+
+--
+-- Indexes for table `restricaoalimentar`
+--
+ALTER TABLE `restricaoalimentar`
+  ADD PRIMARY KEY (`idrestricaoAlimentar`),
+  ADD KEY `restricaoAlimentar_FKIndex1` (`usuario_idusuario`),
+  ADD KEY `IFK_Rel_02` (`usuario_idusuario`);
 
 --
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
+  ADD PRIMARY KEY (`idusuario`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `atividadefisica`
---
-ALTER TABLE `atividadefisica`
-  MODIFY `id_atividadeFisica` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `cartilha`
---
-ALTER TABLE `cartilha`
-  MODIFY `id_cartilha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `consulta`
---
-ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `doenca`
---
-ALTER TABLE `doenca`
-  MODIFY `id_doenca` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `lembrete`
---
-ALTER TABLE `lembrete`
-  MODIFY `id_lembrete` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `medicamento`
---
-ALTER TABLE `medicamento`
-  MODIFY `id_medicamento` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `atividadefisica`
+--
+ALTER TABLE `atividadefisica`
+  ADD CONSTRAINT `atividadefisica_ibfk_1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`);
+
+--
+-- Limitadores para a tabela `consulta`
+--
+ALTER TABLE `consulta`
+  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`);
+
+--
+-- Limitadores para a tabela `doenca`
+--
+ALTER TABLE `doenca`
+  ADD CONSTRAINT `doenca_ibfk_1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`);
+
+--
+-- Limitadores para a tabela `lembrete`
+--
+ALTER TABLE `lembrete`
+  ADD CONSTRAINT `lembrete_ibfk_1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`);
+
+--
+-- Limitadores para a tabela `medicamento`
+--
+ALTER TABLE `medicamento`
+  ADD CONSTRAINT `medicamento_ibfk_1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`);
+
+--
+-- Limitadores para a tabela `restricaoalimentar`
+--
+ALTER TABLE `restricaoalimentar`
+  ADD CONSTRAINT `restricaoalimentar_ibfk_1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

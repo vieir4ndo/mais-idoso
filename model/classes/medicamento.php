@@ -3,7 +3,7 @@
 require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
 
 class Medicamento{
-private $id_medicamento="";
+private $idmedicamento="";
 private $nome_medicamento="";
 private $indicacao_medicamento="";
 private $horario_medicamento="";
@@ -13,7 +13,7 @@ private $dosagem_medicamento="";
 //CONSTRUTOR
 
 function __construct(){
-    $this->id_medicamento ="";
+    $this->idmedicamento ="";
     $this->nome_medicamento ="";
     $this->indicacao_medicamento ="";
     $this->horario_medicamento ="";
@@ -22,8 +22,8 @@ function __construct(){
 }
 //MÉTODOS GETS E SETS
 
-function getId_medicamento(){
-    return $this->id_medicamento;
+function getidmedicamento(){
+    return $this->idmedicamento;
 }
 function getNome_medicamento(){
     return $this->nome_medicamento;
@@ -69,7 +69,7 @@ function add(){
 function del($id){
     //codigo fonte
 
-    $sql = "delete from medicamento where id_medicamento='". $id."'";
+    $sql = "delete from medicamento where idmedicamento='". $id."'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -83,7 +83,7 @@ function edit($id){
 	$sql = "UPDATE medicamento SET nome_medicamento='{$this->nome_medicamento}'
 , indicacao_medicamento='{$this->indicacao_medicamento}'
 , horario_medicamento='{$this->horario_medicamento}'
-, dosagem_medicamento= '{$this->dosagem_medicamento}' WHERE id_medicamento={$id}";
+, dosagem_medicamento= '{$this->dosagem_medicamento}' WHERE idmedicamento={$id}";
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";

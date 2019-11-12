@@ -110,6 +110,16 @@ footer{
   background-color: yellow;
   border: yellow solid 2px;
 }
+.test {
+    width:50%;
+    background-color: transparent;
+    border: solid transparent 2px;
+}
+.test:hover {
+    border-radius: 20px;
+  background-color: yellow;
+  border: yellow solid 2px;
+}
 select {
     width: 100%;
     padding: 12px 20px;

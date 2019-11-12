@@ -28,7 +28,7 @@
                 $GLOBALS['medicamento']->setHorario_medicamento('');
                 $GLOBALS['medicamento']->setDosagem_medicamento('');
 
-            } else {
+            }else{
 
             $nome_medicamento = $_POST['nome_medicamento'];
 
@@ -62,17 +62,17 @@
         echo '<label class="descricao">DOSAGEM:</label>';
         echo '<input type="text" name="dosagem" value="'.$GLOBALS['medicamento']->getDosagem_medicamento().'" required>';
 
-        if ($GLOBALS['medicamento']->getNome_medicamento()!=''){
+        if ($GLOBALS['medicamento']->getNome_medicamento()==''){
+            echo '<hr />';
+            echo '<section class="menu-manter">';
+            echo '<button type="submit" name="cancelar"><img src="../img/cancelar.png"></button>';
+            echo '<button type="submit" name="salvar"><img src="../img/salvar.png"></button>';
+            echo '</section>';
+      } else {
             echo '<hr />';
             echo '<section class="menu-manter">';
             echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
             echo '<button type="submit" name="editar"><img src="../img/editar.png"></button>';
-            echo '</section>';
-        } else {
-            echo '<hr />';
-            echo '<section class="menu-manter">';
-            echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
-            echo '<button type="submit" name="salvar"><img src="../img/salvar.png"></button>';
             echo '</section>';
         }
         ?>

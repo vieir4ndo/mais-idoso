@@ -9,28 +9,30 @@
 </head>
 
 <body>
+<form name="formCad2" method="post" action="../../controller/scriptCadastro.php">
     <section class="container">
         <img id="logo-principal" src="../../img/logo-menor.png">
         <hr />
         <h3 class="titulo2">AGORA, VAMOS PRECISAR DE SUAS INFORMAÇÕES MÉDICAS:</h3>
         <label class="descricao">ALTURA:</label>
-        <input type="text" name="nome">
+        <input type="text" name="altura">
         <label class="descricao">PESO:</label>
-        <input type="text" name="Sobrenome">
+        <input type="text" name="peso">
         <label class="descricao">TIPO SANGUÍNEO:</label>
         <select name="tipoSanguineo">
-            <option value="volvo">A+</option>
-            <option value="saab">A-</option>
-            <option value="fiat">B+</option>
-            <option value="audi">B-</option>
-            <option value="fiat">AB+</option>
-            <option value="audi">AB-</option>
-            <option value="fiat">O+</option>
-            <option value="audi">O-</option>
+            <option value="1">A+</option>
+            <option value="2">A-</option>
+            <option value="3">B+</option>
+            <option value="4">B-</option>
+            <option value="5">AB+</option>
+            <option value="6">AB-</option>
+            <option value="7">O+</option>
+            <option value="8">O-</option>
         </select>
         <hr>
-        <input type="submit" onclick="window.location.href='cadastro3.html';" value="PRÓXIMO">
+        <input name="cad2" type="submit" value="PRÓXIMO">
     </section>
+    </form>
 </body>
 
 </html>

@@ -30,23 +30,23 @@ function getTipo_doenca(){
 function getSintomas_doenca(){
     return $this->sintomas_doenca;
 }
-
 function setNome_doenca($nome){
     $this->nome_doenca= $nome;
 }
 function setTipo_doenca($tipo){
      $this->tipo_doenca= $tipo;
 }
-function setSintomas_doenca($Sintomas){
+function setSintomas_doenca($sintomas){
     $this->sintomas_doenca = $sintomas;
 }
 
 //MÉTODOS BANCO
-function add(){
+function add($idUsuario){
     //codigo fonte
-    $sql = "INSERT INTO doenca (nome_doenca, tipo_doenca, sintomas_doenca) VALUES ('".$this->tipo_doenca."',
-    '".$this->nome_doenca."',
-    '" . $this->sintomas_doenca ."')";
+    $sql = "INSERT INTO doenca (nome_doenca, tipo_doenca, sintomas_doenca) VALUES ('".$this->nome_doenca."',
+    '".$this->tipo_doenca."',
+'" . $this->sintomas_doenca ."') where usuario_idusuario='{$idUsuario}'";
+    echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
     } else {
@@ -54,19 +54,19 @@ function add(){
     }
 }
 
-function del($id){
+function del($id, $idUsuario){
     //codigo fonte
-    $sql = "delete from doenca where id_doenca='". $id."'";
+    $sql = "delete from doenca where id_doenca='". $id."' AND usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
     echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
     }
 }
-function edit($id){
+function edit($id, $idUsuario){
 	$sql = "UPDATE doenca SET nome_doenca='{$this->nome_doenca}'
 , tipo_doenca='{$this->tipo_doenca}'
-, sintomas_doenca='{$this->sintomas_doenca}'  WHERE id_doenca={$id}";
+, sintomas_doenca='{$this->sintomas_doenca}'  WHERE id_doenca={$id}  AND usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {

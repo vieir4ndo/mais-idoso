@@ -58,6 +58,9 @@ function getPeso_usuario(){
 function getTipoSanguineo_usuario(){
     return $this->tipoSanguineo_usuario;
 }
+function setidusuario($id){
+    $this->idusuario= $id;
+}
 function setEmail_usuario($email){
     $this->email_usuario = $email;
 }
@@ -87,26 +90,26 @@ function setTipoSanguineo_usuario($tipoSanguineo){
 }
 
 //MÉTODOS BANCO
-function addUsuario($email, $senha, $senhaConfirma){
 
+function capturaID($email){
     $sql = "Select * from usuario where email_usuario ='". $email ."'";
     $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
     $consulta = $consulta->fetch_assoc();
-
+    $_SESSION['user']->setIdusuario($consulta['idusuario']);
+}
+function addUsuario($email, $senha, $senhaConfirma){
+    $sql = "Select * from usuario where email_usuario ='". $email ."'";
+    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
+    $consulta = $consulta->fetch_assoc();
     if ($consulta['idusuario'] == '') {
     if ($senha === $senhaConfirma) {
-    //codigo fonte
-    //$sql = "SET FOREIGN_KEY_CHECKS=0";
-    //$GLOBALS['conn']->query($sql);
     $i=1;
     $sql = 'INSERT INTO usuario (email_usuario, senha_usuario)VALUES ("'.$email.'","'.$senha.'")';
     echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
-    
-    $GLOBALS['user']->setEmail_usuario($email);
-    $GLOBALS['user']->setSenha_usuario($senha);
-
+    $_SESSION['user']->setEmail_usuario($email);
+    $_SESSION['user']->setSenha_usuario($senha);
     header('Location: ../views/cadastro/cadastro1.php');
     } else {
     echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
@@ -119,35 +122,34 @@ function addUsuario($email, $senha, $senhaConfirma){
     }
 }
 
-function addUsuario2($nome, $sobrenome, $genero, $dataNascimento){
-    $sql = "Select * from usuario where email_usuario ='".$this->email_usuario."'";
-
+function addUsuario2($email, $nome, $sobrenome, $genero, $dataNascimento){
+    $sql = "UPDATE usuario SET nome_usuario='{$nome}', sobrenome_usuario='{$sobrenome}'
+    , genero_usuario={$genero}, dataNascimento_usuario='{$dataNascimento}' where email_usuario='{$email}'";
     echo $sql;
-
-    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
-    $consulta = $consulta->fetch_assoc();
-
-    echo $consulta['idusuario'];
-        
-    $sql2 = "UPDATE usuario SET nome_usuario='{$nome}', sobrenome_usuario='{$sobrenome}'
-    , genero_usuario={$genero}, dataNascimento_usuario='{$dataNascimento}' where idusuario={$consulta['idusuario']}";
-
-    echo $sql2;
-
-    if ($GLOBALS['conn']->query($sql2) == TRUE) {
-
+    if ($GLOBALS['conn']->query($sql) == TRUE) {
         echo "<br >New record created successfully";
-
-        $GLOBALS['user']->setNome_usuario($nome);
-        $GLOBALS['user']->setSobrenome_usuario($sobrenome);
-        $GLOBALS['user']->setGenero_usuario($genero);
-        $GLOBALS['user']->setDataNascimento_usuario($dataNasicmento);
-    
-        header('Location: ../views/cadastro/cadastro3.php');
+        $_SESSION['user']->setNome_usuario($nome);
+        $_SESSION['user']->setSobrenome_usuario($sobrenome);
+        $_SESSION['user']->setGenero_usuario($genero);
+        $_SESSION['user']->setDataNascimento_usuario($dataNasicmento);
+        header('Location: ../views/cadastro/cadastro2.php');
         }
-
 }
-
+function addUsuario3($email, $altura, $peso, $tipoSanguineo){
+    $sql = "UPDATE usuario SET altura_usuario='{$altura}', peso_usuario='{$peso}'
+    , tipoSanguineo_usuario='{$tipoSanguineo}' where email_usuario='{$email}'";
+    echo $sql;
+    if ($GLOBALS['conn']->query($sql) == TRUE) {
+        echo "<br >New record created successfully";
+        $_SESSION['user']->setAltura_usuario($altura);
+        $_SESSION['user']->setPeso_usuario($peso);
+        $_SESSION['user']->setTipoSanguineo_usuario($tipoSanguineo);
+        header('Location: ../views/cadastro/cadastro3.php');
+        echo "to aqui";
+        }else {
+            echo"não entrou";
+        }
+}
 
 function del($id){
     //codigo fonte
@@ -163,30 +165,23 @@ function editInfoPessoais($id){
     , sobrenome_usuario='{$this->sobrenome_usuario}'
     , genero_usuario='{$this->genero_usuario}'
     , dataNascimento_usuario= '{$this->dataNascimento_usuario}' WHERE idusuario={$id}";
-
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {
     echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
-    
     }
 }
 function editInfoMedicas($id){
     $sql = "UPDATE usuario SET altura_usuario='{$this->altura_usuario}'
     , peso_usuario='{$this->peso_usuario}'
     , tipoSanguineo_usuario='{$this->tipoSanguineo_usuario}' WHERE idusuario={$id}";
-
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {
     echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
-    
     }
 }
 //FECHA CLASSE
 }
-
-
-
 
 ?>

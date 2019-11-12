@@ -250,6 +250,28 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+  ALTER TABLE `doenca`
+  MODIFY `iddoenca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+ ALTER TABLE `atividadefisica`
+  MODIFY `idatividadefisica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-
+ ALTER TABLE `consulta`
+  MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-
+ ALTER TABLE `lembrete`
+  MODIFY `idlembrete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-
+ ALTER TABLE `medicamento`
+  MODIFY `idmedicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-
+ ALTER TABLE `restricaoalimentar`
+  MODIFY `idrestricaoalimentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --

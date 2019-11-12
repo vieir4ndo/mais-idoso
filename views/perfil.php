@@ -52,13 +52,25 @@
     </section>
     <section class="container">
             <h1 class="titulo">DOENÇAS</h1>
-            <a class="container-data">
-                DOENÇA
-            </a>
             <hr>
-            <section>
-                <input type="button" onclick="window.location.href='manterDoencas.php';" value="INCLUIR">
-            </section>
+            <form name="formConDoenca" method="POST" action="manterDoencas.php">
+        <?php
+        require_once "../model/conexao.php";
+        require_once "../model/classes/doenca.php";
+       // require_once "../model/classes/usuario.php";
+        $sql = "SELECT nome_doenca from doenca";
+        $consulta = $GLOBALS['conn'] ->query($sql);
+        $i=0;
+        while($row = $consulta-> fetch_assoc()){
+            echo "<button type='submit' name='nome_doenca' value='{$row['nome_doenca']}' class='container-data'>{$row['nome_doenca']}</button>";
+            $i++;
+        }
+        ?>
+        <hr>
+        <section>
+            <input type="submit" name="incluir" value="INCLUIR">
+        </section>
+        </form>
         </section>
 </body>
 

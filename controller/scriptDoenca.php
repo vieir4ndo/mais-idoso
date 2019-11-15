@@ -1,41 +1,53 @@
 <?php
 require_once "../model/conexao.php";
 require_once "../model/classes/doenca.php";
+require_once "../model/classes/usuario.php";
+
 session_start();
+
 
 $nome = $_POST['nome'];
 $tipo = $_POST['tipo'];
 $sintomas = $_POST['sintomas'];
+$id = $_SESSION['user']->getIdusuario();
 
-$GLOBALS['doenca']->setNome_doenca($nome);
-$GLOBALS['doenca']->setTipo_doenca($tipo);
-$GLOBALS['doenca']->setSintomas_doenca($sintomas);
-
-$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
+//$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
 
 if (isset($_POST["editar"])) {
-$sql = "Select * from doenca where nome_doenca ='". $nome ."'";
-$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
-$dado = $consulta->fetch_array();
-$GLOBALS['doenca']->edit($dado['id_doenca'], $_SESSION['user']->getIdusuario());
+    
+$idDoenca = $_POST['editar'];
+$_SESSION['doenca']->setNome_doenca($nome);
+$_SESSION['doenca']->setTipo_doenca($tipo);
+$_SESSION['doenca']->setSintomas_doenca($sintomas);
+
+$_SESSION['doenca']->edit($idDoenca,$id);
 header('Location: ../views/perfil.php');
 
 } elseif (isset($_POST["salvar"])) {
-	echo "normal";
-	
-$GLOBALS['doenca']->add($_SESSION['user']->getIdusuario());
+
+$_SESSION['doenca'] = new Doenca();
+$_SESSION['doenca']->setNome_doenca($nome);
+$_SESSION['doenca']->setTipo_doenca($tipo);
+$_SESSION['doenca']->setSintomas_doenca($sintomas);
+$_SESSION['doenca']->add($id);
 header('Location: ../views/perfil.php');
 
 } elseif (isset($_POST["salvar1"])){
-$GLOBALS['doenca']->add($_SESSION['user']->getIdusuario());
-echo "sla";
+$_SESSION['doenca'] = new Doenca();
+$_SESSION['doenca']->setNome_doenca($nome);
+$_SESSION['doenca']->setTipo_doenca($tipo);
+$_SESSION['doenca']->setSintomas_doenca($sintomas);
+$_SESSION['doenca']->add($id);
+
 header('Location: ../views/cadastro/cadastro3.php');
 
 } elseif (isset($_POST["deletar"])) {
-$sql = "Select * from doenca where nome_doenca ='". $nome ."'";
+$sql = "Select * from doenca where nome_doenca ='". $nome ."' and usuario_idusuario='".$id."'";
 $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 $dado = $consulta->fetch_array();
-$GLOBALS['doenca']->del($dado['id_doenca'], $_SESSION['user']->getIdusuario());
+$_SESSION['doenca']->del($dado['iddoenca'], $id);
+header('Location: ../views/perfil.php');
+
 
 } elseif (isset($_POST["cancelar"])){	
 header('Location: ../views/perfil.php');

@@ -417,7 +417,17 @@ p {
     padding-top: 3%;
       width:7%;
   }
-  
+  .alertInfo {
+    border: solid lightblue;
+    background-color: transparent lightblue;
+    border-radius: 20px;
+    padding: 4%;
+    width: 100%;
+    font-size: 250%;
+    display: block;
+    text-align:left;
+  }
+
 /**LIMBO**/
 /**
 aside {

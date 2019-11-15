@@ -17,11 +17,11 @@
     <section class="container">
         <img id="logo-principal" src="../img/atvFisicas.png">
         <hr />
-        <lable class="descricao">ATIVIDADE:</lable>
+        <label class="descricao">ATIVIDADE:</label>
         <input type="text">
-        <lable class="descricao">DURAÇÃO:</lable>
+        <label class="descricao">DURAÇÃO:</label>
         <input type="text">
-        <lable class="descricao">DATA:</lable>
+        <label class="descricao">DATA:</label>
         <input type="date">
         <hr />
         <section class="menu-manter">

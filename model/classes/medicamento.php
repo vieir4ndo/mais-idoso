@@ -1,6 +1,7 @@
 <?php
 
 require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
+//session_start();
 
 class Medicamento{
 private $idmedicamento="";
@@ -53,11 +54,12 @@ function setDosagem_medicamento($dosagem){
 
 
 //MÉTODOS BANCO
-function add(){
+function add($idUsuario){
     //codigo fonte
 
-    $sql = "INSERT INTO medicamento (nome_medicamento, indicacao_medicamento, horario_medicamento, dosagem_medicamento) VALUES ('".$this->nome_medicamento."',
-    '" . $this->indicacao_medicamento ."', '".$this->horario_medicamento."','".$this->dosagem_medicamento."')";
+    $sql = "INSERT INTO medicamento (nome_medicamento, usuario_idusuario, indicacao_medicamento, horario_medicamento, dosagem_medicamento) VALUES ('".$this->nome_medicamento."',
+    '{$idUsuario}', '" . $this->indicacao_medicamento ."', '".$this->horario_medicamento."','".$this->dosagem_medicamento."')";
+    echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
     } else {
@@ -66,10 +68,10 @@ function add(){
 
 }
 
-function del($id){
+function del($id, $idUsuario){
     //codigo fonte
 
-    $sql = "delete from medicamento where idmedicamento='". $id."'";
+    $sql = "delete from medicamento where idmedicamento='". $id."' and usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -79,11 +81,11 @@ function del($id){
     }
     
 }
-function edit($id){
+function edit($id, $idUsuario){
 	$sql = "UPDATE medicamento SET nome_medicamento='{$this->nome_medicamento}'
 , indicacao_medicamento='{$this->indicacao_medicamento}'
 , horario_medicamento='{$this->horario_medicamento}'
-, dosagem_medicamento= '{$this->dosagem_medicamento}' WHERE idmedicamento={$id}";
+, dosagem_medicamento= '{$this->dosagem_medicamento}' WHERE idmedicamento={$id} and usuario_idusuario='{$idUsuario}'";
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
@@ -97,8 +99,6 @@ function edit($id){
 }
 //FECHA CLASSE
 
-
-$GLOBALS['medicamento'] = new Medicamento;
 
 
 ?>

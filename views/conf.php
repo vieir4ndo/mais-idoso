@@ -37,6 +37,9 @@
             <a href="excluir.php"><img src="../img/logo-conf/icon-trash.png">
                 <h3 class="texto-conf">EXCLUIR CONTA</h3>
             </a>
+            <a href="<?php session_destroy(); $_SESSION['logado']=false; header('Location: login.php'); ?>"><img src="../img/cancelar.png">
+                <h3 class="texto-conf">SAIR</h3>
+            </a>
         </section>
     </section>
 

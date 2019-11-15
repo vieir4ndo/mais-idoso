@@ -2,6 +2,8 @@
 
 require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
 
+//session_start();
+
 class Usuario{
 private $idusuario="";
 private $email_usuario="";
@@ -160,21 +162,21 @@ function del($id){
     echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
 }
 }
-function editInfoPessoais($id){
-    $sql = "UPDATE usuario SET nome_usuario='{$this->nome_usuario}'
-    , sobrenome_usuario='{$this->sobrenome_usuario}'
-    , genero_usuario='{$this->genero_usuario}'
-    , dataNascimento_usuario= '{$this->dataNascimento_usuario}' WHERE idusuario={$id}";
+function editInfoPessoais($id, $nome, $sobrenome, $genero, $dataNascimento){
+    $sql = "UPDATE usuario SET nome_usuario='{$nome}'
+    , sobrenome_usuario='{$sobrenome}'
+    , genero_usuario='{$genero}'
+    , dataNascimento_usuario= '{$dataNascimento}' WHERE idusuario={$id}";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {
     echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
     }
 }
-function editInfoMedicas($id){
-    $sql = "UPDATE usuario SET altura_usuario='{$this->altura_usuario}'
-    , peso_usuario='{$this->peso_usuario}'
-    , tipoSanguineo_usuario='{$this->tipoSanguineo_usuario}' WHERE idusuario={$id}";
+function editInfoMedicas($id, $altura, $peso, $tipoSanguineo){
+    $sql = "UPDATE usuario SET altura_usuario='{$altura}'
+    , peso_usuario='{$peso}'
+    , tipoSanguineo_usuario='{$tipoSanguineo}' WHERE idusuario={$id}";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {

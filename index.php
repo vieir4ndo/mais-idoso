@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+<?php 
+require_once "model/classes/usuario.php";
+session_start();
+
+//$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
+
+//echo $_SESSION['user']->getIdusuario();
+
+
+if ($_SESSION['logado']==true){
+?>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -27,11 +38,15 @@
     <section class="container">
         <img id="logo-principal" src="img/lembretes.png">
         <hr />
-        <a class="container-data">
+        <button class="container-data">
             LEMBRETE
-        </a>
+        </button>
         <hr>
     </section>
 </body>
-
+<?php 
+} else {
+    header('Location: views/login.php');
+}
+?>
 </html>

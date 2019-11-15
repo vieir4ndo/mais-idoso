@@ -4,7 +4,7 @@ require_once "../model/conexao.php";
 
 require_once "../model/classes/alimentacao.php";
 
-echo "chegou até";
+session_start();
 
 $alimento = $_POST['alimento'];
 $grupo = $_POST['grupo'];

@@ -20,20 +20,27 @@
         <?php
         require_once "../model/conexao.php";
         require_once "../model/classes/medicamento.php";
+        require_once "../model/classes/usuario.php";
 
-        $sql = "SELECT nome_medicamento FROM medicamento";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
+        session_start();
 
+        $id = $_SESSION['user']->getIdusuario();
+
+        $sql = "SELECT nome_medicamento FROM medicamento where usuario_idusuario='{$id}'";
+        
         $consulta = $GLOBALS['conn']->query($sql);
 
-        $i = 0;
+        $teste = $consulta->fetch_assoc();
 
+        echo $teste['nome_medicamento'];
+
+        if ($teste['nome_medicamento']!=''){
         while ($row = $consulta->fetch_assoc()){   
         echo "<button type='submit' name='nome_medicamento' value='{$row['nome_medicamento']}'  class='container-data'>{$row['nome_medicamento']}</button>";
-         $i++;
         }
-        //}else {
-        //    echo "<button class='container-data'>Nenhum medicamento cadastrado</button>";
-        //}
+        }else {
+            echo "<button class='alertInfo'>Nenhum medicamento cadastrado</button>";
+        }
         ?>
         <hr>
         <section>

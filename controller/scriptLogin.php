@@ -3,28 +3,34 @@
 require_once "../model/conexao.php";
 require_once "../model/classes/usuario.php";
 
+session_start();
+
 if (isset($_POST["login"])) {
 
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
     $sql = "Select * from usuario where email_usuario ='". $email ."'";
-    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+   
+    if ($GLOBALS['conn']->query($sql) == TRUE) {
 
-    if ($consulta=!''){
+        $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);      
+        $consulta = $consulta->fetch_array();
 
-        $dado = $consulta->fetch_array();
+        if ($consulta['senha_usuario']==$senha) {
 
-        if ($dado['senha_usuario']==$senha) {
+            $_SESSION['user'] = new Usuario();
 
-            $GLOBALS['user']->setID_usuario($dado['id_usuario']);
-            $GLOBALS['user']->setNome_usuario($dado['nome_usuario']);
-            $GLOBALS['user']->setSobrenome_usuario( $dado['sobrenome_usuario']);
-            $GLOBALS['user']->setGenero_usuario($dado['genero_usuario']);
-            $GLOBALS['user']->setDataNascimento_usuario($dado['dataNascimento_usuario']);
-            $GLOBALS['user']->setAltura_usuario($dado['altura_usuario']);
-            $GLOBALS['user']->setPeso_usuario($dado['peso_usuario']);
-            $GLOBALS['user']->setTipoSanguineo_usuario($dado['tipoSanguineo_usuario']);
+            $_SESSION['user']->setIdusuario($consulta['idusuario']);
+            $_SESSION['user']->setNome_usuario($consulta['nome_usuario']);
+            $_SESSION['user']->setSobrenome_usuario( $consulta['sobrenome_usuario']);
+            $_SESSION['user']->setGenero_usuario($consulta['genero_usuario']);
+            $_SESSION['user']->setDataNascimento_usuario($consulta['dataNascimento_usuario']);
+            $_SESSION['user']->setAltura_usuario($consulta['altura_usuario']);
+            $_SESSION['user']->setPeso_usuario($consulta['peso_usuario']);
+            $_SESSION['user']->setTipoSanguineo_usuario($consulta['tipoSanguineo_usuario']);
+
+            $_SESSION['logado'] = true;
 
             header('Location: ../index.php');
 

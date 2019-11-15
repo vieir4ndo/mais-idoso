@@ -18,7 +18,7 @@
     <section class="container">
         <h1 class="titulo">RELATAR PROBLEMA</h1>
         <hr />
-        <lable class="descricao">Informe o problema que está enfrentando:</lable>
+        <label class="descricao">Informe o problema que está enfrentando:</label>
         <textarea rows="10"></textarea>
         
         <section>

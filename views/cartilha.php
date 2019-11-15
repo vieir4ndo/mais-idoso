@@ -27,7 +27,7 @@
         $i = 0;
 
         while ($row = $consulta->fetch_assoc()){   
-        echo "<button type='submit' class='container-data' name ='nome_cartilha' value='".$row['titulo_cartilha']."'>".$row['titulo_cartilha']."</button>";
+        echo "<button type='submit' class='container-data' name ='cartilha' value='".$row['idcartilha']."'>".$row['titulo_cartilha']."</button>";
          $i++;
         }
         //}else {

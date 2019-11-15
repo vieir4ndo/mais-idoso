@@ -17,11 +17,11 @@
     <section class="container">
         <h1 class="titulo">ALTERAR SENHA</h1>
         <hr />
-        <lable class="descricao">SENHA ATUAL:</lable>
+        <label class="descricao">SENHA ATUAL:</label>
         <input type="text">
-        <lable class="descricao">NOVA SENHA:</lable>
+        <label class="descricao">NOVA SENHA:</label>
         <input type="text">
-        <lable class="descricao">CONFIRME A NOVA SENHA:</lable>
+        <label class="descricao">CONFIRME A NOVA SENHA:</label>
         <input type="text">
         <section>
             <input type="button" onclick="window.location.href='index.php';" value="SALVAR">

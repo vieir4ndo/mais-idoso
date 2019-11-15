@@ -1,9 +1,10 @@
 <?php
 require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
+//session_start();
 
 class Doenca{
     
-    private $id_doenca="";
+    private $iddoenca="";
     private $nome_doenca="";
     private $tipo_doenca="";
     private $sintomas_doenca="";
@@ -11,15 +12,15 @@ class Doenca{
     //CONSTRUTOR
 
 function __construct(){
-    $this->id_doenca ="";
+    $this->iddoenca ="";
     $this->nome_doenca="";
     $this->tipo_doenca ="";
     $this->sintomas_doenca ="";
 }
 //MÉTODOS GETS E SETS
 
-function getId_doenca(){
-    return $this->id_doenca;
+function getiddoenca(){
+    return $this->iddoenca;
 }
 function getNome_doenca(){
     return $this->nome_doenca;
@@ -43,9 +44,10 @@ function setSintomas_doenca($sintomas){
 //MÉTODOS BANCO
 function add($idUsuario){
     //codigo fonte
-    $sql = "INSERT INTO doenca (nome_doenca, tipo_doenca, sintomas_doenca) VALUES ('".$this->nome_doenca."',
+    $sql = "INSERT INTO doenca (nome_doenca, usuario_idusuario, tipo_doenca, sintomas_doenca) 
+    VALUES ('".$this->nome_doenca."', '{$idUsuario}',
     '".$this->tipo_doenca."',
-'" . $this->sintomas_doenca ."') where usuario_idusuario='{$idUsuario}'";
+'" . $this->sintomas_doenca ."')";
     echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
@@ -56,7 +58,7 @@ function add($idUsuario){
 
 function del($id, $idUsuario){
     //codigo fonte
-    $sql = "delete from doenca where id_doenca='". $id."' AND usuario_idusuario='{$idUsuario}'";
+    $sql = "delete from doenca where iddoenca='". $id."' AND usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -66,7 +68,7 @@ function del($id, $idUsuario){
 function edit($id, $idUsuario){
 	$sql = "UPDATE doenca SET nome_doenca='{$this->nome_doenca}'
 , tipo_doenca='{$this->tipo_doenca}'
-, sintomas_doenca='{$this->sintomas_doenca}'  WHERE id_doenca={$id}  AND usuario_idusuario='{$idUsuario}'";
+, sintomas_doenca='{$this->sintomas_doenca}'  WHERE iddoenca='{$id}'  AND usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {
@@ -77,6 +79,4 @@ function edit($id, $idUsuario){
 
 //FECHA CLASSE
 
-
-$GLOBALS['doenca'] = new Doenca();
 ?>

@@ -17,13 +17,13 @@
     <section class="container">
         <img id="logo-principal" src="img/consultas.png">
         <hr />
-        <lable class="descricao">TIPO DE CONSULTA:</lable>
+        <label class="descricao">TIPO DE CONSULTA:</label>
         <input type="text">
-        <lable class="descricao">LOCAL:</lable>
+        <label class="descricao">LOCAL:</label>
         <input type="text">
-        <lable class="descricao">HORÁRIO:</lable>
+        <label class="descricao">HORÁRIO:</label>
         <input type="time">
-        <lable class="descricao">DOUTOR(A):</lable>
+        <label class="descricao">DOUTOR(A):</label>
         <input type="text">
         <hr />
         <section class="menu-manter">

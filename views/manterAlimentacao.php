@@ -18,11 +18,11 @@
     <section class="container">
         <img id="logo-principal" src="../img/alimentacao.png">
         <hr />
-        <lable class="descricao">ALIMENTO:</lable>
+        <label class="descricao">ALIMENTO:</label>
         <input type="text" name="alimento">
-        <lable class="descricao">GRUPO:</lable>
+        <label class="descricao">GRUPO:</label>
         <input type="text" name="grupo">
-        <lable class="descricao">RAZÃO:</lable>
+        <label class="descricao">RAZÃO:</label>
         <input type="text" name="razao">
         <hr />
         <section class="menu-manter">

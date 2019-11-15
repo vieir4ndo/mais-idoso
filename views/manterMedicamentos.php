@@ -19,20 +19,23 @@
         <hr />
         <?php
             require_once "../model/conexao.php";
+            require_once "../model/classes/usuario.php";
             require_once "../model/classes/medicamento.php";
 
+            session_start();
+
             if (isset($_POST["incluir"])){
-
-                $GLOBALS['medicamento']->setNome_medicamento('');
-                $GLOBALS['medicamento']->setindicacao_medicamento('');
-                $GLOBALS['medicamento']->setHorario_medicamento('');
-                $GLOBALS['medicamento']->setDosagem_medicamento('');
-
+                $nome ='';
+                $indicacao='';
+                $horario='';
+                $dosagem ='';
             }else{
 
             $nome_medicamento = $_POST['nome_medicamento'];
 
-            $sql = "Select * from medicamento where nome_medicamento='{$nome_medicamento}'";// where medicamento_id_medicamento=". $GLOBALS['user']->getId_usuario();
+            $id = $_SESSION['user']->getIdusuario();
+
+            $sql = "Select * from medicamento where nome_medicamento='{$nome_medicamento}' and usuario_idusuario={$id}";
 
             $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
@@ -40,10 +43,11 @@
                 
                 $consulta = $consulta->fetch_assoc();
 
-                $GLOBALS['medicamento']->setNome_medicamento($consulta['nome_medicamento']);
-                $GLOBALS['medicamento']->setindicacao_medicamento($consulta['indicacao_medicamento']);
-                $GLOBALS['medicamento']->setHorario_medicamento($consulta['horario_medicamento']);
-                $GLOBALS['medicamento']->setDosagem_medicamento($consulta['dosagem_medicamento']);
+                $nome = $consulta['nome_medicamento'];
+                $indicacao=$consulta['indicacao_medicamento'];
+                $horario = $consulta['horario_medicamento'];
+                $dosagem = $consulta['dosagem_medicamento'];
+                $idMedicamento = $consulta['idmedicamento'];
 
             }else {
 
@@ -53,16 +57,16 @@
             }
 
         echo '<label class="descricao">NOME:</label>';
-        echo '<input type="text" name="nome" value="'.$GLOBALS['medicamento']->getNome_medicamento().'" required>';
+        echo '<input type="text" name="nome" value="'.$nome.'" required>';
         echo '<label class="descricao">INDICAÇÃO:</label>';
-        echo '<input type="text" name="indicacao" value="'.$GLOBALS['medicamento']->getIndicacao_medicamento().'">';
+        echo '<input type="text" name="indicacao" value="'.$indicacao.'">';
         echo '<label class="descricao">HORÁRIO:</label>';
-        echo '<input type="time" name="hora" value="'.$GLOBALS['medicamento']->getHorario_medicamento().'" required>';
+        echo '<input type="time" name="hora" value="'.$horario.'" required>';
         echo '<button id="incluir"><img src="../img/Adicionar.png"></button>';
         echo '<label class="descricao">DOSAGEM:</label>';
-        echo '<input type="text" name="dosagem" value="'.$GLOBALS['medicamento']->getDosagem_medicamento().'" required>';
+        echo '<input type="text" name="dosagem" value="'.$dosagem.'" required>';
 
-        if ($GLOBALS['medicamento']->getNome_medicamento()==''){
+        if ($nome==''){
             echo '<hr />';
             echo '<section class="menu-manter">';
             echo '<button type="submit" name="cancelar"><img src="../img/cancelar.png"></button>';
@@ -72,7 +76,7 @@
             echo '<hr />';
             echo '<section class="menu-manter">';
             echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
-            echo '<button type="submit" name="editar"><img src="../img/editar.png"></button>';
+            echo '<button type="submit" name="editar" value="'.$idMedicamento.'"><img src="../img/editar.png"></button>';
             echo '</section>';
         }
         ?>

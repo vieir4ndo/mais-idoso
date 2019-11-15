@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head><meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1″>
+
     <title>+Idoso</title>
     <link rel="shortcut icon" href="../img/ico.ico">
     <link rel="stylesheet" type="text/css" href="../estilo/style.css">
@@ -17,9 +17,9 @@
     <?php
     require_once "../model/conexao.php";
 
-        $nome_cartilha = $_POST['nome_cartilha'];
+        $idcartilha = $_POST['cartilha'];
 
-        $sql = "Select * from cartilha where titulo_cartilha='{$nome_cartilha}'";
+        $sql = "Select * from cartilha where idcartilha='{$idcartilha}'";
 
         $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
     

@@ -17,16 +17,16 @@
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
         <form name="formConMedicamentos" method="POST" action="manterMedicamentos.php">
-        <?php
+        <php
         require_once "../model/conexao.php";
         require_once "../model/classes/medicamento.php";
         require_once "../model/classes/usuario.php";
 
         session_start();
 
-        $id = $_SESSION['user']->getIdusuario();
+        $id = 1;
 
-        $sql = "SELECT nome_medicamento FROM medicamento where usuario_idusuario='{$id}'";
+        $sql = "SELECT nome_medicamento FROM medicamento where usuario_idusuario=".$id."";
         
         $consulta = $GLOBALS['conn']->query($sql);
 
@@ -34,9 +34,10 @@
 
         echo $teste['nome_medicamento'];
 
-        if ($teste['nome_medicamento']!=''){
+        if (isset($teste['nome_medicamento'])){
         while ($row = $consulta->fetch_assoc()){   
-        echo "<button type='submit' name='nome_medicamento' value='{$row['nome_medicamento']}'  class='container-data'>{$row['nome_medicamento']}</button>";
+        $texto = "<button type='submit' name='nome_medicamento' value='".$row['nome_medicamento']."'  class='container-data'>".$row['nome_medicamento']."</button>";
+        echo $texto;
         }
         }else {
             echo "<button class='alertInfo'>Nenhum medicamento cadastrado</button>";

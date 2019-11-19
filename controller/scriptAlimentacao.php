@@ -4,46 +4,55 @@ require_once "../model/conexao.php";
 
 require_once "../model/classes/alimentacao.php";
 
+require_once "../model/classes/usuario.php";
+
 session_start();
 
 $alimento = $_POST['alimento'];
 $grupo = $_POST['grupo'];
 $razao = $_POST['razao'];
+$id = $_SESSION['user']->getIdusuario();
 
 
-$GLOBALS['alimentacao']->setAlimento_restricaoAlimentar($alimento);
-$GLOBALS['alimentacao']->setGrupo_restricaoAlimentar($grupo);
-$GLOBALS['alimentacao']->setRazao_restricaoAlimentar($razao);
+if (isset($_POST["editar"]));{
 
+// alimentacao ou restricao_alimentar
+$_SESSION['alimentacao']->setAlimento_restricaoAlimentar($alimento);
+$_SESSION['alimentacao']->setGrupo_restricaoAlimentar($grupo);
+$_SESSION['alimentacao']->setRazao_restricaoAlimentar($razao);
 
-if (isset($_POST["editar"])) {
+$id_restricaoAlimentar = $_POST['editar'];
 
- //   echo "aqui";
-$sql = "Select * from restricaoAlimentar where Alimento_restricaoAlimentar ='". $alimento ."'";
-$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+$_SESSION['alimentacao']->edit($id_restricaoAlimentar, $id);
 
+header('Location: ../views/alimentacao.php');
 
-$dado = $consulta->fetch_array();
-
-
-$GLOBALS['alimentacao']->edit($dado['id_restricaoAlimentar']);
-
-//header('Location: ../views/alimentacao.html');
 
 } elseif (isset($_POST["salvar"])) {
 
-$GLOBALS['alimentacao']->add();
+	$_SESSION['alimentacao'] = new alimentacao();
+	$_SESSION['alimentacao']->setAlimento_restricaoAlimentar($alimento);
+	$_SESSION['alimentacao']->setGrupo_restricaoAlimentar($grupo);
+	$_SESSION['alimentacao']->setRazao_restricaoAlimentar($razao);
 
-header('Location: ../views/alimentacao.html');
+	$_SESSION['alimentacao']->add($id);
 
-}else{
-	$sql = "Select * from restricaoAlimentar where alimento_restricaoAlimentar ='". $alimento ."'";
+
+header('Location: ../views/alimentacao.php');
+
+}elseif (isset($_POST["deletar"])) {
+	# code...
+
+	$sql = "Select * from restricaoAlimentar where alimento_restricaoAlimentar ='". $alimento ."' and usuario_idusuario='{id}'";
 $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
 
 $dado = $consulta->fetch_array();
-	$GLOBALS['alimentacao']->del($dado['id_restricaoAlimentar']);
-	header('Location: ../views/alimentacao.html');
+
+$_SESSION['alimentacao']->del($dado['id_restricaoAlimentar'], $id);
+header('Location: ../views/alimentacao.php');
+	
+	
 }
 
 

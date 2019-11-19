@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>+Idoso</title>
     <link rel="shortcut icon" href="../img/ico.ico">
     <link rel="stylesheet" type="text/css" href="../estilo/style.css">
@@ -17,15 +16,35 @@
             <section class="container"> 
                 <img id="logo-principal" src="../img/alimentacao.png">
                 <hr />
-                <a class="container-data">
-                    RESTRIÇÃO ALIMENTAR
-                </a>
-                <hr>
-                <section>
-                    <input type="button" onclick="window.location.href='manterAlimentacao.php';" value="INCLUIR">
-                </section>
-            </section>
+                <form name="formConAlimentacao" method="POST" action="manterAlimentacao.php"></form>
+                <php
+                require_once "../model/conexao.php";
+                require_once "../model/classes/alimentacao.php";
+                require_once "../model/classes/usuario.php";
+
+                session_start();
+
+                $id = 1;
+                $sql = "SELECT alimento_resticaoAlimentar FROM alimentacao where usuario_idusuario = {id}";
+                $consulta = $GLOBALS['conn']->fetch_assoc();
+
+                echo $teste['alimento_resticaoAlimentar'];
+
+        if (isset($teste['alimento_resticaoAlimentar']){
+        while ($row = $consulta->fetch_assoc()){   
+        echo "<button type='submit' name='alimento_resticaoAlimentar' value='{$row["alimento_resticaoAlimentar"]}'  class='container-data'>{$row["alimento_resticaoAlimentar"]}</button>";
+        }
+        }else {
+            echo "<button class='alertInfo'>Nenhum alimento cadastrado</button>";
+        }
+        ?>
+        <hr>
+        <section>
+            <input type="submit" name="incluir" value="INCLUIR">
         </section>
+        </form>
+    </section>
 </body>
 
 </html>
+            

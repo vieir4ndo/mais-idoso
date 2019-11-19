@@ -14,23 +14,80 @@
         <a href="perfil.php" id="img2"><img src="../img/avatar.png"></a>
         <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
+
     <form name="formAlimentacao" method="POST" action="../controller/scriptAlimentacao.php">
     <section class="container">
         <img id="logo-principal" src="../img/alimentacao.png">
         <hr />
-        <label class="descricao">ALIMENTO:</label>
-        <input type="text" name="alimento">
-        <label class="descricao">GRUPO:</label>
-        <input type="text" name="grupo">
-        <label class="descricao">RAZÃO:</label>
-        <input type="text" name="razao">
-        <hr />
-        <section class="menu-manter">
-           <button type="submit" name="editar"><img src="../img/editar.png"></button>
-            <button type="submit" name="deletar"><img src="../img/deletar.png"></button>
-            <button type="submit" name="salvar"><img src="../img/salvar.png"></button>
 
-        </section>
+        <?php  
+
+        require_once "../model/conexao.php";
+            require_once "../model/classes/usuario.php";
+            require_once "../model/classes/alimentacao.php";
+
+            session_start();
+
+            if (isset($_POST["incluir"])){
+                $alimento ='';
+                $grupo='';
+                $razao='';
+            
+            }else{
+
+            $alimento_restricaoAlimentar = $_POST['alimento_restricaoAlimentar'];
+
+            $id = $_SESSION['user']->getIdusuario();
+
+            $sql = "Select * from alimentacao where alimento_restricaoAlimentar='{$alimento_restricaoAlimentar}' and usuario_idusuario={$id}";
+
+            $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+
+            if (isset($consulta)) {
+                
+                $consulta = $consulta->fetch_assoc();
+
+                $alimento= $consulta['alimento_restricaoAlimentar'];
+                $grupo=$consulta['grupo_restricaoAlimentar'];
+                $razao = $consulta['razao_restricaoAlimentar'];
+                $id_restricaoAlimentar = $consulta['id_restricaoAlimentar'];
+
+            }else {
+
+            //echo 'Medicamento não encontrado';
+
+            }
+            }
+
+        echo '<label class="descricao">ALIMENTO:</label>';
+        echo '<input type="text" name="alimento">';
+        echo '<label class="descricao">GRUPO:</label>';
+        echo '<input type="text" name="grupo">';
+        echo '<label class="descricao">RAZÃO:</label>';
+        echo '<input type="text" name="razao">';
+        echo '<button id="incluir"><img src="../img/Adicionar.png"></button>';
+
+
+
+
+
+        if ($alimento=='') {
+
+        echo '<hr />';
+        echo '<section class="menu-manter">';
+        echo '<button type="submit" name="cancelar"><img src="../img/cancelar.png"></button>';
+        echo '<button type="submit" name="salvar"><img src="../img/salvar.png"></button>';
+        echo '</section>';
+
+        }else{
+
+        echo '<hr />';
+        echo '<section class="menu-manter">';
+        echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
+        echo '<button type="submit" name="editar" value="'.$id_restricaoAlimentar.'"><img src="../img/editar.png"></button>';
+        echo '</section>';
+        }
+        ?>
 
     </section>
     </form>

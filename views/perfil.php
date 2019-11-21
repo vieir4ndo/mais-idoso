@@ -165,17 +165,16 @@
         <?php
        // require_once "../model/classes/usuario.php";
         $sql = "SELECT nome_doenca from doenca where usuario_idusuario={$id}";
-        $consulta = $GLOBALS['conn']->query($sql); 
-        $teste = $consulta->fetch_assoc();
-        if ($teste['nome_doenca']!=''){
-        while($row = $consulta->fetch_assoc()){
-                echo "<button type='submit' name='nome_doenca' value='{$row['nome_doenca']}' class='container-data'>{$row['nome_doenca']}</button>";
+
+        if ($GLOBALS['conn']->query($sql)==true){
+            $consulta = $GLOBALS['conn']->query($sql);
+            while ($row = $consulta->fetch_assoc()){   
+                echo "<button type='submit' name='nome_doenca' value='".$row['nome_doenca']."'  class='container-data'>".$row['nome_doenca']."</button>";
             }
-        } else {
-            ?>
-                <button class='alertInfo'>Nenhuma doença cadastrada!</button>
-                <?php
+            } else {
+                echo "<button class='alertInfo'>Nenhuma doenca cadastrado</button>";
             }
+
         ?>
         <hr>
         <section>

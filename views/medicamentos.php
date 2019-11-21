@@ -29,12 +29,12 @@
 
         $sql = "SELECT nome_medicamento FROM medicamento where usuario_idusuario=".$id;
 
-        if ( $GLOBALS['conn']->query($sql)==true){
-            $consulta = $GLOBALS['conn']->query($sql);
+        if ($GLOBALS['conn']->query($sql)==true){
+        $consulta = $GLOBALS['conn']->query($sql);
         while ($row = $consulta->fetch_assoc()){   
         echo "<button type='submit' name='nome_medicamento' value='".$row['nome_medicamento']."'  class='container-data'>".$row['nome_medicamento']."</button>";
         }
-        }else {
+        } else {
             echo "<button class='alertInfo'>Nenhum medicamento cadastrado</button>";
         }
         ?>

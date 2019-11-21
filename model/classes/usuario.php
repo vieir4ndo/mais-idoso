@@ -91,12 +91,6 @@ function setTipoSanguineo_usuario($tipoSanguineo){
 
 //MÉTODOS BANCO
 
-function capturaID($email){
-    $sql = "Select * from usuario where email_usuario ='". $email ."'";
-    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
-    $consulta = $consulta->fetch_assoc();
-    $_SESSION['user']->setIdusuario($consulta['idusuario']);
-}
 function addUsuario($email, $senha, $senhaConfirma){
     $sql = "Select * from usuario where email_usuario ='". $email ."'";
     $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
@@ -110,7 +104,7 @@ function addUsuario($email, $senha, $senhaConfirma){
     echo "<br >New record created successfully";
     $_SESSION['user']->setEmail_usuario($email);
     $_SESSION['user']->setSenha_usuario($senha);
-    header('Location: ../views/cadastro/cadastro1.php');
+    header('Location: ../views/Cadastro/cadastro1.php');
     } else {
     echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
     }
@@ -132,7 +126,7 @@ function addUsuario2($email, $nome, $sobrenome, $genero, $dataNascimento){
         $_SESSION['user']->setSobrenome_usuario($sobrenome);
         $_SESSION['user']->setGenero_usuario($genero);
         $_SESSION['user']->setDataNascimento_usuario($dataNasicmento);
-        header('Location: ../views/cadastro/cadastro2.php');
+        header('Location: ../views/Cadastro/cadastro2.php');
         }
 }
 function addUsuario3($email, $altura, $peso, $tipoSanguineo){
@@ -144,7 +138,7 @@ function addUsuario3($email, $altura, $peso, $tipoSanguineo){
         $_SESSION['user']->setAltura_usuario($altura);
         $_SESSION['user']->setPeso_usuario($peso);
         $_SESSION['user']->setTipoSanguineo_usuario($tipoSanguineo);
-        header('Location: ../views/cadastro/cadastro3.php');
+        header('Location: ../views/Cadastro/cadastro3.php');
         echo "to aqui";
         }else {
             echo"não entrou";

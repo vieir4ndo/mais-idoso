@@ -47,11 +47,11 @@ function add($idUsuario){
     VALUES ('".$this->nome_doenca."', '{$idUsuario}',
     '".$this->tipo_doenca."',
 '" . $this->sintomas_doenca ."')";
-    echo $sql;
+    //echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
-    echo "<br >New record created successfully";
+    //echo "<br >New record created successfully";
     } else {
-    echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
+    //echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
     }
 }
 
@@ -59,9 +59,9 @@ function del($id, $idUsuario){
     //codigo fonte
     $sql = "delete from doenca where iddoenca='". $id."' AND usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
-    echo "<br > record deleted successfully";
+   // echo "<br > record deleted successfully";
     } else {
-    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+    //echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
     }
 }
 function edit($id, $idUsuario){
@@ -69,9 +69,9 @@ function edit($id, $idUsuario){
 , tipo_doenca='{$this->tipo_doenca}'
 , sintomas_doenca='{$this->sintomas_doenca}'  WHERE iddoenca='{$id}'  AND usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
-    echo "<br > record updated successfully";
+    //echo "<br > record updated successfully";
     } else {
-    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+   // echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
     }
 }
 }

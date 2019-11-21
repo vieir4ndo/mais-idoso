@@ -1,3 +1,9 @@
+<?php
+        require_once "../model/conexao.php";
+        require_once "../model/classes/usuario.php";
+        require_once "../model/classes/medicamento.php";
+        session_start();
+        ?>
 <!DOCTYPE html>
 <html>
 
@@ -17,27 +23,16 @@
         <img id="logo-principal" src="../img/medicacao.png">
         <hr />
         <form name="formConMedicamentos" method="POST" action="manterMedicamentos.php">
-        <php
-        require_once "../model/conexao.php";
-        require_once "../model/classes/medicamento.php";
-        require_once "../model/classes/usuario.php";
+        <?php
 
-        session_start();
+        $id = $_SESSION['user']->getIdUsuario();
 
-        $id = 1;
+        $sql = "SELECT nome_medicamento FROM medicamento where usuario_idusuario=".$id;
 
-        $sql = "SELECT nome_medicamento FROM medicamento where usuario_idusuario=".$id."";
-        
-        $consulta = $GLOBALS['conn']->query($sql);
-
-        $teste = $consulta->fetch_assoc();
-
-        echo $teste['nome_medicamento'];
-
-        if (isset($teste['nome_medicamento'])){
+        if ( $GLOBALS['conn']->query($sql)==true){
+            $consulta = $GLOBALS['conn']->query($sql);
         while ($row = $consulta->fetch_assoc()){   
-        $texto = "<button type='submit' name='nome_medicamento' value='".$row['nome_medicamento']."'  class='container-data'>".$row['nome_medicamento']."</button>";
-        echo $texto;
+        echo "<button type='submit' name='nome_medicamento' value='".$row['nome_medicamento']."'  class='container-data'>".$row['nome_medicamento']."</button>";
         }
         }else {
             echo "<button class='alertInfo'>Nenhum medicamento cadastrado</button>";

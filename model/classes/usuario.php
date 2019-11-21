@@ -1,7 +1,5 @@
 <?php
 
-require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
-
 //session_start();
 
 class Usuario{

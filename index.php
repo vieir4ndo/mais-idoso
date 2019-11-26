@@ -38,11 +38,31 @@ if ($_SESSION['logado']==true){
     <section class="container">
         <img id="logo-principal" src="img/lembretes.png">
         <hr />
-        <button class="container-data">
-            LEMBRETE
-        </button>
+        <?php
+        require_once "model/conexao.php";
+        require_once "/model/classes/medicamento.php";
+        //require_once "/model/classes/consulta.php";
+
+        $id = $_SESSION['user']->getIdusuario();
+
+        $sql = "SELECT * from medicamento where usuario_idusuario={$id}";
+    
+        ?>
+        <section class="lembrete">
+        <label class="titulo-lembrete">MEDICAMENTO</label> <img class="img-lembrete" src="img/cancelar.png"><br/><br/>
+        <label class="descricao-lembrete">Nome: </label><br/>
+        <label class="descricao-lembrete">Horário: </label><br/>
+        </section>
         <hr>
-    </section>
+        <section class="lembrete">
+        <label class="titulo-lembrete">CONSULTAS</label><img class="img-lembrete" src="img/cancelar.png"><br/><br/>
+        <label class="descricao-lembrete">Local: </label><br/>
+        <label class="descricao-lembrete">Data: </label><br/>
+        <label class="descricao-lembrete">Horário: </label><br/>
+        </section>
+        <hr>
+
+    </section>      
 </body>
 <?php 
 } else {

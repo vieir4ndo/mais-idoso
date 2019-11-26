@@ -233,6 +233,28 @@ input[type=text] {
     font-size: 400%;
     height: 150px;  
 }
+.lembrete{
+  width: 100%;
+}
+.descricao-lembrete{
+  width: 100%;
+  padding-right:2%;
+  padding-left:2%;
+  clear: both;
+  font-size: 400%;
+
+}
+.titulo-lembrete{
+  float: left;
+  width: 76%;
+  font-size: 550%;
+  display: block;
+}
+.img-lembrete{
+  float: right;
+  width:20%;
+  display: block;
+}
 #incluir {
     float: right;
     width: 20%;

@@ -99,9 +99,13 @@ function addUsuario($email, $senha, $senhaConfirma){
     if ($senha === $senhaConfirma) {
     $i=1;
     $sql = 'INSERT INTO usuario (email_usuario, senha_usuario)VALUES ("'.$email.'","'.$senha.'")';
-    echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
+    $sql = "Select * from usuario where email_usuario ='". $email ."'";
+    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);    
+    $consulta = $consulta->fetch_assoc();
+    $_SESSION['user'] = new Usuario();
+    $_SESSION['user']->setIdusuario($consulta['idusuario']);
     $_SESSION['user']->setEmail_usuario($email);
     $_SESSION['user']->setSenha_usuario($senha);
     header('Location: ../views/Cadastro/cadastro1.php');

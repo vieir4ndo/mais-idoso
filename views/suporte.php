@@ -16,13 +16,13 @@
     <section class="container">
         <h1 class="container-campo">SUPORTE</h1>
         <hr />
-        <section class="container-campo">
+        <!--<section class="container-campo">
             PERMITIR ENVIAR RELATÓRIOS
             <label class="switch">
                 <input type="checkbox" checked>
                 <span class="slider round"></span>
             </label>
-        </section>
+        </section>-->
         <a href="relatarProblema.php" class="container-campo">RELATAR PROBLEMA</a>
         <HR>
     </section>

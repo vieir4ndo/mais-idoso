@@ -34,8 +34,14 @@ elseif (isset($_POST["sair"])) {
     $senhaAtual = $_POST['senhaAtual'];
     $novaSenha = $_POST['novaSenha'];
     $novaSenha1 = $_POST['novaSenha1'];
+    $id =$_SESSION['user']->getIdusuario();
 
-    if ($senhaAtual==$_SESSION['user']->getSenha_usuario()){
+    $sql='Select senha_usuario from usuario where idusuario='.$id.'';
+
+    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+    $consulta = $consulta->fetch_assoc();
+
+    if ($senhaAtual==$consulta['senha_usuario']){
         $_SESSION['user']->alteraSenha($_SESSION['user']->getIdusuario(), $novaSenha);
         header('Location: ../views/conf.php');
     }

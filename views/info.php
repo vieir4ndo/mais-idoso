@@ -16,9 +16,9 @@
     <section class="container">
         <h1 class="container-campo">INFORMAÇÕES</h1>
         <hr />
-        <a class="container-campo">TERMOS DE USO</a>
+        <!--<a class="container-campo">TERMOS DE USO</a>
         
-        <a class="container-campo">POLÍTICA DE PRIVACIDADE</a>
+        <a class="container-campo">POLÍTICA DE PRIVACIDADE</a>-->
         
         <a href="contato.php" class="container-campo">CONTATO</a>
         <HR>

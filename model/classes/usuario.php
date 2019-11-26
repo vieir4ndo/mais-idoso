@@ -177,6 +177,7 @@ function editInfoMedicas($id, $altura, $peso, $tipoSanguineo){
 }
 function alteraSenha($id, $novaSenha){
     $sql = "UPDATE usuario SET senha_usuario='{$novaSenha}' WHERE idusuario={$id}";
+    echo $sql;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {

@@ -27,9 +27,9 @@
             <button type ="submit" name="seguranca" ><img src="../img/logo-conf/icon-locker.png">
                 <h3 class="texto-conf">SEGURANÇA</h3>
             </button>
-            <button type ="submit" name="suporte" ><img src="../img/logo-conf/icon-intmark.png">
+            <!--<button type ="submit" name="suporte" ><img src="../img/logo-conf/icon-intmark.png">
                 <h3 class="texto-conf">SUPORTE</h3>
-            </button>
+            </button>-->
             <button  type ="submit"name="informacoes"><img src="../img/logo-conf/icon-info.png">
                 <h3 class="texto-conf">INFORMAÇÕES</h3>
             </button>

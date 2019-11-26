@@ -205,7 +205,7 @@ input[type=text] {
   }
   input[type=time] {
     clear: both;
-    width: 80%;
+    width: 100%;
     background-color: white;
     padding: 12px 20px;
     margin: 8px 0;

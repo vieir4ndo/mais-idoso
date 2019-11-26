@@ -3,7 +3,7 @@
 //session_start();
 
 class Alimentacao{
-private $id_restricaoAlimentar="";
+private $idrestricaoAlimentar="";
 private $alimento_restricaoAlimentar="";
 private $grupo_restricaoAlimentar="";
 private $razao_restricaoAlimentar="";
@@ -11,7 +11,7 @@ private $razao_restricaoAlimentar="";
 //CONSTRUTOR
 
 function __construct(){
-    $this->id_restricaoAlimentar ="";
+    $this->idrestricaoAlimentar ="";
     $this->alimento_restricaoAlimentar ="";
     $this->grupo_restricaoAlimentar ="";
     $this->razao_restricaoAlimentar ="";
@@ -19,8 +19,8 @@ function __construct(){
 }
 //MÉTODOS GETS E SETS
 
-function getId_restricaoAlimentar(){
-    return $this->id_restricaoAlimentar;
+function getIdrestricaoAlimentar(){
+    return $this->idrestricaoAlimentar;
 }
 function getAlimento_restricaoAlimentar(){
     return $this->nome_restricaoAlimentar;
@@ -46,10 +46,10 @@ function setRazao_restricaoAlimentar($razao){
 
 
 //MÉTODOS BANCO
-function add(){
+function add($id){
     //codigo fonte
-    $sql = "INSERT INTO restricaoAlimentar (alimento_restricaoAlimentar, grupo_restricaoAlimentar, razao_restricaoAlimentar) VALUES ('".
-    $this->alimento_restricaoAlimentar."',
+    $sql = "INSERT INTO restricaoAlimentar (alimento_restricaoAlimentar, usuario_idusuario, grupo_restricaoAlimentar, razao_restricaoAlimentar) VALUES 
+    ('".$this->alimento_restricaoAlimentar."', ".$id.",
     '" . $this->grupo_restricaoAlimentar ."', '".$this->razao_restricaoAlimentar."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
@@ -59,11 +59,9 @@ function add(){
 
 }
 
-function del($id){
+function del($id, $idAlimentacao){
     //codigo fonte
-
-
-    $sql = "delete from restricaoAlimentar where id_restricaoAlimentar='". $id."'";
+    $sql = "delete from restricaoAlimentar where idrestricaoAlimentar=". $idAlimentacao." and usuario_idusuario=".$id;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -73,11 +71,11 @@ function del($id){
     }
     
 }
-function edit($id){
+function edit($id, $idAlimentacao){
 	$sql = "UPDATE restricaoAlimentar SET alimento_restricaoAlimentar='{$this->alimento_restricaoAlimentar}'
 , grupo_restricaoAlimentar='{$this->grupo_restricaoAlimentar}'
 , razao_restricaoAlimentar='{$this->razao_restricaoAlimentar}'
- WHERE id_restricaoAlimentar={$id}";
+ WHERE idrestricaoAlimentar={$id} and usuario_idusuario=".$idAlimentacao;
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
@@ -88,8 +86,6 @@ function edit($id){
     
 }
 }
-//FECHA CLASSE
-
-$GLOBALS['alimentacao'] = new Alimentacao();
+//FECHA CLASS
 
 ?>

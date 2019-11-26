@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+       
+
+        ?>
+        <!DOCTYPE html>
 <html>
 
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,25 +20,25 @@
             <section class="container"> 
                 <img id="logo-principal" src="../img/alimentacao.png">
                 <hr />
-                <form name="formConAlimentacao" method="POST" action="manterAlimentacao.php"></form>
-                <php
-                require_once "../model/conexao.php";
-                require_once "../model/classes/alimentacao.php";
-                require_once "../model/classes/usuario.php";
+        <form name="formConAlimentacao" method="POST" action="manterAlimentacao.php">
+        <?php
 
-                session_start();
+         require_once "../model/conexao.php";
+        require_once "../model/classes/usuario.php";
+        require_once "../model/classes/alimentacao.php";
+        session_start();
+                
+        $id =$_SESSION['user']->getIdUsuario();
 
-                $id = 1;
-                $sql = "SELECT alimento_resticaoAlimentar FROM alimentacao where usuario_idusuario = {id}";
-                $consulta = $GLOBALS['conn']->fetch_assoc();
+        $sql = "SELECT `alimento_restricaoAlimentar` FROM `restricaoalimentar` WHERE usuario_idusuario = ".$id."";
 
-                echo $teste['alimento_resticaoAlimentar'];
-
-        if (isset($teste['alimento_resticaoAlimentar']){
+               
+        if ($GLOBALS['conn']->query($sql)==true){
+        $consulta = $GLOBALS['conn']->query($sql);
         while ($row = $consulta->fetch_assoc()){   
-        echo "<button type='submit' name='alimento_resticaoAlimentar' value='{$row["alimento_resticaoAlimentar"]}'  class='container-data'>{$row["alimento_resticaoAlimentar"]}</button>";
+        echo "<button type='submit' name='alimento_restricaoAlimentar' value='".$row['alimento_restricaoAlimentar']."'  class='container-data'>".$row['alimento_restricaoAlimentar']."</button>";
         }
-        }else {
+        } else {
             echo "<button class='alertInfo'>Nenhum alimento cadastrado</button>";
         }
         ?>
@@ -44,7 +48,7 @@
         </section>
         </form>
     </section>
+    
 </body>
 
 </html>
-            

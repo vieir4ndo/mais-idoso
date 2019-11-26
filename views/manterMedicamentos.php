@@ -62,7 +62,6 @@
         echo '<input type="text" name="indicacao" value="'.$indicacao.'">';
         echo '<label class="descricao">HORÁRIO:</label>';
         echo '<input type="time" name="hora" value="'.$horario.'" required>';
-        echo '<button id="incluir"><img src="../img/Adicionar.png"></button>';
         echo '<label class="descricao">DOSAGEM:</label>';
         echo '<input type="text" name="dosagem" value="'.$dosagem.'" required>';
 

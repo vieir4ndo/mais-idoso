@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>+Idoso</title>
@@ -39,7 +38,7 @@
 
             $id = $_SESSION['user']->getIdusuario();
 
-            $sql = "Select * from alimentacao where alimento_restricaoAlimentar='{$alimento_restricaoAlimentar}' and usuario_idusuario={$id}";
+            $sql = "Select * from restricaoAlimentar where alimento_restricaoAlimentar='{$alimento_restricaoAlimentar}' and usuario_idusuario={$id}";
 
             $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
@@ -50,7 +49,7 @@
                 $alimento= $consulta['alimento_restricaoAlimentar'];
                 $grupo=$consulta['grupo_restricaoAlimentar'];
                 $razao = $consulta['razao_restricaoAlimentar'];
-                $id_restricaoAlimentar = $consulta['id_restricaoAlimentar'];
+                $idrestricaoAlimentar = $consulta['idrestricaoAlimentar'];
 
             }else {
 
@@ -60,19 +59,13 @@
             }
 
         echo '<label class="descricao">ALIMENTO:</label>';
-        echo '<input type="text" name="alimento">';
+        echo '<input type="text" name="alimento" value="'.$alimento.'"required>';
         echo '<label class="descricao">GRUPO:</label>';
-        echo '<input type="text" name="grupo">';
+        echo '<input type="text" name="grupo"value="'.$grupo.'"required>';
         echo '<label class="descricao">RAZÃO:</label>';
-        echo '<input type="text" name="razao">';
-        echo '<button id="incluir"><img src="../img/Adicionar.png"></button>';
-
-
-
-
+        echo '<input type="text" name="razao" value="'.$razao.'"required>';
 
         if ($alimento=='') {
-
         echo '<hr />';
         echo '<section class="menu-manter">';
         echo '<button type="submit" name="cancelar"><img src="../img/cancelar.png"></button>';
@@ -83,8 +76,8 @@
 
         echo '<hr />';
         echo '<section class="menu-manter">';
-        echo '<button type="submit" name="deletar"><img src="../img/deletar.png"></button>';
-        echo '<button type="submit" name="editar" value="'.$id_restricaoAlimentar.'"><img src="../img/editar.png"></button>';
+        echo '<button type="submit" name="deletar" value="'.$idrestricaoAlimentar.'"><img src="../img/deletar.png"></button>';
+        echo '<button type="submit" name="editar" value="'.$idrestricaoAlimentar.'"><img src="../img/editar.png"></button>';
         echo '</section>';
         }
         ?>

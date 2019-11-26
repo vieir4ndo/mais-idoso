@@ -18,13 +18,6 @@
         <h1 class="titulo">SEGURANÇA</h1>
         <hr />
         <section class="container-campo">
-            BACKUP AUTOMÁTICO DE DADOS
-            <label class="switch">
-                <input type="checkbox" check>
-                <span class="slider round"></span>
-            </label>
-        </section>
-        <section class="container-campo">
             <a href="alterarSenha.php">ALTERAR SENHA</a>
         </section>
         <HR>

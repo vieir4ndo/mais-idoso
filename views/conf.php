@@ -21,25 +21,24 @@
     <section class="container">
         <img id="logo-principal" src="../img/configuracoes.png">
         <hr />
+
+        <form name="form-conf" action="../controller/scriptConf.php" method="post">
         <section class="container-conf">
-            <a href="notificacoes.php"><img src="../img/logo-conf/icon-bell.png">
-                <h3 class="texto-conf">NOTIFICAÇÕES</h3>
-            </a>
-            <a href="seguranca.php"><img src="../img/logo-conf/icon-locker.png">
+            <button type ="submit" name="seguranca" ><img src="../img/logo-conf/icon-locker.png">
                 <h3 class="texto-conf">SEGURANÇA</h3>
-            </a>
-            <a href="suporte.php"><img src="../img/logo-conf/icon-intmark.png">
+            </button>
+            <button type ="submit" name="suporte" ><img src="../img/logo-conf/icon-intmark.png">
                 <h3 class="texto-conf">SUPORTE</h3>
-            </a>
-            <a href="info.php"><img src="../img/logo-conf/icon-info.png">
+            </button>
+            <button  type ="submit"name="informacoes"><img src="../img/logo-conf/icon-info.png">
                 <h3 class="texto-conf">INFORMAÇÕES</h3>
-            </a>
-            <a href="excluir.php"><img src="../img/logo-conf/icon-trash.png">
+            </button>
+            <button  type ="submit"name="excluirconta"><img src="../img/logo-conf/icon-trash.png">
                 <h3 class="texto-conf">EXCLUIR CONTA</h3>
-            </a>
-            <a href="<?php session_destroy(); $_SESSION['logado']=false; header('Location: login.php'); ?>"><img src="../img/cancelar.png">
+            </button>
+            <button  type ="submit"name="sair" ><img src="../img/cancelar.png">
                 <h3 class="texto-conf">SAIR</h3>
-            </a>
+            </button>
         </section>
     </section>
 

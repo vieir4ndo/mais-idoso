@@ -101,7 +101,7 @@ footer{
     width: 50%;
 }
 .menu-manter button {
-    width:50%;
+    width:49.8%;
     background-color: transparent;
     border: solid transparent 2px;
 }
@@ -293,37 +293,35 @@ p {
     background-color: yellow;
     border-radius: 20px;
 }
-.container a {
+.container button {
     text-decoration: none;
     color: black;
 }
-.container a:visited {
+.container button:visited {
     text-decoration: none;
     color: black;
 }
 .container-conf{
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
-.container-conf a:link, .container-conf a:visited{
-    clear: both;
-    color: black;
-    text-align: center;
-    text-decoration: none;
+.container-conf button{
+  clear: both;
+  background: transparent;
+  border:transparent;
+  width:100%;
 }
-
-.container-conf a img {
-    background-color: white;
-    float: left;
-    display: block;
+.container-conf button img {
+  float: left;
+  padding:3%;
+  width:30%;
 }
-.container-conf a .texto-conf {
-    font-size: 450%;
-    padding-top: 5%;
-    height: 100px;
-    background-color: white;
-    display: block;
-    
+.container-conf button h3 {
+  font-size:300%;
+  text-align: center;
+  float: right;
+  width:60%;
+  
 }
 .switch {
     position: relative;
@@ -413,8 +411,7 @@ p {
     cursor: pointer;
   }
   .container-campo img{
-
-    padding-top: 3%;
+      padding-top: 3%;
       width:7%;
   }
   .alertInfo {

@@ -14,20 +14,22 @@
         <a href="perfil.php" id="img2"><img src="../img/avatar.png"></a>
         <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
+    <form name="FormAlteraSenha" action="../controller/scriptConf.php" method="post">
     <section class="container">
         <h1 class="titulo">ALTERAR SENHA</h1>
         <hr />
         <label class="descricao">SENHA ATUAL:</label>
-        <input type="text">
+        <input type="password"  name="senhaAtual">
         <label class="descricao">NOVA SENHA:</label>
-        <input type="text">
+        <input type="password" name="novaSenha">
         <label class="descricao">CONFIRME A NOVA SENHA:</label>
-        <input type="text">
+        <input type="password" name="novaSenha1">
         <section>
-            <input type="button" onclick="window.location.href='index.php';" value="SALVAR">
+            <input type="submit" name="alterarSenha" value="SALVAR">
         </section>
         <HR>
     </section>
+</form>
 </body>
 
 </html>

@@ -147,7 +147,7 @@ function addUsuario3($email, $altura, $peso, $tipoSanguineo){
 
 function del($id){
     //codigo fonte
-    $sql = "delete from usuario where idusuario='". $id."'";
+    $sql = "delete from usuario where idusuario=". $id;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -169,6 +169,14 @@ function editInfoMedicas($id, $altura, $peso, $tipoSanguineo){
     $sql = "UPDATE usuario SET altura_usuario='{$altura}'
     , peso_usuario='{$peso}'
     , tipoSanguineo_usuario='{$tipoSanguineo}' WHERE idusuario={$id}";
+    if ($GLOBALS['conn']->query($sql) == TRUE) {
+    echo "<br > record updated successfully";
+    } else {
+    echo "Error: " . $sql . "<br>" . $GLOBALS['conn']->error;
+    }
+}
+function alteraSenha($id, $novaSenha){
+    $sql = "UPDATE usuario SET senha_usuario='{$novaSenha}' WHERE idusuario={$id}";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
     } else {

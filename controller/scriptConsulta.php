@@ -4,44 +4,53 @@ require_once "../model/conexao.php";
 
 require_once "../model/classes/consulta.php";
 
-echo "chegou até";
+require_once "../model/classes/usuario.php";
+
+session_start();
 
 $tipo_consulta = $_POST['tipo'];
 $local_consulta = $_POST['local'];
-$horario_consulta = $_POST['horario'];
+$data_consulta = $_POST['data'];
+$horario_consulta = $_POST['hora'];
 $medico_consulta = $_POST['medico'];
-
-$GLOBALS['consulta']->setTipo_consulta($tipo_med);
-$GLOBALS['consulta']->setlocal_consulta($local);
-$GLOBALS['consulta']->setHorario_consulta($horario);
-$GLOBALS['consulta']->setMedico_consulta($medico);
+$id = $_SESSION['user']->getIdusuario();
 
 if (isset($_POST["editar"])) {
 
- //   echo "aqui";
-$sql = "Select * from consulta where tipo_consulta ='". $tipo_consulta ."'";
-$tipo_consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+	$_SESSION['consulta']->setTipo_consulta($tipo_consulta);
+	$_SESSION['consulta']->setlocal_consulta($local_consulta);
+	$_SESSION['consulta']->setData_consulta($data_consulta);
+	$_SESSION['consulta']->setHorario_consulta($horario_consulta);
+	$_SESSION['consulta']->setMedico_consulta($medico_consulta);
 
-$tipo_consulta = $consulta->fetch_array();
+	$idConsulta = $_POST['editar'];
 
-$GLOBALS['consulta']->edit($tipo_consulta['id_consulta']);
+	$_SESSION['consulta']->edit($idConsulta, $id);
 
-header('Location: ../views/consulta.php');
+header('Location: ../views/consultas.php');
 
 } elseif (isset($_POST["salvar"])) {
+	$_SESSION['consulta'] = new Consulta();
+	$_SESSION['consulta']->setTipo_consulta($tipo_consulta);
+	$_SESSION['consulta']->setLocal_consulta($local_consulta);
+	$_SESSION['consulta']->setData_consulta($data_consulta);
+	$_SESSION['consulta']->setHorario_consulta($horario_consulta);
+	$_SESSION['consulta']->setMedico_consulta($medico_consulta);
+	
+	$_SESSION['consulta']->add($id);
+	
+	//header('Location: ../views/consultas.php');
+	
+	}elseif (isset($_POST["deletar"])){
+	
+		
+	$idConsulta = $_POST['deletar'];
 
-$GLOBALS['consulta']->add();
-
-header('Location: ../views/consulta.php');
-
-}else{
-	$sql = "Select * from consulta where tipo_consulta ='". $tipo_consulta ."'";
-	$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
-	$tipo_consulta = $consulta->fetch_array();
-	$GLOBALS['consulta']->del($tipo_consulta['id_consulta']);
-	header('Location: ../views/consulta.php');
-}
-
-
-
-?>
+		$sql = "Select * from consulta where usuario_idusuario='{$id}'";
+		$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+		$dado = $consulta->fetch_array();
+		$_SESSION['consulta']->del($idConsulta, $id);
+		header('Location: ../views/consultas.php');
+	}
+	
+	?>

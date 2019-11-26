@@ -13,7 +13,7 @@
         <img id="logo-principal" src="../../img/logo-menor.png">
         <hr />
         <h3 class="titulo2">POR ÚLTIMO, VAMOS PRECISAR QUE VOCÊ REGISTRE SUA(S) DOENÇAS:</h3> 
-        <form name="formCad3" method="POST" action="../manterDoencas.php">
+        
         <?php
         require_once "../../model/conexao.php";
         require_once "../../model/classes/doenca.php";
@@ -26,18 +26,19 @@
 
         $sql = "SELECT nome_doenca from doenca where usuario_idusuario=".$id."";
 
+
         $consulta = $GLOBALS['conn']->query($sql);
 
-        if ($consulta['nome_doenca']!=''){
-
-        while($row = $consulta->fetch_assoc()){
-            echo "<button type='button'
-            name='nome_doenca' value='{$row['nome_doenca']}' class='container-data'>{$row['nome_doenca']}</button>";
-        }
-        } else {
-            echo "<button class='alertInfo'>Nenhuma doença cadastrada!</button>";
-        }
+        if ($GLOBALS['conn']->query($sql)==true){
+            $consulta = $GLOBALS['conn']->query($sql);
+            while ($row = $consulta->fetch_assoc()){   
+                echo "<button class='container-data'>".$row['nome_doenca']."</button>";
+            }
+            } else {
+                echo "<button class='alertInfo'>Nenhuma doenca cadastrado</button>";
+            }
         ?>
+        <form name="formCad3" method="POST" action="../manterDoencas.php">
         <hr>
         <input type="submit" name="incluir1" value="INCLUIR">
         </form>

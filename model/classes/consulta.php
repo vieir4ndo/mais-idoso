@@ -1,35 +1,41 @@
 <?php
-require_once ('C:/xampp/htdocs/maisidoso/model/conexao.php');
+
+//session_start();      
 
 class Consulta{
-private $id_consulta="";
+private $idconsulta="";
 private $tipo_consulta="";
 private $local_consulta="";
+private $data_consulta="";
 private $horario_consulta="";
 private $medico_consulta="";
 
-// CONSTRUTOR
+
+//  CONSTRUTOR
 
 function __construct(){
-	$this->id_consulta =""; 
+	$this->idconsulta =""; 
 	$this->tipo_consulta =""; 
-	$this->local_consulta =""; 
+    $this->local_consulta ="";
+    $this->data_consulta = "";
 	$this->horario_consulta =""; 
 	$this->medico_consulta =""; 
-
 }
-
 //METODOS GETS E SETS
 
-function getId_consulta(){
-	return $this->id_consulta;
+function getidconsulta(){
+	return $this->idconsulta;
 }
 function getTipo_consulta(){
 	return $this->tipo_consulta;
 }
-}
+
 function getLocal_consulta(){
 	return $this->local_consulta;
+}
+
+function getData_consulta(){
+	return $this->data_consulta;
 }
 function getHorario_consulta(){
 	return $this->horario_consulta;
@@ -49,13 +55,24 @@ function getMedico_consulta(){
  function setMedico_consulta($medico){
  	$this->medico_consulta= $medico;
  }
-
- //METODOS BANCO
-function add(){
+ 
+function setData_consulta($data){
+    $data_consulta = $data;
+}
+ //MÉTODOS BANCO
+function add($idUsuario){
     //codigo fonte
 
-    $sql = "INSERT INTO consulta (tipo_consulta, local_consulta, horario_consulta, medico_consulta) VALUES ('".$this->tipo_consulta."',
-    '" . $this->local_consulta ."', '".$this->horario_consulta."','".$this->medico_consulta."')";
+    $sql = "INSERT INTO consulta (usuario_idusuario, tipo_consulta, local_consulta, data_consulta, horario_consulta, medico_consulta)
+     VALUES ({$idUsuario},
+     '{$this->tipo_consulta}',
+    '{$this->local_consulta }',
+    '{$this->data_consulta}',
+     '{$this->horario_consulta}',
+     '{$this->medico_consulta}')";
+
+    echo $sql;
+     
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
     } else {
@@ -64,10 +81,10 @@ function add(){
 
 }
 
-function del($id){
+function del($id, $idUsuario){
     //codigo fonte
 
-    $sql = "delete from consulta where id_consulta='". $id."'";
+    $sql = "delete from consulta where idconsulta='". $id."' and usuario_idusuario='{$idUsuario}'";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -78,11 +95,12 @@ function del($id){
     
 }
 
-function edit($id){
+function edit($id, $idUsuario){
 	$sql = "UPDATE consulta SET tipo_consulta='{$this->tipo_consulta}'
 , local_consulta='{$this->local_consulta}'
+, data_consulta='{$this->data_consulta}'
 , horario_consulta='{$this->horario_consulta}'
-, medico_consulta= '{$this->medico_consulta}' WHERE id_consulta={$id}";
+, medico_consulta= '{$this->medico_consulta}' WHERE idconsulta={$id} and usuario_idusuario='{$idUsuario}'";
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";
@@ -93,12 +111,9 @@ function edit($id){
     
 }
 
-
 }
+
 //FECHA CLASSE
-
-
-$GLOBALS['consulta'] = new Consulta;
 
 
 ?>

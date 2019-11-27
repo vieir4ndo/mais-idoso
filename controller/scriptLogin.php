@@ -36,10 +36,15 @@ if (isset($_POST["login"])) {
 
         }else {
             echo 'Senhas não batem';
+            $_SESSION['erroSenha']=true;
+            $_SESSION['erroEmail']=null;
             header('Location: ../views/login.php');
         }
     }else {
         echo 'email não cadastrado';
+        $_SESSION['erroEmail']=true;
+        
+        $_SESSION['erroSenha']=null;
         header('Location: ../views/login.php');
     }
 

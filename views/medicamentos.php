@@ -31,12 +31,16 @@
 
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta = $GLOBALS['conn']->query($sql);
+        $verificar = mysqli_num_rows($consulta);
+            
+            if (empty($verificar)){
+                echo "<button class='alertInfo'>Nenhum medicamento cadastrado</button>";
+            } else {
         while ($row = $consulta->fetch_assoc()){   
         echo "<button type='submit' name='nome_medicamento' value='".$row['nome_medicamento']."'  class='container-data'>".$row['nome_medicamento']."</button>";
         }
-        } else {
-            echo "<button class='alertInfo'>Nenhum medicamento cadastrado</button>";
         }
+    } 
         ?>
         <hr>
         <section>

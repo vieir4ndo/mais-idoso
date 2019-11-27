@@ -60,15 +60,12 @@ if ($_SESSION['logado']==true){
         <hr>
         <?php
         }
-        } else {
-            echo "<button class='alertInfo'>Nenhum lembrete med cadastrado</button>";
-        }
-
+        } 
         $sql = "SELECT * from consulta where usuario_idusuario={$id}";
 
         if ($GLOBALS['conn']->query($sql)==true){
-        $consulta = $GLOBALS['conn']->query($sql);
-        while ($row = $consulta->fetch_assoc()){   
+        $consulta1 = $GLOBALS['conn']->query($sql);
+        while ($row = $consulta1->fetch_assoc()){   
         ?>
         <section class="lembrete">
         <label class="titulo-lembrete">CONSULTAS</label><img class="img-lembrete" src="img/cancelar.png"><br/><br/>
@@ -79,9 +76,15 @@ if ($_SESSION['logado']==true){
         <hr>
         <?php
         }
-        } else {
-            echo "<button class='alertInfo'>Nenhum lembrete con cadastrado</button>";
+    }
+    $verificar = mysqli_num_rows($consulta);
+    
+    $verificar1 = mysqli_num_rows($consulta1);
+            
+        if (empty($verificar) && empty($verificar1)){
+            echo "<button class='alertInfo'>Nenhum lembrete cadastrado</button>";
         }
+
         ?>
     </section>      
 </body>

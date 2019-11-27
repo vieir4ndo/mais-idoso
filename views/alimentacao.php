@@ -35,11 +35,15 @@
                
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta = $GLOBALS['conn']->query($sql);
+        $verificar = mysqli_num_rows($consulta);
+            
+            if (empty($verificar)){
+                echo "<button class='alertInfo'>Nenhum alimento cadastrado</button>";
+            } else {
         while ($row = $consulta->fetch_assoc()){   
         echo "<button type='submit' name='alimento_restricaoAlimentar' value='".$row['alimento_restricaoAlimentar']."'  class='container-data'>".$row['alimento_restricaoAlimentar']."</button>";
         }
-        } else {
-            echo "<button class='alertInfo'>Nenhum alimento cadastrado</button>";
+        }
         }
         ?>
         <hr>

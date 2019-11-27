@@ -167,14 +167,20 @@
         $sql = "SELECT nome_doenca from doenca where usuario_idusuario={$id}";
 
         if ($GLOBALS['conn']->query($sql)==true){
+            
             $consulta = $GLOBALS['conn']->query($sql);
-            while ($row = $consulta->fetch_assoc()){   
+
+            $verificar = mysqli_num_rows($consulta);
+            
+            if (empty($verificar)){
+                echo "<button class='alertInfo'>Nenhuma doenca cadastrado</button>";
+            }else{
+                while ($row = $consulta->fetch_assoc()){   
                 echo "<button type='submit' name='nome_doenca' value='".$row['nome_doenca']."'  class='container-data'>".$row['nome_doenca']."</button>";
             }
-            } else {
-                echo "<button class='alertInfo'>Nenhuma doenca cadastrado</button>";
             }
-
+        } 
+               
         ?>
         <hr>
         <section>

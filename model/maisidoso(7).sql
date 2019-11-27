@@ -1,32 +1,8 @@
--- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: 26-Nov-2019 às 21:03
--- Versão do servidor: 10.1.35-MariaDB
--- versão do PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `maisidoso`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `atividadefisica`
---
 
 CREATE TABLE `atividadefisica` (
   `idatividadefisica` int(11) NOT NULL,
@@ -36,12 +12,6 @@ CREATE TABLE `atividadefisica` (
   `data_atividadefisica` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `cartilha`
---
-
 CREATE TABLE `cartilha` (
   `idcartilha` int(11) NOT NULL,
   `titulo_cartilha` text COLLATE latin1_general_ci NOT NULL,
@@ -49,10 +19,6 @@ CREATE TABLE `cartilha` (
   `sintomas_cartilha` text COLLATE latin1_general_ci NOT NULL,
   `prevencao_cartilha` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
---
--- Extraindo dados da tabela `cartilha`
---
 
 INSERT INTO `cartilha` (`idcartilha`, `titulo_cartilha`, `fatores_cartilha`, `sintomas_cartilha`, `prevencao_cartilha`) VALUES
 (1, 'Alzheimer', ' para a maioria das pessoas, a doença de alzheimer é causada por uma combinação de fatores genéticos, de estilo de vida e ambientais que afetam o cérebro ao longo do tempo.', '\nrepetir afirmações e perguntas repetidamente, sem perceber que elas já fizeram a pergunta antes\nesquecer conversas, compromissos ou eventos\nperca-se em lugares familiares\neventualmente, esqueça os nomes dos membros da família e objetos do cotidiano\ntenha dificuldade em encontrar as palavras certas para identificar objetos, expressar pensamentos ou participar de conversas\ndepressão\napatia\nretraimento social\nmudanças de humor\ndesconfiança nos outros\nirritabilidade e agressividade\nmudanças nos hábitos de sono\nhábito de vagar\nperda de inibições\ndelírios, como acreditar que algo foi roubado.\n', '\nincurável, o alzheimer ainda não possui uma forma de prevenção. os médicos acreditam que manter a cabeça ativa e uma boa vida social permite, pelo menos, retardar a manifestação da doença. entre as atividades recomendadas para estimular a memória, estão: leitura constante, exercícios de aritmética, jogos inteligentes e participação em atividades de grupo.\n'),
@@ -70,12 +36,6 @@ INSERT INTO `cartilha` (`idcartilha`, `titulo_cartilha`, `fatores_cartilha`, `si
 (13, 'Osteoporose', '\r\n– Predisposição genética\r\n\r\n– Envelhecimento\r\n\r\n– Dieta pobre em cálcio\r\n\r\n– Sedentarismo\r\n\r\n– Abuso de álcool\r\n\r\n– Tabagismo\r\n\r\n– Menopausa\r\n\r\n– Uso abusivo de remédios à base de corticoides\r\n\r\n– Diabetes\r\n\r\n– Disfunções na tireoide\r\n', 'A osteoporose é silenciosa e não apresenta sintomas. Em geral, o problema só é detectado em estado avançado, com a deformação de ossos que provoca dor crônica ou quando aparece uma fratura.', '\r\nA ingestão de cálcio é imprescindível para a renovação óssea: o ideal é 1 000 miligramas por dia – o equivalente a quatro porções lácteas. Embora outros alimentos também tenham alto teor de cálcio, como como brócolis e folhas verde-escuras, o nutriente é mais abundante em leite e derivados.\r\n\r\nA vitamina D é importante nesse processo. Sem ela, a absorção do mineral fica prejudicada. A recomendação é de 400 e 600 miligramas diários dessa vitaminas. Como poucos alimentos são ricos no nutriente, o banho de sol é a solução – com 15 minutos diários, sem protetor, a vitamina D chega ao intestino e ajuda a incorporar o cálcio.\r\n\r\nExercícios físicos de impacto, que estimulam a formação de massa óssea, também são imprescindíveis. E fora que estimulam o ganho de massa e força muscular, um fator importante na prevenção das quedas.\r\n'),
 (14, 'Infarto', '\r\nO infarto ocorre quando uma ou mais artérias que levam oxigênio ao coração (chamadas artérias coronárias) são obstruídas abruptamente por um coágulo de sangue formado em cima de uma placa de gordura (ateroma) existente na parede interna da artéria.\r\nA presença de placas de gordura no sangue é chamada de aterosclerose (placa de colesterol). O paciente que possui placas de aterosclerose com algum grau de obstrução na luz de uma artéria tem a chamada DAC – doença arterial coronariana. Conforme a placa de gordura (ateroma) cresce, ela leva à obstrução cada vez maior da coronária e pode levar ao sintoma de dor no peito aos esforços (angina). Em geral, uma pessoa tem sintoma de dor no peito aos esforços quando a obstrução é maior que 70%.\r\n', '\r\nVômitos\r\nSuor frio\r\nFraqueza Intensa\r\nPalpitações\r\nFalta de ar\r\nSensação de ansiedade\r\nFadiga\r\nSonolência\r\nDesmaio, tontura ou vertigem\r\n\r\n\r\n', '\r\nO meio mais eficaz é o controle dos fatores de risco, a partir da prática regular de exercícios físicos, da redução do nível de colesterol no sangue, do abandono do cigarro, e do monitoramento da pressão arterial e do diabetes mellitus. As dietas alimentares, o uso de remédios (apenas quando indicados pelo médico) e a prática esportiva são determinantes para evitar o entupimento das artérias.\r\n');
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `consulta`
---
-
 CREATE TABLE `consulta` (
   `idconsulta` int(11) NOT NULL,
   `usuario_idusuario` int(11) NOT NULL,
@@ -86,22 +46,6 @@ CREATE TABLE `consulta` (
   `medico_consulta` varchar(100) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
---
--- Extraindo dados da tabela `consulta`
---
-
-INSERT INTO `consulta` (`idconsulta`, `usuario_idusuario`, `tipo_consulta`, `local_consulta`, `horario_consulta`, `data_consulta`, `medico_consulta`) VALUES
-(1, 0, 12345, '12345', '12:45:00', '0000-00-00', '23456'),
-(3, 21, 123456, '234567', '23:59:00', '0000-00-00', '123456'),
-(4, 21, 32456, 'DGBD', '23:59:00', '0000-00-00', '23456789'),
-(5, 21, 5675, '23456', '12:45:00', '0000-00-00', '123456');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `doenca`
---
-
 CREATE TABLE `doenca` (
   `iddoenca` int(11) NOT NULL,
   `usuario_idusuario` int(11) NOT NULL,
@@ -109,26 +53,6 @@ CREATE TABLE `doenca` (
   `tipo_doenca` int(11) NOT NULL,
   `sintomas_doenca` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `lembrete`
---
-
-CREATE TABLE `lembrete` (
-  `idlembrete` int(11) NOT NULL,
-  `usuario_idusuario` int(11) NOT NULL,
-  `titulo_lembrete` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `horario_lembrete` time NOT NULL,
-  `data_lembrete` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `medicamento`
---
 
 CREATE TABLE `medicamento` (
   `idmedicamento` int(11) NOT NULL,
@@ -139,12 +63,6 @@ CREATE TABLE `medicamento` (
   `dosagem_medicamento` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `restricaoalimentar`
---
-
 CREATE TABLE `restricaoalimentar` (
   `idrestricaoAlimentar` int(11) NOT NULL,
   `usuario_idusuario` int(11) NOT NULL,
@@ -152,12 +70,6 @@ CREATE TABLE `restricaoalimentar` (
   `grupo_restricaoAlimentar` int(11) NOT NULL,
   `razao_restricaoAlimentar` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuario`
---
 
 CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL,
@@ -172,124 +84,52 @@ CREATE TABLE `usuario` (
   `tipoSanguineo_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`idusuario`, `email_usuario`, `senha_usuario`, `nome_usuario`, `sobrenome_usuario`, `genero_usuario`, `dataNascimento_usuario`, `altura_usuario`, `peso_usuario`, `tipoSanguineo_usuario`) VALUES
-(21, 'jeferson.luis.santin@gmail.com', '123', '1234', '1234', 1, '0045-03-12', 1234, 1234, 1);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `atividadefisica`
---
 ALTER TABLE `atividadefisica`
   ADD PRIMARY KEY (`idatividadefisica`),
   ADD KEY `atividadeFisica_FKIndex1` (`usuario_idusuario`),
   ADD KEY `IFK_Rel_04` (`usuario_idusuario`);
 
---
--- Indexes for table `cartilha`
---
 ALTER TABLE `cartilha`
   ADD PRIMARY KEY (`idcartilha`);
 
---
--- Indexes for table `consulta`
---
 ALTER TABLE `consulta`
   ADD PRIMARY KEY (`idconsulta`),
   ADD KEY `consulta_FKIndex1` (`usuario_idusuario`),
   ADD KEY `IFK_Rel_01` (`usuario_idusuario`);
 
---
--- Indexes for table `doenca`
---
 ALTER TABLE `doenca`
   ADD PRIMARY KEY (`iddoenca`),
   ADD KEY `doenca_FKIndex1` (`usuario_idusuario`),
   ADD KEY `IFK_Rel_05` (`usuario_idusuario`);
 
---
--- Indexes for table `lembrete`
---
-ALTER TABLE `lembrete`
-  ADD PRIMARY KEY (`idlembrete`),
-  ADD KEY `lembrete_FKIndex1` (`usuario_idusuario`),
-  ADD KEY `IFK_Rel_03` (`usuario_idusuario`);
-
---
--- Indexes for table `medicamento`
---
 ALTER TABLE `medicamento`
   ADD PRIMARY KEY (`idmedicamento`),
   ADD KEY `medicamento_FKIndex1` (`usuario_idusuario`),
   ADD KEY `IFK_Rel_04` (`usuario_idusuario`);
 
---
--- Indexes for table `restricaoalimentar`
---
 ALTER TABLE `restricaoalimentar`
   ADD PRIMARY KEY (`idrestricaoAlimentar`),
   ADD KEY `restricaoAlimentar_FKIndex1` (`usuario_idusuario`),
   ADD KEY `IFK_Rel_02` (`usuario_idusuario`);
 
---
--- Indexes for table `usuario`
---
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idusuario`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `atividadefisica`
---
 ALTER TABLE `atividadefisica`
   MODIFY `idatividadefisica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
---
--- AUTO_INCREMENT for table `consulta`
---
 ALTER TABLE `consulta`
   MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT for table `doenca`
---
 ALTER TABLE `doenca`
   MODIFY `iddoenca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
---
--- AUTO_INCREMENT for table `lembrete`
---
-ALTER TABLE `lembrete`
-  MODIFY `idlembrete` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `medicamento`
---
 ALTER TABLE `medicamento`
   MODIFY `idmedicamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- AUTO_INCREMENT for table `restricaoalimentar`
---
 ALTER TABLE `restricaoalimentar`
   MODIFY `idrestricaoAlimentar` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `usuario`
---
 ALTER TABLE `usuario`
   MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

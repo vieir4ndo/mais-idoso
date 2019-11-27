@@ -9,10 +9,25 @@
 </head>
 
 <body>
+
     <form name="formLogin" method="post" action="../controller/scriptLogin.php">
         <section class="container">
             <img id="logo-principal" src="../img/logo-menor.png">
             <hr />
+            <?php
+
+            session_start();
+            if (isset($_SESSION['erroSenha'])){
+            if ($_SESSION['erroSenha']==true){
+            echo "<button class='alertErro'>Senha incorreta, tente novamente.</button><hr>";
+            }
+            }
+            if (isset($_SESSION['erroEmail'])){
+            if ($_SESSION['erroEmail']==true){
+            echo "<button class='alertErro'>Não foi possível encontrar sua conta, tente novamente.</button><hr>";
+            }
+            }
+            ?>
             <h1 class="titulo">BEM-VINDO</h1>
             <label class="descricao">E-MAIL</label>
             <input type="email" name="email" required>

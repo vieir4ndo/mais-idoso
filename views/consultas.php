@@ -33,11 +33,16 @@
 
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta = $GLOBALS['conn']->query($sql);
+        
+        $verificar = mysqli_num_rows($consulta);
+            
+            if (empty($verificar)){
+                echo "<button class='alertInfo'>Nenhuma consulta cadastrado</button>";
+            }else {
         while ($row = $consulta->fetch_assoc()){   
         echo "<button type='submit' name='tipo_consulta' value='".$row['tipo_consulta']."'  class='container-data'>".$row['tipo_consulta']."</button>";
         }
-        } else {
-            echo "<button class='alertInfo'>Nenhuma consulta cadastrado</button>";
+        }            
         }
         ?>
         <hr>

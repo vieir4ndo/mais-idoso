@@ -57,13 +57,19 @@ function getMedico_consulta(){
  }
  
 function setData_consulta($data){
-    $data_consulta = $data;
+    $this->data_consulta = $data;
 }
  //MÉTODOS BANCO
 function add($idUsuario){
     //codigo fonte
 
-    $sql = "INSERT INTO consulta (usuario_idusuario, tipo_consulta, local_consulta, data_consulta, horario_consulta, medico_consulta)
+    $sql = "INSERT INTO 
+    consulta (usuario_idusuario, 
+    tipo_consulta, 
+    local_consulta,
+     data_consulta, 
+     horario_consulta,
+      medico_consulta)
      VALUES ({$idUsuario},
      '{$this->tipo_consulta}',
     '{$this->local_consulta }',

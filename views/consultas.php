@@ -22,7 +22,7 @@
     </header>
 
     <section class="container">
-        <img id="logo-principal" src="../img/consultas.png">
+        <img id="logo-principal" src="../img/consultas.png">    
         <hr />
         <form name="formConConsultas" method="POST" action="manterConsultas.php">
         <?php

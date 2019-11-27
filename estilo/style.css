@@ -247,12 +247,14 @@ input[type=text] {
 .titulo-lembrete{
   float: left;
   width: 76%;
+  padding-right:2%;
   font-size: 550%;
   display: block;
 }
 .img-lembrete{
   float: right;
   width:20%;
+  padding-left: 2%;;
   display: block;
 }
 #incluir {

@@ -15,6 +15,8 @@ $horario_consulta = $_POST['hora'];
 $medico_consulta = $_POST['medico'];
 $id = $_SESSION['user']->getIdusuario();
 
+echo $data_consulta;
+
 if (isset($_POST["editar"])) {
 
 	$_SESSION['consulta']->setTipo_consulta($tipo_consulta);
@@ -39,7 +41,7 @@ header('Location: ../views/consultas.php');
 	
 	$_SESSION['consulta']->add($id);
 	
-	//header('Location: ../views/consultas.php');
+	header('Location: ../views/consultas.php');
 	
 	}elseif (isset($_POST["deletar"])){
 	

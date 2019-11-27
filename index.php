@@ -40,28 +40,49 @@ if ($_SESSION['logado']==true){
         <hr />
         <?php
         require_once "model/conexao.php";
-        require_once "/model/classes/medicamento.php";
-        //require_once "/model/classes/consulta.php";
+        require_once "model/classes/medicamento.php";
+        require_once "model/classes/consulta.php";
 
         $id = $_SESSION['user']->getIdusuario();
 
         $sql = "SELECT * from medicamento where usuario_idusuario={$id}";
-    
+
+        if ($GLOBALS['conn']->query($sql)==true){
+        $consulta = $GLOBALS['conn']->query($sql);
+        while ($row = $consulta->fetch_assoc()){   
         ?>
         <section class="lembrete">
         <label class="titulo-lembrete">MEDICAMENTO</label> <img class="img-lembrete" src="img/cancelar.png"><br/><br/>
-        <label class="descricao-lembrete">Nome: </label><br/>
-        <label class="descricao-lembrete">Horário: </label><br/>
+        <label class="descricao-lembrete">Nome:<?php echo $row['nome_medicamento']?></label><br/>
+        <label class="descricao-lembrete">Horário:<?php echo $row['horario_medicamento']?></label><br/>
+        <label class="descricao-lembrete">Dosagem:<?php echo $row['dosagem_medicamento']?></label><br/>
         </section>
         <hr>
+        <?php
+        }
+        } else {
+            echo "<button class='alertInfo'>Nenhum lembrete med cadastrado</button>";
+        }
+
+        $sql = "SELECT * from consulta where usuario_idusuario={$id}";
+
+        if ($GLOBALS['conn']->query($sql)==true){
+        $consulta = $GLOBALS['conn']->query($sql);
+        while ($row = $consulta->fetch_assoc()){   
+        ?>
         <section class="lembrete">
         <label class="titulo-lembrete">CONSULTAS</label><img class="img-lembrete" src="img/cancelar.png"><br/><br/>
-        <label class="descricao-lembrete">Local: </label><br/>
-        <label class="descricao-lembrete">Data: </label><br/>
-        <label class="descricao-lembrete">Horário: </label><br/>
+        <label class="descricao-lembrete">Local:<?php echo $row['local_consulta']?></label><br/>
+        <label class="descricao-lembrete">Data:<?php echo $row['data_consulta']?></label><br/>
+        <label class="descricao-lembrete">Horário:<?php echo $row['horario_consulta']?></label><br/>
         </section>
         <hr>
-
+        <?php
+        }
+        } else {
+            echo "<button class='alertInfo'>Nenhum lembrete con cadastrado</button>";
+        }
+        ?>
     </section>      
 </body>
 <?php 

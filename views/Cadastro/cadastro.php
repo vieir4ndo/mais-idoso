@@ -12,7 +12,6 @@
         <section class="container">
             <img id="logo-principal" src="../../img/logo-menor.png">
             <hr />
-            <h1 class="titulo">CADASTRO</h1>
             <?php
             session_start();
             
@@ -27,6 +26,8 @@
                 }
             }
             ?>
+            <h1 class="titulo">CADASTRO</h1>
+          
             <label class="descricao">E-MAIL</label>
             <input type="email" name="email" required>
             <label class="descricao">SENHA</label>

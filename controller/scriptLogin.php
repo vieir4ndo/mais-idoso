@@ -2,6 +2,11 @@
 
 require_once "../model/conexao.php";
 require_once "../model/classes/usuario.php";
+require_once "../model/classes/consulta.php";
+require_once "../model/classes/alimentacao.php";
+require_once "../model/classes/doenca.php";
+require_once "../model/classes/medicamento.php";
+require_once "../model/classes/usuario.php";
 
 session_start();
 
@@ -20,6 +25,10 @@ if (isset($_POST["login"])) {
         if ($consulta['senha_usuario']==$senha) {
 
             $_SESSION['user'] = new Usuario();
+            $_SESSION['medicamento'] = new Medicamento();
+            $_SESSION['doenca'] = new Doenca();
+            $_SESSION['alimentacao'] = new Alimentacao();
+            $_SESSION['consulta'] = new Consulta();
 
             $_SESSION['user']->setIdusuario($consulta['idusuario']);
             $_SESSION['user']->setNome_usuario($consulta['nome_usuario']);

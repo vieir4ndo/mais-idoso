@@ -5,7 +5,6 @@ require_once "../model/classes/usuario.php";
 
 session_start();
 
-
 $nome = $_POST['nome'];
 $tipo = $_POST['tipo'];
 $sintomas = $_POST['sintomas'];
@@ -53,7 +52,7 @@ header('Location: ../views/perfil.php');
 header('Location: ../views/perfil.php');
 
 } else {
-header('Location: ../views/cadastro/cadastro3.php');
+header('Location: ../views/Cadastro/cadastro3.php');
 
 }
 

@@ -15,7 +15,7 @@
     </header>
     <form name="formConsulta" method="POST" action="../controller/scriptConsulta.php">
     <section class="container">
-        <img id="logo-principal" src="../img/consulta.png">
+        <img id="logo-principal" src="../img/consultas.png">
         <hr />
         <?php
             require_once "../model/conexao.php";
@@ -32,19 +32,16 @@
                 $medico ='';
             }else{
 
-            $tipo_consulta  = $_POST['tipo_consulta'];
+            $idConsulta   = $_POST['idconsulta'];
 
             $id = $_SESSION['user']->getIdusuario();
 
-            $sql = "Select * from consulta where tipo_consulta='{$tipo_consulta}' and usuario_idusuario={$id}";
+            $sql = "Select * from consulta where idconsulta='{$idConsulta}' and usuario_idusuario={$id}";
 
             $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 
             if (isset($consulta)) {
-                
                 $consulta = $consulta->fetch_assoc();
-
-                $idConsulta = $consulta['idconsulta'];
                 $tipo_consulta = $consulta['tipo_consulta'];
                 $local=$consulta['local_consulta'];
                 $data = $consulta['data_consulta'];
@@ -59,7 +56,27 @@
             }
 
         echo '<label class="descricao">Tipo:</label>';
-        echo '<input type="text" name="tipo" value="'.$tipo_consulta.'" required>';
+?>
+    <select name="tipo">
+    <option value="0"<?php if ($tipo_consulta==0){ echo 'selected';}?>>Alergologia e Imunologia</option>
+    <option value="1"<?php if ($tipo_consulta==1){ echo 'selected';}?>>Angiologia</option>
+    <option value="2"<?php if ($tipo_consulta==2){ echo 'selected';}?>>Oncologia</option>
+    <option value="3"<?php if ($tipo_consulta==3){ echo 'selected';}?>>Cardiologia</option>
+    <option value="4"<?php if ($tipo_consulta==4){ echo 'selected';}?>>Dermatologia</option>
+    <option value="5"<?php if ($tipo_consulta==5){ echo 'selected';}?>>Endocrinologia </option>
+    <option value="6"<?php if ($tipo_consulta==6){ echo 'selected';}?>>Ginecologia e Obstetrícia</option>
+    <option value="7"<?php if ($tipo_consulta==7){ echo 'selected';}?>>Hematologia e Hemoterapia</option>
+    <option value="8"<?php if ($tipo_consulta==8){ echo 'selected';}?>>Infectologia</option>
+    <option value="9"<?php if ($tipo_consulta==9){ echo 'selected';}?>>Neurologia</option>
+    <option value="10"<?php if ($tipo_consulta==10){ echo 'selected';}?>>Nutrologia</option>
+    <option value="11"<?php if ($tipo_consulta==11){ echo 'selected';}?>>Ortopedia e Traumatologia</option>
+    <option value="12"<?php if ($tipo_consulta==12){ echo 'selected';}?>>Otorrinolaringologia</option>
+    <option value="13"<?php if ($tipo_consulta==13){ echo 'selected';}?>>Pneumologia</option>
+    <option value="14"<?php if ($tipo_consulta==14){ echo 'selected';}?>>Reumatologia</option>
+    <option value="15"<?php if ($tipo_consulta==15){ echo 'selected';}?>>Urologia</option>
+    </select>
+<?php
+
         echo '<label class="descricao">Local:</label>';
         echo '<input type="text" name="local" value="'.$local.'">';
         echo '<label class="descricao">Data:</label>';

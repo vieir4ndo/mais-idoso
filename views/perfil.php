@@ -56,9 +56,9 @@
         echo '<section class="container">';
         echo '<h1 class="titulo">INFORMAÇÕES MÉDICAS</h1>';
         echo '<label class="descricao">ALTURA:</label>';
-        echo '<input type="text" name="altura" value="'.$consulta['altura_usuario'].'">';
+        echo '<input type="number" step="0.01"name="altura" value="'.$consulta['altura_usuario'].'">';
         echo '<label class="descricao">PESO:</label>';
-        echo '<input type="text" name="peso" value="'.$consulta['peso_usuario'].'">';
+        echo '<input type="number" step="0.01" name="peso" value="'.$consulta['peso_usuario'].'">';
         echo '<label class="descricao">TIPO SANGUÍNEO:</label>';
         if ($consulta['tipoSanguineo_usuario'] == "0") {
             echo '<select name="tipoSanguineo">';

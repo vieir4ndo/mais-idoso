@@ -15,9 +15,9 @@
         <hr />
         <h3 class="titulo2">AGORA, VAMOS PRECISAR DE SUAS INFORMAÇÕES MÉDICAS:</h3>
         <label class="descricao">ALTURA:</label>
-        <input type="text" name="altura">
+        <input type="number" step="0.001" name="altura">
         <label class="descricao">PESO:</label>
-        <input type="text" name="peso">
+        <input type="number" step="0.001" name="peso">
         <label class="descricao">TIPO SANGUÍNEO:</label>
         <select name="tipoSanguineo">
             <option value="1">A+</option>

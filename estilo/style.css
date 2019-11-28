@@ -144,6 +144,18 @@ input[type=text] {
     font-family: "Alternate Gothic No1 D"; 
     
   }
+  input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 250%;
+    font-family: "Alternate Gothic No1 D"; 
+    
+  }
 
   input[type=password] {
     width: 100%;
@@ -238,24 +250,27 @@ input[type=text] {
 }
 .descricao-lembrete{
   width: 100%;
-  padding-right:2%;
-  padding-left:2%;
   clear: both;
-  font-size: 400%;
-
+  font-size: 250%;
+  padding-left:2.5%;
 }
 .titulo-lembrete{
   float: left;
   width: 76%;
+  padding-left: 2%;;
+  font-size: 400%;
+  display: block;
+}
+.botao-lembrete{
+  float: right;
+  width:20%;
+  border: none;
+  background-color: transparent;
   padding-right:2%;
-  font-size: 550%;
   display: block;
 }
 .img-lembrete{
-  float: right;
-  width:20%;
-  padding-left: 2%;;
-  display: block;
+  width:100%;
 }
 #incluir {
     float: right;
@@ -302,20 +317,39 @@ p {
 .container-campo label{
     float: right;
 }
-.container-data {
+.container-consulta {
     border: solid transparent;
     background-color: transparent;
     border-radius: 20px;
-    padding: 4%;
+    padding-right: 4%;
+    padding-top: 2%;
+    padding-bottom: 1% ;
+    padding-left: 4%;
     width: 100%;
     font-size: 350%;
     display: block;
     text-align:left;
 }
-.container-data:hover {
+.container-data {
+  border: solid transparent;
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 4%;
+  width: 100%;
+  font-size: 350%;
+  display: block;
+  text-align:left;
+}
+.container-data:hover, .container-consulta:hover {
     border: solid yellow;
     background-color: yellow;
     border-radius: 20px;
+}
+.container-consulta p{
+  font-size: 50%;
+  clear: both;
+  padding-bottom: 0%;
+
 }
 .container button {
     text-decoration: none;
@@ -459,6 +493,10 @@ p {
     display: block;
     text-align:left;
     font-family: "Alternate Gothic No1 D"; 
+  }
+  .texto-consulta{
+    clear: both;
+    font-size: 10%;
   }
 
 /**LIMBO**/

@@ -84,10 +84,20 @@ CREATE TABLE `usuario` (
   `tipoSanguineo_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+CREATE TABLE `relatarProblema` (
+  `idrelatarproblema` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
 ALTER TABLE `atividadefisica`
   ADD PRIMARY KEY (`idatividadefisica`),
   ADD KEY `atividadeFisica_FKIndex1` (`usuario_idusuario`),
-  ADD KEY `IFK_Rel_04` (`usuario_idusuario`);
+  ADD KEY `IFK_Rel_03` (`usuario_idusuario`);
+
+ALTER TABLE `relatarProblema`
+  ADD PRIMARY KEY (`idrelatarproblema`),
+  ADD KEY `relatarProblema_FKIndex1` (`usuario_idusuario`),
+  ADD KEY `IFK_Rel_06` (`usuario_idusuario`);
 
 ALTER TABLE `cartilha`
   ADD PRIMARY KEY (`idcartilha`);

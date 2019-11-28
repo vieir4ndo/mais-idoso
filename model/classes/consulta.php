@@ -56,8 +56,8 @@ function getMedico_consulta(){
  	$this->medico_consulta= $medico;
  }
  
-function setData_consulta($data){
-    $this->data_consulta = $data;
+function setData_consulta($data_consulta){
+    $this->data_consulta = $data_consulta;
 }
  //MÉTODOS BANCO
 function add($idUsuario){

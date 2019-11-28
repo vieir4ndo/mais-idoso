@@ -52,7 +52,7 @@ if ($_SESSION['logado']==true){
         while ($row = $consulta->fetch_assoc()){   
         ?>
         <section class="lembrete">
-        <label class="titulo-lembrete">MEDICAMENTO</label> <img class="img-lembrete" src="img/cancelar.png"><br/><br/>
+        <label class="titulo-lembrete">MEDICAMENTO</label><button class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
         <label class="descricao-lembrete">Nome:<?php echo $row['nome_medicamento']?></label><br/>
         <label class="descricao-lembrete">Horário:<?php echo $row['horario_medicamento']?></label><br/>
         <label class="descricao-lembrete">Dosagem:<?php echo $row['dosagem_medicamento']?></label><br/>
@@ -61,14 +61,14 @@ if ($_SESSION['logado']==true){
         <?php
         }
         } 
-        $sql = "SELECT * from consulta where usuario_idusuario={$id}";
+        $sql = "SELECT local_consulta, horario_consulta, DATE_FORMAT(data_consulta, '%d/%m/%Y') as data_consulta from consulta where usuario_idusuario={$id}";
 
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta1 = $GLOBALS['conn']->query($sql);
         while ($row = $consulta1->fetch_assoc()){   
         ?>
         <section class="lembrete">
-        <label class="titulo-lembrete">CONSULTAS</label><img class="img-lembrete" src="img/cancelar.png"><br/><br/>
+        <label class="titulo-lembrete">CONSULTA</label><button class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
         <label class="descricao-lembrete">Local:<?php echo $row['local_consulta']?></label><br/>
         <label class="descricao-lembrete">Data:<?php echo $row['data_consulta']?></label><br/>
         <label class="descricao-lembrete">Horário:<?php echo $row['horario_consulta']?></label><br/>

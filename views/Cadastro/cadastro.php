@@ -13,6 +13,20 @@
             <img id="logo-principal" src="../../img/logo-menor.png">
             <hr />
             <h1 class="titulo">CADASTRO</h1>
+            <?php
+            session_start();
+            
+            if (isset($_SESSION['erroEmailCadastrado'])){
+            if ($_SESSION['erroEmailCadastrado']==true){
+            echo '<button class="alertErro">Este e-mail já está em uso, tente outro.</button>';
+            }
+        }
+        if (isset($_SESSION['erroSenhas'])){
+            if ($_SESSION['erroSenhas']==true){
+                echo '<button class="alertErro">Essas senhas não coincidem, tente novamente.</button>';
+                }
+            }
+            ?>
             <label class="descricao">E-MAIL</label>
             <input type="email" name="email" required>
             <label class="descricao">SENHA</label>

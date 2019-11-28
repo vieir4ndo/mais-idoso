@@ -113,10 +113,12 @@ function addUsuario($email, $senha, $senhaConfirma){
     echo "Error:" . $sql . "<br>" . $GLOBALS['conn']->error;
     }
     }else {
-        echo "Senhas não batem";
+        $_SESSION['erroSenhas']=true;
+        header('Location: ../views/Cadastro/cadastro.php');
     }
     } else {
-        echo 'email cadastrado';
+        $_SESSION['erroEmailCadastrado']=true;
+        header('Location: ../views/Cadastro/cadastro.php');
     }
 }
 

@@ -10,7 +10,7 @@ $senha1 = $_POST['senha'];
 $senha2 = $_POST['senha1'];
 $_SESSION['user'] = new Usuario();
 //Insere no Banco de Dados, usando Prepared Statements.
-$_SESSION['user']->addUsuario($email, $senha1, $senha1);
+$_SESSION['user']->addUsuario($email, $senha1, $senha2);
 }elseif (isset($_POST["cad1"])){
         $nome = $_POST['nome'];
         $sobrenome = $_POST['sobrenome'];

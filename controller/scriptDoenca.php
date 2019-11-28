@@ -39,7 +39,7 @@ $_SESSION['doenca']->setTipo_doenca($tipo);
 $_SESSION['doenca']->setSintomas_doenca($sintomas);
 $_SESSION['doenca']->add($id);
 
-header('Location: ../views/cadastro/cadastro3.php');
+header('Location: ../views/Cadastro/cadastro3.php');
 
 } elseif (isset($_POST["deletar"])) {
 $sql = "Select * from doenca where nome_doenca ='". $nome ."' and usuario_idusuario='".$id."'";

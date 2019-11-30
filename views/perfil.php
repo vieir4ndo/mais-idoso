@@ -60,99 +60,25 @@
         echo '<label class="descricao">PESO:</label>';
         echo '<input type="number" step="0.01" name="peso" value="'.$consulta['peso_usuario'].'">';
         echo '<label class="descricao">TIPO SANGUÍNEO:</label>';
-        if ($consulta['tipoSanguineo_usuario'] == "0") {
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="0" selected >Selecione</option>';
-            echo '<option value="1" >A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8">O-</option>';
-        }elseif ($consulta['tipoSanguineo_usuario'] == "1") {
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1" selected >A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8">O-</option>';
-        } elseif ($consulta['tipoSanguineo_usuario'] == "2"){
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1">A+</option>';
-            echo '<option value="2" selected>A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8">O-</option>';
-        } elseif ($consulta['tipoSanguineo_usuario'] == "3"){
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1">A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3" selected>B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8">O-</option>';
-        } elseif ($consulta['tipoSanguineo_usuario'] == "4"){
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1">A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4" selected>B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8">O-</option>';
-        }elseif ($consulta['tipoSanguineo_usuario'] == "5"){
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1">A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5" selected>AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8">O-</option>';
-        }elseif ($consulta['tipoSanguineo_usuario'] == "6"){
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1">A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6" selected>AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8">O-</option>';
-        }elseif ($consulta['tipoSanguineo_usuario'] == "7"){
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1">A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7" selected>O+</option>';
-            echo '<option value="8">O-</option>';
-        }elseif ($consulta['tipoSanguineo_usuario'] == "8"){
-            echo '<select name="tipoSanguineo">';
-            echo '<option value="1">A+</option>';
-            echo '<option value="2">A-</option>';
-            echo '<option value="3">B+</option>';
-            echo '<option value="4">B-</option>';
-            echo '<option value="5">AB+</option>';
-            echo '<option value="6">AB-</option>';
-            echo '<option value="7">O+</option>';
-            echo '<option value="8" selected>O-</option>';
-        }
         ?>
+            <select name="tipoSanguineo">
+            <option value="0" <?php if ($consulta['tipoSanguineo_usuario'] == 0) { echo 'selected';} ?>>Selecione</option>
+            <option value="1" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 1) { echo 'selected';} ?>>A+</option>
+            <option value="2" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 2) { echo 'selected';} ?>>A-</option>
+            <option value="3" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 3) { echo 'selected';} ?>>B+</option>
+            <option value="4" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 4) { echo 'selected';} ?>>B-</option>
+            <option value="5" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 5) { echo 'selected';} ?>>AB+</option>
+            <option value="6" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 6) { echo 'selected';} ?>>AB-</option>
+            <option value="7" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 7) { echo 'selected';} ?>>O+</option>
+            <option value="8" 
+            <?php if ($consulta['tipoSanguineo_usuario'] == 8) { echo 'selected';} ?>>O-</option>
         </select>
         <hr>
         <input type="submit" name="infoMedicas" class="button" value="SALVAR">

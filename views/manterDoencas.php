@@ -30,61 +30,13 @@
             $nome='';
             $tipo='';
             $sintomas='';
-            echo '<label class="descricao">NOME:</label>';
-            echo '<input type="text" name="nome" value="'.$nome.'">';
-            echo '<label class= "descricao"> TIPO:</label>';
-            echo '<select type="text" name="tipo" value="'.$tipo.'">';
-            echo '<option value="0">Infecciosas e parasitárias</option>';
-            echo '<option value="1">Neoplasias (tumores)</option>';
-            echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-            echo '<option value="3">Transtornos imunitários</option>';
-            echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-            echo '<option value="5">Transtornos mentais e comportamentais</option>';
-            echo '<option value="6">Doenças do sistema nervoso</option>';
-            echo '<option value="7">Doenças oculares e anexos</option>';
-            echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-            echo '<option value="9">Doenças do aparelho circulatório</option>';
-            echo '<option value="10">Doenças do aparelho respiratório</option>';
-            echo '<option value="11">Doenças do aparelho digestivo</option>';
-            echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-            echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-            echo '<option value="14">Doenças do aparelho geniturinário</option>';
-            echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-            echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-            echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-            echo '</select>';
-            echo '<label class="descricao"> SINTOMAS:</label>';
-            echo '<input type="text" name="sintomas" value="'.$sintomas.'">';
-        } elseif (isset($_POST["incluir1"])){
+           
+        } else {
+            if (isset($_POST["incluir1"])){
             $nome='';
             $tipo='';
             $sintomas='';
-            echo '<label class="descricao">NOME:</label>';
-            echo '<input type="text" name="nome" value="'.$nome.'">';
-            echo '<label class= "descricao"> TIPO:</label>';
-            echo '<select type="text" name="tipo">';
-            echo '<option value="0">Infecciosas e parasitárias</option>';
-            echo '<option value="1">Neoplasias (tumores)</option>';
-            echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-            echo '<option value="3">Transtornos imunitários</option>';
-            echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-            echo '<option value="5">Transtornos mentais e comportamentais</option>';
-            echo '<option value="6">Doenças do sistema nervoso</option>';
-            echo '<option value="7">Doenças oculares e anexos</option>';
-            echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-            echo '<option value="9">Doenças do aparelho circulatório</option>';
-            echo '<option value="10">Doenças do aparelho respiratório</option>';
-            echo '<option value="11">Doenças do aparelho digestivo</option>';
-            echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-            echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-            echo '<option value="14">Doenças do aparelho geniturinário</option>';
-            echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-            echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-            echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-            echo '</select>';
-            echo '<label class="descricao"> SINTOMAS:</label>';
-            echo '<input type="text" name="sintomas" value="'.$sintomas.'">';
-        }else{
+           }else{
             $nome_doenca = $_POST['nome_doenca'];
             $sql = "Select * from doenca where nome_doenca = '{$nome_doenca}' and usuario_idusuario='{$id}'";
             $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
@@ -94,416 +46,37 @@
             $tipo=$consulta['tipo_doenca'];
             $sintomas = $consulta['sintomas_doenca'];
             $idDoenca = $consulta['iddoenca'];
-            echo '<label class="descricao">NOME:</label>';
-            echo '<input type="text" name="nome" value="'.$nome.'">';
-            echo '<label class= "descricao"> TIPO:</label>';
-
-            switch ($tipo) {
-                case 0:
-                echo '<select type="text" name="tipo">';
-            echo '<option value="0" selected>Infecciosas e parasitárias</option>';
-            echo '<option value="1">Neoplasias (tumores)</option>';
-            echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-            echo '<option value="3">Transtornos imunitários</option>';
-            echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-            echo '<option value="5">Transtornos mentais e comportamentais</option>';
-            echo '<option value="6">Doenças do sistema nervoso</option>';
-            echo '<option value="7">Doenças oculares e anexos</option>';
-            echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-            echo '<option value="9">Doenças do aparelho circulatório</option>';
-            echo '<option value="10">Doenças do aparelho respiratório</option>';
-            echo '<option value="11">Doenças do aparelho digestivo</option>';
-            echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-            echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-            echo '<option value="14">Doenças do aparelho geniturinário</option>';
-            echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-            echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-            echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-            echo '</select>';
-                    break;
-                    case 1:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" selected>Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 2:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2" selected>Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 3:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3" selected>Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 4:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4" selected>Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 5:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5" selected>Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 6:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6" selected>Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 7:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7" selected>Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 8:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8" selected>Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 9:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9" selected>Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 10:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10" selected>Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 11:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11" selected>Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 12:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12" selected>Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 13:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13" selected>Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 14:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14" selected>Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 15:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15" selected>Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 16:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16" selected>Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17">Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                        case 17:
-                    echo '<select type="text" name="tipo">';
-                echo '<option value="0" >Infecciosas e parasitárias</option>';
-                echo '<option value="1" >Neoplasias (tumores)</option>';
-                echo '<option value="2">Doenças do sangue e dos órgãos hematopoéticos</option>';
-                echo '<option value="3">Transtornos imunitários</option>';
-                echo '<option value="4">Doenças endócrinas, nutricionais e metabólicas</option>';
-                echo '<option value="5">Transtornos mentais e comportamentais</option>';
-                echo '<option value="6">Doenças do sistema nervoso</option>';
-                echo '<option value="7">Doenças oculares e anexos</option>';
-                echo '<option value="8">Doenças do ouvido e da apófise mastoide</option>';
-                echo '<option value="9">Doenças do aparelho circulatório</option>';
-                echo '<option value="10">Doenças do aparelho respiratório</option>';
-                echo '<option value="11">Doenças do aparelho digestivo</option>';
-                echo '<option value="12">Doenças da pele e do tecido subcutâneo</option>';
-                echo '<option value="13">Doenças do sistema osteomuscular e do tecido conjuntivo</option>';
-                echo '<option value="14">Doenças do aparelho geniturinário</option>';
-                echo '<option value="15">Malformações congênitas, deformidades e anomalias cromossômicas</option>';
-                echo '<option value="16">Lesões, envenenamento e algumas outras consequências de causas externas</option>';
-                echo '<option value="17" selected>Causas externas de morbidade e de mortalidade</option>';
-                echo '</select>';
-                        break;
-                
-            }
-            echo '<label class="descricao"> SINTOMAS:</label>';
-            echo '<input type="text" name="sintomas" value="'.$sintomas.'">';
             }
         }
-            
-            
-
+        }
+            ?>
+            <label class="descricao">NOME:</label>
+            <input type="text" name="nome" value="<?php echo $nome; ?>">
+            <label class= "descricao"> TIPO:</label>
+            <select type="text" name="tipo">
+            <option value="0" <?php if ($tipo==0) { echo 'selected';} ?>>Infecciosas e parasitárias</option>
+            <option value="1" <?php if ($tipo==1) { echo 'selected';}?> >Neoplasias (tumores)</option>
+            <option value="2" <?php if ($tipo==2) { echo 'selected';}?> >Doenças do sangue e dos órgãos hematopoéticos</option>
+            <option value="3"<?php if ($tipo==3) { echo 'selected';}?> >Transtornos imunitários</option>
+            <option value="4"<?php if ($tipo==4) { echo 'selected';}?> >Doenças endócrinas, nutricionais e metabólicas</option>
+            <option value="5"<?php if ($tipo==5) { echo 'selected';}?> >Transtornos mentais e comportamentais</option>
+            <option value="6"<?php if ($tipo==6) { echo 'selected';}?> >Doenças do sistema nervoso</option>
+            <option value="7"<?php if ($tipo==7) { echo 'selected';}?> >Doenças oculares e anexos</option>
+            <option value="8"<?php if ($tipo==8) { echo 'selected';}?> >Doenças do ouvido e da apófise mastoide</option>
+            <option value="9"<?php if ($tipo==9) { echo 'selected';}?> >Doenças do aparelho circulatório</option>
+            <option value="10"<?php if ($tipo==10) { echo 'selected';}?> >Doenças do aparelho respiratório</option>
+            <option value="11"<?php if ($tipo==11) { echo 'selected';}?> >Doenças do aparelho digestivo</option>
+            <option value="12"<?php if ($tipo==12) { echo 'selected';}?> >Doenças da pele e do tecido subcutâneo</option>
+            <option value="13"<?php if ($tipo==13) { echo 'selected';}?> >Doenças do sistema osteomuscular e do tecido conjuntivo</option>
+            <option value="14"<?php if ($tipo==14) { echo 'selected';}?> >Doenças do aparelho geniturinário</option>
+            <option value="15"<?php if ($tipo==15) { echo 'selected';}?> >Malformações congênitas, deformidades e anomalias cromossômicas</option>
+            <option value="16"<?php if ($tipo==16) { echo 'selected';}?> >Lesões, envenenamento e algumas outras consequências de causas externas</option>
+            <option value="17"<?php if ($tipo==17) { echo 'selected';}?> >Causas externas de morbidade e de mortalidade</option>
+            </select>
+            <label class="descricao"> SINTOMAS:</label>
+            <input type="text" name="sintomas" value="<?php echo $sintomas; ?>">
+        
+        <?php
          if ($nome==''){
              if(isset($_POST["incluir"])){
              echo '<hr />';

@@ -27,20 +27,20 @@
 
         $id = $_SESSION['user']->getIdUsuario();
 
-        $sql = "SELECT nome_atividade FROM atividades where usuario_idusuario=".$id;
+        $sql = "SELECT idatividadefisica, atividade_atividadefisica FROM atividadeFisica where usuario_idusuario=".$id;
 
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta = $GLOBALS['conn']->query($sql);
         $verificar = mysqli_num_rows($consulta);
             
-            if (empty($verificar)){
-                echo "<button class='alertInfo'>Nenhuma atividade cadastrada</button>";
-            } else {
+        if (empty($verificar)){
+            echo "<button class='alertInfo'>Nenhuma atividade cadastrada</button>";
+        } else {
         while ($row = $consulta->fetch_assoc()){   
-        echo "<button type='submit' name='nome_atividade' value='".$row['nome_atividade']."'  class='container-data'>".$row['nome_atividade']."</button>";
+            echo "<button type='submit' name='idAtividadeFisica' value='".$row['idatividadefisica']."'  class='container-data'>".$row['atividade_atividadefisica']."</button>";
         }
         }
-    } 
+        } 
         ?>
         <hr>
         <section>

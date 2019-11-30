@@ -72,7 +72,7 @@ function del($id, $idUsuario){
     
 }
 function edit($id, $idUsuario){
-	$sql = "UPDATE atividadeFisica SET atividade_atividade='{$this->atividade_atividade}'
+	$sql = "UPDATE atividadeFisica SET atividade_atividadefisica='{$this->atividade_atividade}'
 , duracao_atividadeFisica='{$this->duracao_atividadeFisica}'
 , data_atividadeFisica= '{$this->data_atividadeFisica}' WHERE idatividadeFisica={$id} and usuario_idusuario='{$idUsuario}'";
 

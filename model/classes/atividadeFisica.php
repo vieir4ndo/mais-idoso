@@ -4,7 +4,7 @@
 
 class AtividadeFisica{
 private $idatividadeFisica="";
-private $atividade_atividade="";
+private $atividade_atividadeFisica="";
 private $duracao_atividadeFisica="";
 private $data_atividadeFisica="";
 
@@ -13,7 +13,7 @@ private $data_atividadeFisica="";
 
 function __construct(){
     $this->idatividadeFisica ="";
-    $this->atividade_atividade ="";
+    $this->atividade_atividadeFisica ="";
     $this->duracao_atividadeFisica ="";
     $this->data_atividadeFisica ="";
     
@@ -23,8 +23,8 @@ function __construct(){
 function getidatividadeFisica(){
     return $this->idatividadeFisica;
 }
-function getatividade_atividadeFisica(){
-    return $this->atividade_atividade;
+function getatividade_atividadeFisicaFisica(){
+    return $this->atividade_atividadeFisica;
 }
 function getduracao_atividadeFisica(){
     return $this->duracao_atividadeFisica;
@@ -33,8 +33,8 @@ function getdata_atividadeFisica(){
     return $this->data_atividadeFisica;
 }
 
-function setatividade_atividadeFisica($nome){
-     $this->atividade_atividade= $nome;
+function setatividade_atividadeFisicaFisica($nome){
+     $this->atividade_atividadeFisica= $nome;
 }
 function setduracao_atividadeFisica($duracao){
     $this->duracao_atividadeFisica = $duracao;
@@ -49,7 +49,7 @@ function add($idUsuario){
     //codigo fonte
 
     $sql = "INSERT INTO atividadeFisica (atividade_atividadefisica, usuario_idusuario, 
-    duracao_atividadeFisica, data_atividadeFisica) VALUES ('".$this->atividade_atividade."',
+    duracao_atividadefisica, data_atividadefisica) VALUES ('".$this->atividade_atividadeFisica."',
     '{$idUsuario}', '" . $this->duracao_atividadeFisica ."','".$this->data_atividadeFisica."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
@@ -72,7 +72,7 @@ function del($id, $idUsuario){
     
 }
 function edit($id, $idUsuario){
-	$sql = "UPDATE atividadeFisica SET atividade_atividadefisica='{$this->atividade_atividade}'
+	$sql = "UPDATE atividadeFisica SET atividade_atividadeFisicafisica='{$this->atividade_atividadeFisica}'
 , duracao_atividadeFisica='{$this->duracao_atividadeFisica}'
 , data_atividadeFisica= '{$this->data_atividadeFisica}' WHERE idatividadeFisica={$id} and usuario_idusuario='{$idUsuario}'";
 

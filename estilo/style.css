@@ -318,6 +318,8 @@ p {
     float: right;
 }
 .container-consulta {
+  
+  font-family: "Alternate Gothic No1 D"; 
     border: solid transparent;
     background-color: transparent;
     border-radius: 20px;
@@ -332,6 +334,7 @@ p {
 }
 .container-data {
   border: solid transparent;
+  font-family: "Alternate Gothic No1 D"; 
   background-color: transparent;
   border-radius: 20px;
   padding: 4%;

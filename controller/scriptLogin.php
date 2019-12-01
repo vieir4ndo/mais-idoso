@@ -6,7 +6,7 @@ require_once "../model/classes/consulta.php";
 require_once "../model/classes/alimentacao.php";
 require_once "../model/classes/doenca.php";
 require_once "../model/classes/medicamento.php";
-require_once "../model/classes/usuario.php";
+require_once "../model/classes/atividadeFisica.php";
 
 session_start();
 
@@ -29,6 +29,7 @@ if (isset($_POST["login"])) {
             $_SESSION['doenca'] = new Doenca();
             $_SESSION['alimentacao'] = new Alimentacao();
             $_SESSION['consulta'] = new Consulta();
+            $_SESSION['atividade'] = new AtividadeFisica();
 
             $_SESSION['user']->setIdusuario($consulta['idusuario']);
             $_SESSION['user']->setNome_usuario($consulta['nome_usuario']);

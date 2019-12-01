@@ -3,12 +3,8 @@
 <?php 
 require_once "model/classes/usuario.php";
 session_start();
-
 //$_SESSION['user'] = unserialize(serialize($_SESSION['user']));
-
 //echo $_SESSION['user']->getIdusuario();
-
-
 if ($_SESSION['logado']==true){
 ?>
 
@@ -42,11 +38,8 @@ if ($_SESSION['logado']==true){
         require_once "model/conexao.php";
         require_once "model/classes/medicamento.php";
         require_once "model/classes/consulta.php";
-
         $id = $_SESSION['user']->getIdusuario();
-
         $sql = "SELECT * from medicamento where usuario_idusuario={$id}";
-
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta = $GLOBALS['conn']->query($sql);
         while ($row = $consulta->fetch_assoc()){   
@@ -62,7 +55,6 @@ if ($_SESSION['logado']==true){
         }
         } 
         $sql = "SELECT local_consulta, horario_consulta, DATE_FORMAT(data_consulta, '%d/%m/%Y') as data_consulta from consulta where usuario_idusuario={$id}";
-
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta1 = $GLOBALS['conn']->query($sql);
         while ($row = $consulta1->fetch_assoc()){   
@@ -84,7 +76,6 @@ if ($_SESSION['logado']==true){
         if (empty($verificar) && empty($verificar1)){
             echo "<button class='alertInfo'>Nenhum lembrete cadastrado</button>";
         }
-
         ?>
     </section>      
 </body>

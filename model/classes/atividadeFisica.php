@@ -2,45 +2,45 @@
 
 //session_start();
 
-class AtividadeFisica{
-private $idatividadeFisica="";
-private $atividade_atividadeFisica="";
-private $duracao_atividadeFisica="";
-private $data_atividadeFisica="";
+class atividadefisica{
+private $idatividadefisica="";
+private $atividade_atividadefisica="";
+private $duracao_atividadefisica="";
+private $data_atividadefisica="";
 
 
 //CONSTRUTOR
 
 function __construct(){
-    $this->idatividadeFisica ="";
-    $this->atividade_atividadeFisica ="";
-    $this->duracao_atividadeFisica ="";
-    $this->data_atividadeFisica ="";
+    $this->idatividadefisica ="";
+    $this->atividade_atividadefisica ="";
+    $this->duracao_atividadefisica ="";
+    $this->data_atividadefisica ="";
     
 }
 //MÉTODOS GETS E SETS
 
-function getidatividadeFisica(){
-    return $this->idatividadeFisica;
+function getidatividadefisica(){
+    return $this->idatividadefisica;
 }
-function getatividade_atividadeFisicaFisica(){
-    return $this->atividade_atividadeFisica;
+function getatividade_atividadefisicaFisica(){
+    return $this->atividade_atividadefisica;
 }
-function getduracao_atividadeFisica(){
-    return $this->duracao_atividadeFisica;
+function getduracao_atividadefisica(){
+    return $this->duracao_atividadefisica;
 }
-function getdata_atividadeFisica(){
-    return $this->data_atividadeFisica;
+function getdata_atividadefisica(){
+    return $this->data_atividadefisica;
 }
 
-function setatividade_atividadeFisicaFisica($nome){
-     $this->atividade_atividadeFisica= $nome;
+function setatividade_atividadefisicaFisica($nome){
+     $this->atividade_atividadefisica= $nome;
 }
-function setduracao_atividadeFisica($duracao){
-    $this->duracao_atividadeFisica = $duracao;
+function setduracao_atividadefisica($duracao){
+    $this->duracao_atividadefisica = $duracao;
 }
-function setdata_atividadeFisica($data){
-    $this->data_atividadeFisica = $data;
+function setdata_atividadefisica($data){
+    $this->data_atividadefisica = $data;
 }
 
 
@@ -48,9 +48,9 @@ function setdata_atividadeFisica($data){
 function add($idUsuario){
     //codigo fonte
 
-    $sql = "INSERT INTO atividadeFisica (atividade_atividadefisica, usuario_idusuario, 
-    duracao_atividadefisica, data_atividadefisica) VALUES ('".$this->atividade_atividadeFisica."',
-    '{$idUsuario}', '" . $this->duracao_atividadeFisica ."','".$this->data_atividadeFisica."')";
+    $sql = "INSERT INTO atividadefisica (atividade_atividadefisica, usuario_idusuario, 
+    duracao_atividadefisica, data_atividadefisica) VALUES ('".$this->atividade_atividadefisica."',
+    '{$idUsuario}', '" . $this->duracao_atividadefisica ."','".$this->data_atividadefisica."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br >New record created successfully";
     } else {
@@ -61,7 +61,7 @@ function add($idUsuario){
 
 function del($id, $idUsuario){
     //codigo fonte
-    $sql = "delete from atividadeFisica where idatividadeFisica={$id} and usuario_idusuario={$idUsuario}";
+    $sql = "delete from atividadefisica where idatividadefisica={$id} and usuario_idusuario={$idUsuario}";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -72,9 +72,9 @@ function del($id, $idUsuario){
     
 }
 function edit($id, $idUsuario){
-	$sql = "UPDATE atividadeFisica SET atividade_atividadeFisicafisica='{$this->atividade_atividadeFisica}'
-, duracao_atividadeFisica='{$this->duracao_atividadeFisica}'
-, data_atividadeFisica= '{$this->data_atividadeFisica}' WHERE idatividadeFisica={$id} and usuario_idusuario='{$idUsuario}'";
+	$sql = "UPDATE atividadefisica SET atividade_atividadefisica='{$this->atividade_atividadefisica}'
+, duracao_atividadefisica='{$this->duracao_atividadefisica}'
+, data_atividadefisica= '{$this->data_atividadefisica}' WHERE idatividadefisica={$id} and usuario_idusuario='{$idUsuario}'";
 
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record updated successfully";

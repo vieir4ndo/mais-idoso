@@ -48,7 +48,7 @@ function setRazao_restricaoAlimentar($razao){
 //MÉTODOS BANCO
 function add($id){
     //codigo fonte
-    $sql = "INSERT INTO restricaoAlimentar (alimento_restricaoAlimentar, usuario_idusuario, grupo_restricaoAlimentar, razao_restricaoAlimentar) VALUES 
+    $sql = "INSERT INTO restricaoalimentar (alimento_restricaoAlimentar, usuario_idusuario, grupo_restricaoAlimentar, razao_restricaoAlimentar) VALUES 
     ('".$this->alimento_restricaoAlimentar."', ".$id.",
     '" . $this->grupo_restricaoAlimentar ."', '".$this->razao_restricaoAlimentar."')";
     if ($GLOBALS['conn']->query($sql) == TRUE) {
@@ -61,7 +61,7 @@ function add($id){
 
 function del($id, $idAlimentacao){
     //codigo fonte
-    $sql = "delete from restricaoAlimentar where idrestricaoAlimentar=". $idAlimentacao." and usuario_idusuario=".$id;
+    $sql = "delete from restricaoalimentar where idrestricaoAlimentar=". $idAlimentacao." and usuario_idusuario=".$id;
     if ($GLOBALS['conn']->query($sql) == TRUE) {
     echo "<br > record deleted successfully";
     } else {
@@ -72,7 +72,7 @@ function del($id, $idAlimentacao){
     
 }
 function edit($id, $idAlimentacao){
-	$sql = "UPDATE restricaoAlimentar SET alimento_restricaoAlimentar='{$this->alimento_restricaoAlimentar}'
+	$sql = "UPDATE restricaoalimentar SET alimento_restricaoAlimentar='{$this->alimento_restricaoAlimentar}'
 , grupo_restricaoAlimentar='{$this->grupo_restricaoAlimentar}'
 , razao_restricaoAlimentar='{$this->razao_restricaoAlimentar}'
  WHERE idrestricaoAlimentar={$id} and usuario_idusuario=".$idAlimentacao;

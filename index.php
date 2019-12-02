@@ -14,7 +14,16 @@ if ($_SESSION['logado']==true){
     <link rel="shortcut icon" href="img/ico.ico">
     <link rel="stylesheet" type="text/css" href="estilo/style.css">
 </head>
-
+<script type="text/javascript">
+    function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 <body>
     <header class="menu-principal">
         <a href="views/cartilha.php" id="img"><img src="img/cartilha.png"></a>
@@ -42,15 +51,18 @@ if ($_SESSION['logado']==true){
         $sql = "SELECT * from medicamento where usuario_idusuario={$id}";
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta = $GLOBALS['conn']->query($sql);
+        $i=0;
         while ($row = $consulta->fetch_assoc()){   
+            $i++;
         ?>
-        <section class="lembrete">
-        <label class="titulo-lembrete">MEDICAMENTO</label><button class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
+        <section class="lembrete" id=<?php echo $i; ?>>
+        <label class="titulo-lembrete" >MEDICAMENTO</label><button onclick="myFunction(<?php echo $i; ?>)" class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
         <label class="descricao-lembrete">Nome:<?php echo $row['nome_medicamento']?></label><br/>
         <label class="descricao-lembrete">Horário:<?php echo $row['horario_medicamento']?></label><br/>
         <label class="descricao-lembrete">Dosagem:<?php echo $row['dosagem_medicamento']?></label><br/>
-        </section>
         <hr>
+        </section>
+        
         <?php
         }
         } 
@@ -58,14 +70,16 @@ if ($_SESSION['logado']==true){
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta1 = $GLOBALS['conn']->query($sql);
         while ($row = $consulta1->fetch_assoc()){   
+            $i++;
         ?>
-        <section class="lembrete">
-        <label class="titulo-lembrete">CONSULTA</label><button class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
+        <section class="lembrete" id=<?php echo $i; ?>>
+        <label class="titulo-lembrete">CONSULTA</label><button onclick="myFunction(<?php echo $i; ?>)" class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
         <label class="descricao-lembrete">Local:<?php echo $row['local_consulta']?></label><br/>
         <label class="descricao-lembrete">Data:<?php echo $row['data_consulta']?></label><br/>
         <label class="descricao-lembrete">Horário:<?php echo $row['horario_consulta']?></label><br/>
-        </section>
         <hr>
+        </section>
+        
         <?php
         }
     }

@@ -1,4 +1,9 @@
 
+
+@font-face {
+    font-family: "Alternate Gothic No1 D" ;
+   src: url();
+ }
 body {
     background-color: #ec2233;
     padding-left: 2%;

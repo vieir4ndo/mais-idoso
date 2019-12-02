@@ -35,7 +35,7 @@
 
             $id = $_SESSION['user']->getIdusuario();
 
-            $sql = "Select * from atividadeFisica where idAtividadeFisica='{$idAtividadeFisica}' and usuario_idusuario={$id}";
+            $sql = "Select * from atividadefisica where idAtividadeFisica='{$idAtividadeFisica}' and usuario_idusuario={$id}";
 
             $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 

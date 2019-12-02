@@ -1,8 +1,7 @@
 
-
 @font-face {
     font-family: "Alternate Gothic No1 D" ;
-   src: url('../Alternate Gothic No1 D Regular.otf');
+   src: url('Alternate Gothic No1 D Regular.otf') format('OpenType');
  }
 body {
     background-color: #ec2233;

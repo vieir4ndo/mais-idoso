@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "admin";
-$password = "novaSenha";
+$username = "root";
+$password = "";
 $banco = "maisidoso";
 
 // Create connection

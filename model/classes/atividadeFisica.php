@@ -23,7 +23,7 @@ function __construct(){
 function getidatividadefisica(){
     return $this->idatividadefisica;
 }
-function getatividade_atividadefisicaFisica(){
+function getatividade_atividadefisica(){
     return $this->atividade_atividadefisica;
 }
 function getduracao_atividadefisica(){
@@ -33,7 +33,7 @@ function getdata_atividadefisica(){
     return $this->data_atividadefisica;
 }
 
-function setatividade_atividadefisicaFisica($nome){
+function setatividade_atividadefisica($nome){
      $this->atividade_atividadefisica= $nome;
 }
 function setduracao_atividadefisica($duracao){

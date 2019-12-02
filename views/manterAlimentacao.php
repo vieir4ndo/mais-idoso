@@ -38,7 +38,7 @@
 
             $id = $_SESSION['user']->getIdusuario();
 
-            $sql = "Select * from restricaoAlimentar where alimento_restricaoAlimentar='{$alimento_restricaoAlimentar}' and usuario_idusuario={$id}";
+            $sql = "Select * from restricaoalimentar where alimento_restricaoAlimentar='{$alimento_restricaoAlimentar}' and usuario_idusuario={$id}";
 
             $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
 

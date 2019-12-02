@@ -14,7 +14,7 @@
         <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
     <section class="container">
-        <h1 class="container-campo">CONTATO</h1>
+        <h1 class="titulo">CONTATO</h1>
         <hr />
         <h2 class="titulo2">+IDOSO LTDA</h2>
         <p> CNPJ: 04.555.888/0001-30 <br />

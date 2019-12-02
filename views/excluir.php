@@ -15,7 +15,7 @@
     </header>
     <form name="formExcluirConta" action="../controller/scriptConf.php" method="post">
     <section class="container">
-        <h1 class="container-campo">EXCLUIR CONTA</h1>
+        <h1 class="titulo">EXCLUIR CONTA</h1>
         <hr />
         <h1 class="container-campo">Confirme a exclusão da sua conta</h1>
         <section class="menu-manter">

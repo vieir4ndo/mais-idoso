@@ -14,7 +14,7 @@
         <a href="conf.php" id="img4"><img src="../img/conf.png"></a>
     </header>
     <section class="container">
-        <h1 class="container-campo">INFORMAÇÕES</h1>
+        <h1 class="titulo">INFORMAÇÕES</h1>
         <hr />
         <!--<a class="container-campo">TERMOS DE USO</a>
         

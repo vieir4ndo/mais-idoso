@@ -1,5 +1,4 @@
-
-@font-face {
+@font-face{
     font-family: "Alternate Gothic No1 D" ;
    src: url('Alternate Gothic No1 D Regular.otf') format('OpenType');
  }
@@ -85,7 +84,7 @@ hr {
 footer{
     padding: 5%;
     text-align: center;
-    font-size: 150%;
+    font-size: 300%;
     color: black;
 }
 
@@ -133,7 +132,7 @@ select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 250%;
+    font-size: 500%;
     font-family: "Alternate Gothic No1 D"; 
 }
 input[type=text] {
@@ -144,7 +143,7 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 250%;
+    font-size: 500%;
     font-family: "Alternate Gothic No1 D"; 
     
   }
@@ -156,7 +155,7 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 250%;
+    font-size: 500%;
     font-family: "Alternate Gothic No1 D"; 
     
   }
@@ -169,7 +168,7 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 250%;
+    font-size: 500%;
     font-family: "Alternate Gothic No1 D"; 
   }
   input[type=email] {
@@ -180,7 +179,7 @@ input[type=text] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 250%;
+    font-size: 500%;
     font-family: "Alternate Gothic No1 D"; 
   }
   input[type=submit] {
@@ -192,7 +191,7 @@ input[type=text] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 450%;
+    font-size: 900%;
     font-family: "Alternate Gothic No1 D"; 
   }
   input[type=button] {
@@ -204,7 +203,7 @@ input[type=text] {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 450%;
+    font-size: 900%;
     font-family: "Alternate Gothic No1 D"; 
   }
   input[type=date] {
@@ -217,7 +216,7 @@ input[type=text] {
     border-radius: 4px;
     box-sizing: border-box;
     font-family: "Alternate Gothic No1 D"; 
-    font-size: 180%;
+    font-size: 360%;
   }
   input[type=time] {
     clear: both;
@@ -230,7 +229,7 @@ input[type=text] {
     border-radius: 4px;
     box-sizing: border-box;
     font-family: "Alternate Gothic No1 D"; 
-    font-size: 180%;
+    font-size: 360%;
   }
   textarea{
     clear: both;
@@ -243,10 +242,10 @@ input[type=text] {
     border-radius: 4px;
     box-sizing: border-box;
     font-family: "Alternate Gothic No1 D"; 
-    font-size: 200%;
+    font-size: 400%;
   }
   .descricao {
-    font-size: 400%;
+    font-size: 600%;
     height: 150px;  
 }
 .lembrete{
@@ -255,14 +254,14 @@ input[type=text] {
 .descricao-lembrete{
   width: 100%;
   clear: both;
-  font-size: 250%;
+  font-size: 500%;
   padding-left:2.5%;
 }
 .titulo-lembrete{
   float: left;
   width: 76%;
   padding-left: 2%;;
-  font-size: 400%;
+  font-size: 800%;
   display: block;
 }
 .botao-lembrete{
@@ -296,19 +295,19 @@ input[type=text] {
 .titulo2 {
     float: left;
     width: 94%;
-    font-size: 400%; 
+    font-size: 800%; 
 }
 p {
     text-align:justify;
-    font-size: 250%; 
+    font-size: 500%; 
 }
 .container-campo {
     border-radius: 20px;
     padding: 4%;
     width: 91%;
-    font-size: 350%;
+    font-size: 700%;
     display: block;
-    font-size: 450%;
+    font-size: 900%;
 }
 .container-campo a {
     text-decoration: none;
@@ -332,7 +331,7 @@ p {
     padding-bottom: 1% ;
     padding-left: 4%;
     width: 100%;
-    font-size: 350%;
+    font-size: 700%;
     display: block;
     text-align:left;
 }
@@ -343,7 +342,7 @@ p {
   border-radius: 20px;
   padding: 4%;
   width: 100%;
-  font-size: 350%;
+  font-size: 700%;
   display: block;
   text-align:left;
 }
@@ -353,7 +352,7 @@ p {
     border-radius: 20px;
 }
 .container-consulta p{
-  font-size: 50%;
+  font-size: 100%;
   clear: both;
   padding-bottom: 0%;
 
@@ -382,7 +381,7 @@ p {
   width:30%;
 }
 .container-conf button h3 {
-  font-size:300%;
+  font-size:600%;
   text-align: center;
   float: right;
   width:60%;
@@ -485,7 +484,7 @@ p {
     border-radius: 10px;
     padding: 4%;
     width: 100%;
-    font-size: 250%;
+    font-size: 500%;
     display: block;
     text-align:left;
     font-family: "Alternate Gothic No1 D"; 
@@ -496,14 +495,14 @@ p {
     border-radius: 10px;
     padding: 4%;
     width: 100%;
-    font-size: 250%;
+    font-size: 500%;
     display: block;
     text-align:left;
     font-family: "Alternate Gothic No1 D"; 
   }
   .texto-consulta{
     clear: both;
-    font-size: 10%;
+    font-size: 20%;
   }
 
 /**LIMBO**/

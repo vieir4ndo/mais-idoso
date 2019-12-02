@@ -61,7 +61,26 @@
         echo '<label class="descricao">ALIMENTO:</label>';
         echo '<input type="text" name="alimento" value="'.$alimento.'"required>';
         echo '<label class="descricao">GRUPO:</label>';
-        echo '<input type="text" name="grupo"value="'.$grupo.'"required>';
+        ?>
+        <select name="grupo" >
+            <option value="0" <?php if($grupo==0) { echo 'selected';} ?>>Carboidratos</option>
+
+            <option value="1" <?php if($grupo==1) { echo 'selected';} ?>>Verduras e Legumes</option>
+
+            <option value="2" <?php if($grupo==2) { echo 'selected';} ?>>Frutas</option>
+
+            <option value="3" <?php if($grupo==3) { echo 'selected';} ?>>Leites e derivados</option>
+
+            <option value="4" <?php if($grupo==4) { echo 'selected';} ?>>Carnes e ovos</option>
+
+            <option value="5" <?php if($grupo==5) { echo 'selected';} ?>>Leguminosas e oleaginosas</option>
+
+            <option value="6" <?php if($grupo==6) { echo 'selected';} ?>>Óleos e gorduras</option>
+
+            <option value="7" <?php if($grupo==7) { echo 'selected';} ?>>Açúcares e doces</option>
+            
+        </select>
+        <?php 
         echo '<label class="descricao">RAZÃO:</label>';
         echo '<input type="text" name="razao" value="'.$razao.'"required>';
 

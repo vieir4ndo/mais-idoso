@@ -27,7 +27,7 @@
 
         $id = $_SESSION['user']->getIdUsuario();
 
-        $sql = "SELECT idatividadefisica, atividade_atividadefisica FROM atividadeFisica where usuario_idusuario=".$id;
+        $sql = "SELECT idatividadefisica, atividade_atividadefisica FROM atividadefisica where usuario_idusuario=".$id;
 
         if ($GLOBALS['conn']->query($sql)==true){
         $consulta = $GLOBALS['conn']->query($sql);

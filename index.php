@@ -56,7 +56,7 @@ if ($_SESSION['logado']==true){
             $i++;
         ?>
         <section class="lembrete" id=<?php echo $i; ?>>
-        <label class="titulo-lembrete" >MEDICAMENTO</label><button onclick="myFunction(<?php echo $i; ?>)" class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
+        <label class="titulo-lembrete" >MEDICAMENTO</label><button onclick="myFunction(<?php echo $i; ?>)" class="botao-lembrete"><img class="img-lembrete" src="img/minimizar.png"></button><br/><br/>
         <label class="descricao-lembrete">Nome:<?php echo $row['nome_medicamento']?></label><br/>
         <label class="descricao-lembrete">Horário:<?php echo $row['horario_medicamento']?></label><br/>
         <label class="descricao-lembrete">Dosagem:<?php echo $row['dosagem_medicamento']?></label><br/>
@@ -73,7 +73,7 @@ if ($_SESSION['logado']==true){
             $i++;
         ?>
         <section class="lembrete" id=<?php echo $i; ?>>
-        <label class="titulo-lembrete">CONSULTA</label><button onclick="myFunction(<?php echo $i; ?>)" class="botao-lembrete"><img class="img-lembrete" src="img/cancelar.png"></button><br/><br/>
+        <label class="titulo-lembrete">CONSULTA</label><button onclick="myFunction(<?php echo $i; ?>)" class="botao-lembrete"><img class="img-lembrete" src="img/minimizar.png"></button><br/><br/>
         <label class="descricao-lembrete">Local:<?php echo $row['local_consulta']?></label><br/>
         <label class="descricao-lembrete">Data:<?php echo $row['data_consulta']?></label><br/>
         <label class="descricao-lembrete">Horário:<?php echo $row['horario_consulta']?></label><br/>

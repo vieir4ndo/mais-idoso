@@ -4,7 +4,7 @@ require_once "../model/classes/usuario.php";
 
 session_start();
 
-$id=$_SESSION['user']->getIdusuario();
+$id = $_SESSION['user']->getIdusuario();
 
 if (isset($_POST["infoMedicas"])) {
     $altura = $_POST['altura'];

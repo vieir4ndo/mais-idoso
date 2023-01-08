@@ -1,9 +1,7 @@
 <?php
 
 require_once "../model/conexao.php";
-
 require_once "../model/classes/consulta.php";
-
 require_once "../model/classes/usuario.php";
 
 session_start();
@@ -19,40 +17,40 @@ echo $data_consulta;
 
 if (isset($_POST["editar"])) {
 
-	$_SESSION['consulta']->setTipo_consulta($tipo_consulta);
-	$_SESSION['consulta']->setlocal_consulta($local_consulta);
-	$_SESSION['consulta']->setData_consulta($data_consulta);
-	$_SESSION['consulta']->setHorario_consulta($horario_consulta);
-	$_SESSION['consulta']->setMedico_consulta($medico_consulta);
+    $_SESSION['consulta']->setTipo_consulta($tipo_consulta);
+    $_SESSION['consulta']->setlocal_consulta($local_consulta);
+    $_SESSION['consulta']->setData_consulta($data_consulta);
+    $_SESSION['consulta']->setHorario_consulta($horario_consulta);
+    $_SESSION['consulta']->setMedico_consulta($medico_consulta);
 
-	$idConsulta = $_POST['editar'];
+    $idConsulta = $_POST['editar'];
 
-	$_SESSION['consulta']->edit($idConsulta, $id);
+    $_SESSION['consulta']->edit($idConsulta, $id);
 
-header('Location: ../views/consultas.php');
+    header('Location: ../views/consultas.php');
 
 } elseif (isset($_POST["salvar"])) {
-	$_SESSION['consulta'] = new Consulta();
-	$_SESSION['consulta']->setTipo_consulta($tipo_consulta);
-	$_SESSION['consulta']->setLocal_consulta($local_consulta);
-	$_SESSION['consulta']->setData_consulta($data_consulta);
-	$_SESSION['consulta']->setHorario_consulta($horario_consulta);
-	$_SESSION['consulta']->setMedico_consulta($medico_consulta);
-	
-	$_SESSION['consulta']->add($id);
-	
-	header('Location: ../views/consultas.php');
-	
-	}elseif (isset($_POST["deletar"])){
-	
-		
-	$idConsulta = $_POST['deletar'];
+    $_SESSION['consulta'] = new Consulta();
+    $_SESSION['consulta']->setTipo_consulta($tipo_consulta);
+    $_SESSION['consulta']->setLocal_consulta($local_consulta);
+    $_SESSION['consulta']->setData_consulta($data_consulta);
+    $_SESSION['consulta']->setHorario_consulta($horario_consulta);
+    $_SESSION['consulta']->setMedico_consulta($medico_consulta);
 
-		$sql = "Select * from consulta where usuario_idusuario='{$id}'";
-		$consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
-		$dado = $consulta->fetch_array();
-		$_SESSION['consulta']->del($idConsulta, $id);
-		header('Location: ../views/consultas.php');
-	}
-	
-	?>
+    $_SESSION['consulta']->add($id);
+
+    header('Location: ../views/consultas.php');
+
+} elseif (isset($_POST["deletar"])) {
+
+
+    $idConsulta = $_POST['deletar'];
+
+    $sql = "Select * from consulta where usuario_idusuario='{$id}'";
+    $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
+    $dado = $consulta->fetch_array();
+    $_SESSION['consulta']->del($idConsulta, $id);
+    header('Location: ../views/consultas.php');
+}
+
+?>

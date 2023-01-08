@@ -15,14 +15,14 @@ if (isset($_POST["login"])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $sql = "Select * from usuario where email_usuario ='". $email ."'";
-   
+    $sql = "Select * from usuario where email_usuario ='" . $email . "'";
+
     if ($GLOBALS['conn']->query($sql) == TRUE) {
 
-        $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);      
+        $consulta = $GLOBALS['conn']->query($sql) or die ($GLOBALS['conn']->error);
         $consulta = $consulta->fetch_array();
 
-        if ($consulta['senha_usuario']==$senha) {
+        if ($consulta['senha_usuario'] == $senha) {
 
             $_SESSION['user'] = new Usuario();
             $_SESSION['medicamento'] = new Medicamento();
@@ -33,7 +33,7 @@ if (isset($_POST["login"])) {
 
             $_SESSION['user']->setIdusuario($consulta['idusuario']);
             $_SESSION['user']->setNome_usuario($consulta['nome_usuario']);
-            $_SESSION['user']->setSobrenome_usuario( $consulta['sobrenome_usuario']);
+            $_SESSION['user']->setSobrenome_usuario($consulta['sobrenome_usuario']);
             $_SESSION['user']->setGenero_usuario($consulta['genero_usuario']);
             $_SESSION['user']->setDataNascimento_usuario($consulta['dataNascimento_usuario']);
             $_SESSION['user']->setAltura_usuario($consulta['altura_usuario']);
@@ -44,17 +44,17 @@ if (isset($_POST["login"])) {
 
             header('Location: ../index.php');
 
-        }else {
+        } else {
             echo 'Senhas não batem';
-            $_SESSION['erroSenha']=true;
-            $_SESSION['erroEmail']=false;
+            $_SESSION['erroSenha'] = true;
+            $_SESSION['erroEmail'] = false;
             header('Location: ../views/login.php');
         }
-    }else {
+    } else {
         echo 'email não cadastrado';
-        $_SESSION['erroEmail']=true;
-        
-        $_SESSION['erroSenha']=false;
+        $_SESSION['erroEmail'] = true;
+
+        $_SESSION['erroSenha'] = false;
         header('Location: ../views/login.php');
     }
 
